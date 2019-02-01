@@ -5,6 +5,7 @@
  Version     : 00.00.01
  Copyright   : copyright Fireking Security Group
  Description : GPIO Driver for the BeagelBone Black for BlackBox
+               using BlackBox APIs
  ============================================================================
  */
 
