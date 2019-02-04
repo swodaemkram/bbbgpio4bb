@@ -87,11 +87,16 @@ Command line arguments Loaded
 ======================================================================================================================
 */
 
-
-
-
+Initialize_BeagelBone_Hardware();
 
 user_led2_flash(); //flash user LED to show service is running
+
+Get_IO_Status();
+
+Send_Data_To_BlackBox();
+
+RX_Data_From_BlackBox();
+
 
 printf("\n IP_out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
 printf("\n Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );

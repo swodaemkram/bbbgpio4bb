@@ -29,5 +29,6 @@ sleep(1);
 user_led2 = fopen("/sys/devices/platform/leds/leds/beaglebone:green:usr2/brightness", "w");
 fwrite("0",1,sizeof("0"),user_led2);
 fclose(user_led2);
+return;
 
 }

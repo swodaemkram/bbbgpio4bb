@@ -10,6 +10,7 @@
 
 #include <unistd.h>
 #include <stdio.h>
+#endif /* PRINT_HELP_H_ */
 
 void Print_Help(void){
 
@@ -24,4 +25,4 @@ printf("\n Example usage bbbgpiobb -A 192.168.1.15 -P 12000 -p 8080 \n " );
 exit(0);
 }
 
-#endif /* PRINT_HELP_H_ */
+
