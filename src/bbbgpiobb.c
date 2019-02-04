@@ -8,6 +8,7 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the B
 ===========================================================================================================================
 */
 
+
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
@@ -22,7 +23,7 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the B
 #include "Get_IO_Status.h"
 #include "Send_Data_To_BlackBox.h"
 #include "RX_Data_From_BlackBox.h"
-
+#include "Global_Variables.h"
 
 
 int main(int argc, char *argv[]){
@@ -30,6 +31,7 @@ int main(int argc, char *argv[]){
 char IP_Out_To_BlackBox[15] = {0};
 int Port_Out_To_BlackBox = 0 ;
 int Port_IN_From_BlackBox = 0 ;
+
 
 /*
 ==========================================================================================================================
@@ -99,8 +101,8 @@ RX_Data_From_BlackBox();
 
 
 printf("\n IP_out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
-printf("\n Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );
-printf("\n Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
+printf(" Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );
+printf(" Port_IN_From_BlackBox = %d\n", Port_IN_From_BlackBox );
 
 return(0);
 }
