@@ -18,6 +18,12 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the B
 
 #include "user_led2_flash.h"
 #include "Print_Help.h"
+#include "Initialize_BeagelBone_Hardware.h"
+#include "Get_IO_Status.h"
+#include "Send_Data_To_BlackBox.h"
+#include "RX_Data_From_BlackBox.h"
+
+
 
 int main(int argc, char *argv[]){
 
@@ -80,6 +86,10 @@ Load Command line arguments
 Command line arguments Loaded
 ======================================================================================================================
 */
+
+
+
+
 
 user_led2_flash(); //flash user LED to show service is running
 
