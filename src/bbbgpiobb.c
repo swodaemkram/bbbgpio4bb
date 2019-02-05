@@ -110,7 +110,7 @@ while(1){
 
 		printf("\nPIN44 Value = %d\n",PIN44_Status_Value );
 		Last_PIN44_Status_Value = PIN44_Status_Value;
-		Send_Data_To_BlackBox();                     //Send Data To BlackBox
+		Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, PIN44_Status_Value );                     //Send New Data To BlackBox
 
 	}
 
