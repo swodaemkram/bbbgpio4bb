@@ -15,7 +15,7 @@
 
 void Initialize_BeagelBone_Hardware(void){
 
-	FILE *IO_Config_File = NULL; //declare GPIO file Setup Pointer
+	FILE *IO_Config_File = NULL;                            // declare GPIO file Setup Pointer
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  // Open the export file for writing
 	fwrite("44",1,sizeof("44"),IO_Config_File);				// Export pin 44

@@ -91,18 +91,17 @@ Command line arguments Loaded
 
 Initialize_BeagelBone_Hardware();
 
-user_led2_flash(); //flash user LED to show service is running
+printf("\nIP_Out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
+printf("Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );
+printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
 
-Get_IO_Status();
+//user_led2_flash();       //flash user LED to show service is running
 
-Send_Data_To_BlackBox();
+Get_IO_Status();           //Get IO Status
 
-RX_Data_From_BlackBox();
+Send_Data_To_BlackBox();   //Send Data To BlackBox
 
-
-printf("\n IP_out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
-printf(" Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );
-printf(" Port_IN_From_BlackBox = %d\n", Port_IN_From_BlackBox );
+//RX_Data_From_BlackBox(); // DEBUG IN COMING DATA FIRST !!!
 
 
 return(0);
