@@ -30,6 +30,7 @@ user_led2 = fopen("/sys/devices/platform/leds/leds/beaglebone:green:usr2/brightn
 fwrite("1",1,sizeof("1"),user_led2);
 fclose(user_led2);
 user_led_status = 1;
+return;
 }
 
 if (user_led_status == 1){
@@ -37,6 +38,7 @@ user_led2 = fopen("/sys/devices/platform/leds/leds/beaglebone:green:usr2/brightn
 fwrite("0",1,sizeof("0"),user_led2);
 fclose(user_led2);
 user_led_status = 0;
+return;
 }
 
 
