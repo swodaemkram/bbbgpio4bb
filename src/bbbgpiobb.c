@@ -29,9 +29,10 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the B
 int main(int argc, char *argv[]){
 
 char IP_Out_To_BlackBox[15] = {0};
-int Port_Out_To_BlackBox = 0 ;
-int Port_IN_From_BlackBox = 0 ;
-
+int Port_Out_To_BlackBox = 0;
+int Port_IN_From_BlackBox = 0;
+int PIN44_Status_Value = 0;
+int Last_PIN44_Status_Value = 0;
 
 /*
 ==========================================================================================================================
@@ -97,12 +98,33 @@ printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
 
 //user_led2_flash();       //flash user LED to show service is running
 
-Get_IO_Status();           //Get IO Status
+/*
+======================================================================================================================
+Main Program Loop
+======================================================================================================================
+*/
 
-Send_Data_To_BlackBox();   //Send Data To BlackBox
+while(1){
 
-//RX_Data_From_BlackBox(); // DEBUG IN COMING DATA FIRST !!!
+	if(PIN44_Status_Value != Last_PIN44_Status_Value){
 
+		printf("\nPIN44 Value = %d\n",PIN44_Status_Value );
+		Last_PIN44_Status_Value = PIN44_Status_Value;
+		Send_Data_To_BlackBox();                     //Send Data To BlackBox
+
+	}
+
+
+
+	PIN44_Status_Value = Get_IO_Status();           //Get IO Status
+	//RX_Data_From_BlackBox();                     // DEBUG IN COMING DATA FIRST !!!
+
+}
+/*
+======================================================================================================================
+End of Main Program Loop
+=======================================================================================================================
+ */
 
 return(0);
 }
