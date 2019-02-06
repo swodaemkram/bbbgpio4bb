@@ -51,16 +51,16 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, i
 
 
 
-		int LenOfData;
-		char LENOFData[5];
-		LenOfData = strlen(SendData);
-		sprintf(LENOFData,"%d",LenOfData);
+		int LenOfData;						//This is done to get The LenOfData from an Integer to a string for proper formating
+		char LENOFData[5];					//This is done to get The LenOfData from an Integer to a string for proper formating
+		LenOfData = strlen(SendData);		//This is done to get The LenOfData from an Integer to a string for proper formating
+		sprintf(LENOFData,"%d",LenOfData);	//This is done to get The LenOfData from an Integer to a string for proper formating
 
 
-		sprintf(message,message_fmt,LENOFData,SendData);
+		sprintf(message,message_fmt,LENOFData,SendData); //Format and apply data
 
 		printf("\n%s\n",message);
-		send(sock , message,strlen(message),0); //Send Built Stream To BlackBox
+		send(sock , message,strlen(message),0); 		//Send Built Stream To BlackBox
 
 
 
