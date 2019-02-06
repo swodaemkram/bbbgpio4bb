@@ -16,7 +16,7 @@
 
 void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, int PIN44_Status_Value ){
 
-printf("Send_Data_To_BlackBox with IP Address of %s a port of %d Pin 44 value of %i\n",IP_Out_To_BlackBox,Port_Out_To_BlackBox,PIN44_Status_Value);
+//printf("Send_Data_To_BlackBox with IP Address of %s a port of %d Pin 44 value of %i\n",IP_Out_To_BlackBox,Port_Out_To_BlackBox,PIN44_Status_Value);
 
 	int sock;
 	struct sockaddr_in server;
@@ -45,15 +45,24 @@ printf("Send_Data_To_BlackBox with IP Address of %s a port of %d Pin 44 value of
 		char *SendData = &SendDataValue;	//This is done to move the data into a pointer
 		*SendData = PIN44_Status_Value;		//This is done to move the data into a pointer
 
-		send(sock , "POST  HTTP/1.1\n",20,0);
-		send(sock, "Content-Type: application/x-www-form-urlencoded\n",49,0);
-		send(sock, "Content-Length: 3\n",19,0);
-		send(sock , SendData, strlen(SendData),0);
-		send(sock ,"\n",2,0);
+
+		char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n%s";
+		char message[1024];
 
 
 
-		printf(" Sent ... %d\n",PIN44_Status_Value);
+		int LenOfData;
+		char LENOFData[5];
+		LenOfData = strlen(SendData);
+		sprintf(LENOFData,"%d",LenOfData);
+
+
+		sprintf(message,message_fmt,LENOFData,SendData);
+
+		printf("\n%s\n",message);
+		send(sock , message,strlen(message),0); //Send Built Stream To BlackBox
+
+
 
 		close(sock);
 
