@@ -31,8 +31,9 @@ int main(int argc, char *argv[]){
 char IP_Out_To_BlackBox[15] = {0};
 int Port_Out_To_BlackBox = 0;
 int Port_IN_From_BlackBox = 0;
-int PIN44_Status_Value = 0;
-int Last_PIN44_Status_Value = 0;
+char New_IO_Status_Value = 0;
+int Last_IO_Status_Value = 0;
+
 
 /*
 ==========================================================================================================================
@@ -106,18 +107,22 @@ Main Program Loop
 
 while(1){
 
-	if(PIN44_Status_Value != Last_PIN44_Status_Value){
+	if(New_IO_Status_Value != Last_IO_Status_Value){
 
-		//printf("\nPIN44 Value = %d\n",PIN44_Status_Value );
-		Last_PIN44_Status_Value = PIN44_Status_Value;
-		Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, PIN44_Status_Value );                     //Send New Data To BlackBox
+		Last_IO_Status_Value = New_IO_Status_Value;
+
+		Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, New_IO_Status_Value ); //Send New Data To BlackBox
 
 	}
 
 
 
-	PIN44_Status_Value = Get_IO_Status();           //Get IO Status
-	//RX_Data_From_BlackBox();                     // DEBUG IN COMING DATA FIRST !!!
+	New_IO_Status_Value = Get_IO_Status();               //Get IO Status
+
+	usleep(500000);								    //This is set to .5 Seconds to keep the CPU usage to a minimum
+
+
+	//RX_Data_From_BlackBox();                      // DEBUG IN COMING DATA FIRST !!!
 
 }
 /*
