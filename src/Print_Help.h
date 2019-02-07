@@ -14,7 +14,7 @@
 
 void Print_Help(void){
 
-printf("\n         bbbgpiobb By Mark Meadows v 00.01.10\n");
+printf("\n         bbbgpiobb By Mark Meadows v 00.02.10\n");
 printf(" Copyright (c) 2019 Fireking Security Group. All rights reserved.\n");
 printf(" a command line BlackBox interface to the BagelBone I/O hardware\n");
 printf(" -A, The I.P. Address for out-going BlackBox communications\n");

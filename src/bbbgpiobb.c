@@ -2,7 +2,7 @@
 ===========================================================================================================================
 Name		:	bbbgpiobb.c
 Author		:	Mark Meadows
-Version		:	v 00.01.10
+Version		:	v 00.02.10
 Copyright	:	Fireking Security Group
 Description	:	Service to provide GPIO In and Out capability to BlackBox on the BeagelBone Hardware Platform
 ===========================================================================================================================

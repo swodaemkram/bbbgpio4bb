@@ -16,7 +16,7 @@
 void Initialize_BeagelBone_Hardware(void){
 /*
 ===================================================================================================================================
-Initialize 8 PINs for Export as Inputs [44,65,46,26,68,67,66,69]
+Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69]
 ===================================================================================================================================
 */
 
@@ -53,23 +53,62 @@ Initialize 8 PINs for Export as Inputs [44,65,46,26,68,67,66,69]
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 		fwrite("69",1,sizeof("69"),IO_Config_File);				// Export pin 69
 		fclose(IO_Config_File);									// Close the export file
+/*
+=================================================================================================================================
+Make sure all the above PINs are set to INPUTS
+=================================================================================================================================
+ */
+		IO_Config_File = fopen("/sys/class/gpio/gpio44/direction", "w");  	// Open the pin 44 direction file for writing
+			fwrite("in",1,sizeof("in"),IO_Config_File);					    // Set direction for PIN44 to in
+			fclose(IO_Config_File);										    // Close the direction file
+
+		IO_Config_File = fopen("/sys/class/gpio/gpio65/direction", "w");  	// Open the pin 65 direction file for writing
+			fwrite("in",1,sizeof("in"),IO_Config_File);					    // Set direction for PIN65 to in
+			fclose(IO_Config_File);										    // Close the direction file
+
+		IO_Config_File = fopen("/sys/class/gpio/gpio46/direction", "w");  	// Open the pin 46 direction file for writing
+			fwrite("in",1,sizeof("in"),IO_Config_File);					    // Set direction for PIN46 to in
+			fclose(IO_Config_File);										    // Close the direction file
+
+		IO_Config_File = fopen("/sys/class/gpio/gpio26/direction", "w");  	// Open the pin 26 direction file for writing
+			fwrite("in",1,sizeof("in"),IO_Config_File);					    // Set direction for PIN26 to in
+			fclose(IO_Config_File);										    // Close the direction file
+
+		IO_Config_File = fopen("/sys/class/gpio/gpio68/direction", "w");  	// Open the pin 68 direction file for writing
+			fwrite("low",1,sizeof("low"),IO_Config_File);					    // Set direction for PIN68 to in
+			fclose(IO_Config_File);										    // Close the direction file
+
+		IO_Config_File = fopen("/sys/class/gpio/gpio67/direction", "w");  	// Open the pin 67 direction file for writing
+			fwrite("low",1,sizeof("low"),IO_Config_File);					    // Set direction for PIN67 to in
+			fclose(IO_Config_File);										    // Close the direction file
+
+		IO_Config_File = fopen("/sys/class/gpio/gpio66/direction", "w");  	// Open the pin 66 direction file for writing
+			fwrite("low",1,sizeof("low"),IO_Config_File);					    // Set direction for PIN66 to in
+			fclose(IO_Config_File);										    // Close the direction file
+
+		IO_Config_File = fopen("/sys/class/gpio/gpio69/direction", "w");  	// Open the pin 69 direction file for writing
+			fwrite("low",1,sizeof("low"),IO_Config_File);					    // Set direction for PIN69 to in
+			fclose(IO_Config_File);										    // Close the direction file
+
 
 /*
 ===================================================================================================================================
-Finished Initializing Input PINs
+Finished Initializing Digital Input PINs
+===================================================================================================================================
+===================================================================================================================================
+Initialize Analog Inputs
+===================================================================================================================================
+*/
+
+		IO_Config_File = fopen("/sys/devices/platform/bone_capemgr/slots", "w");  	// Enable The Analog Input Driver
+			fwrite("BB-ADC",1,sizeof("BB-ADC"),IO_Config_File);					    // Write the Drivers name in file
+			fclose(IO_Config_File);										            // Close the file
+
+/*
+===================================================================================================================================
+Finished Initializing Analog Inputs
 ===================================================================================================================================
  */
-
-
-
-
-
-
-
-
-
-
-
 	printf("\nBeagelBone Hardware Initialized... \n");
 
 return ;
