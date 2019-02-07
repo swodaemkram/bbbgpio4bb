@@ -12,7 +12,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-char Get_IO_Status(void){
+char *Get_IO_Status(void){
 
 	char PIN44_Status_Value = {0};
 	FILE *PIN44_Status = NULL; //declare PIN44 Pointer
@@ -71,15 +71,16 @@ char Get_IO_Status(void){
 	fclose(PIN69_Status);
 
 	//IO_Status_Value =
-	char *IO_Status_fmt = "%d,%d,%d,%d,%d,%d,%d,%d";
+	char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d";
 
 	char IO_Status_Value[1024];
 
 	sprintf(IO_Status_Value, IO_Status_fmt, PIN44_Status_Value, PIN65_Status_Value, PIN46_Status_Value, PIN26_Status_Value, PIN68_Status_Value, PIN67_Status_Value, PIN66_Status_Value, PIN69_Status_Value); //Format and apply data
 
-	printf("\n%s\n",IO_Status_Value);
+	char *New_IO_Status_Value = {0};
+	New_IO_Status_Value = IO_Status_Value;
 
-	return (IO_Status_Value);
+	return (New_IO_Status_Value);
 
 }
 
