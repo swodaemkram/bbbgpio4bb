@@ -41,12 +41,15 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 
 		char *SendData = IO_Status_Value;
 
-		char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n%s";
+		//char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n%s";
+
+		char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n{\"OnBoardIO\":[{\"id\":\"Digital_I/O\",\"Status\":\"%s\"},{\"id\":\"Analog_I/O\",\"Status\":\"0\"}]}";
+
 		char message[1024];
 
 		int LenOfData;							//This is done to get The LenOfData from an Integer to a string for proper formating
 		char LENOFData[5];						//This is done to get The LenOfData from an Integer to a string for proper formating
-		LenOfData = strlen(SendData);			//This is done to get The LenOfData from an Integer to a string for proper formating
+		LenOfData = strlen(SendData)+ 81;			//This is done to get The LenOfData from an Integer to a string for proper formating
 		sprintf(LENOFData,"%d",LenOfData);		//This is done to get The LenOfData from an Integer to a string for proper formating
 
 		sprintf(message,message_fmt,LENOFData,SendData); //Format and apply data
