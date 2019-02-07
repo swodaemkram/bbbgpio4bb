@@ -32,6 +32,7 @@ char IP_Out_To_BlackBox[15] = {0};
 int Port_Out_To_BlackBox = 0;
 int Port_IN_From_BlackBox = 0;
 char *New_IO_Status_Value = {0};
+char *New_ANIO_Status_Value = {0};
 char Last_IO_Status_Value[15];
 char IO_Status_Value[15];
 
@@ -115,6 +116,7 @@ while(1){
 	}
 
 	New_IO_Status_Value = Get_IO_Status();               //Get IO Status
+
 	strcpy(IO_Status_Value, New_IO_Status_Value);
 	usleep(500000);								    //This is set to .5 Seconds to keep the CPU usage to a minimum
 
