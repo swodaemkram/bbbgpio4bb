@@ -1,8 +1,8 @@
 /*
 ===========================================================================================================================
-Name		:	bbbgpiobb.c
+Name		:	gpio4bb.c
 Author		:	Mark Meadows
-Version		:	v 00.02.10
+Version		:	v 00.02.50
 Copyright	:	Fireking Security Group
 Description	:	Service to provide GPIO In and Out capability to BlackBox on the BeagelBone Hardware Platform
 ===========================================================================================================================
@@ -16,14 +16,14 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the B
 #include <sys/socket.h>
 #include <stdlib.h>
 
+#include "BeagelBone_Get_IO_Status.h"
+#include "BeagelBone_Hardware_Initialize_.h"
+#include "BeagelBone_user_led2_flash.h"
 
-#include "user_led2_flash.h"
 #include "Print_Help.h"
-#include "Initialize_BeagelBone_Hardware.h"
-#include "Get_IO_Status.h"
 #include "Send_Data_To_BlackBox.h"
 #include "RX_Data_From_BlackBox.h"
-#include "Global_Variables.h"
+
 
 
 int main(int argc, char *argv[]){
@@ -32,9 +32,10 @@ char IP_Out_To_BlackBox[15] = {0};
 int Port_Out_To_BlackBox = 0;
 int Port_IN_From_BlackBox = 0;
 char *New_IO_Status_Value = {0};
-char *New_ANIO_Status_Value = {0};
+//char *New_ANIO_Status_Value = {0};
 char Last_IO_Status_Value[15];
 char IO_Status_Value[15];
+char HardwarePlatform[10];
 
 /*
 ==========================================================================================================================
@@ -82,6 +83,11 @@ Load Command line arguments
  				case 'V' :
  				   Print_Help();
  				    break;
+
+ 				case 'w' :
+ 					strcpy(HardwarePlatform, argv[z+1]);
+ 					break;
+
 				}
 
 			}
@@ -92,13 +98,13 @@ Command line arguments Loaded
 ======================================================================================================================
 */
 
-Initialize_BeagelBone_Hardware();
+void BeagelBone_Hardware_Initialize_();
 
 printf("\nIP_Out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
 printf("Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );
 printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
 
-//user_led2_flash();       //flash user LED to show service is running
+//BeagelBone_user_led2_flash();       //flash user LED to show service is running
 
 /*
 ======================================================================================================================
@@ -115,7 +121,7 @@ while(1){
 
 	}
 
-	New_IO_Status_Value = Get_IO_Status();               //Get IO Status
+	New_IO_Status_Value = BeagelBone_Get_IO_Status();               //Get IO Status
 
 	strcpy(IO_Status_Value, New_IO_Status_Value);
 	usleep(500000);								    //This is set to .5 Seconds to keep the CPU usage to a minimum

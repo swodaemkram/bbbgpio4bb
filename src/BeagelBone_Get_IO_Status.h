@@ -1,18 +1,18 @@
 /*
- * Get_IO_Status.h
+ * BeagelBone_Get_IO_Status.h
  *
  *  Created on: Feb 4, 2019
  *      Author: mark
  */
 
-#ifndef GET_IO_STATUS_H_
-#define GET_IO_STATUS_H_
-#endif /* GET_IO_STATUS_H_ */
+#ifndef BEAGELBONE_GET_IO_STATUS_H_
+#define BEAGELBONE_GET_IO_STATUS_H_
+#endif /*BEAGELBONE_GET_IO_STATUS_H_ */
 
 #include <unistd.h>
 #include <stdio.h>
 
-char *Get_IO_Status(void){
+char *BeagelBone_Get_IO_Status(void){
 /*
 ====================================================================================================================================
 Start of Digital INPUT Handler

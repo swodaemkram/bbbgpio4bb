@@ -14,13 +14,15 @@
 
 void Print_Help(void){
 
-printf("\n         bbbgpiobb By Mark Meadows v 00.02.10\n");
+printf("\n         gpio4bb By Mark Meadows v 00.02.50\n");
 printf(" Copyright (c) 2019 Fireking Security Group. All rights reserved.\n");
 printf(" a command line BlackBox interface to the BagelBone I/O hardware\n");
 printf(" -A, The I.P. Address for out-going BlackBox communications\n");
+printf(" -h, Print this help file\n");
 printf(" -P, The Port for out-going BlackBox communications\n");
 printf(" -p, The Port used for in-coming BlackBox communications\n");
-printf("\n Example usage: bbbgpiobb -A 192.168.1.15 -P 12000 -p 8080 \n " );
+printf(" -w, The Hardware Platform being utilized [ beagelbone, usbio, raspberryPi ]\n ");
+printf("\n Example usage: gpio4bb -A 192.168.1.15 -P 12000 -p 8080 -w beagelbone\n " );
 
 exit(0);
 }

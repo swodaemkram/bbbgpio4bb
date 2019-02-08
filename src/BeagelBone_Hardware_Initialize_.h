@@ -1,19 +1,19 @@
 /*
- * Initialize_BeagelBone_Hardware.h
+ * BeagelBone_Hardware_Initialize.h
  *
  *  Created on: Feb 4, 2019
  *      Author: mark
  */
 
-#ifndef INITIALIZE_BEAGELBONE_HARDWARE_H_
-#define INITIALIZE_BEAGELBONE_HARDWARE_H_
+#ifndef BEAGELBONE_HARDWARE_INITIALIZE_H_
+#define BEAGELBONE_HARDWARE_INITIALIZE_H_
 
-#endif /* INITIALIZE_BEAGELBONE_HARDWARE_H_ */
+#endif /* BEAGELBONE_HARDWARE_INITIALIZE_H_ */
 
 #include <unistd.h>
 #include <stdio.h>
 
-void Initialize_BeagelBone_Hardware(void){
+void BeagelBone_Hardware_Initialize(void){
 /*
 ===================================================================================================================================
 Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69]
