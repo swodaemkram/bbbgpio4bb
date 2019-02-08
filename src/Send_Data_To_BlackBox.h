@@ -16,6 +16,11 @@
 
 void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, char *IO_Status_Value ){
 
+
+	printf("IO_Status_Value = %s \n",IO_Status_Value);
+	return;
+
+
 	int sock;
 	struct sockaddr_in server;
 
@@ -25,7 +30,6 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 			printf("Could not create socket");
 		}
 		//puts("Socket created");
-
 
 		server.sin_addr.s_addr = inet_addr(IP_Out_To_BlackBox);
 		server.sin_family = AF_INET;
@@ -39,6 +43,13 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 
 		printf("Connected to BlackBox");
 
+/*
+================================================================================================================================
+Connected to BlackBox Format data into JASON Format
+================================================================================================================================
+ */
+
+
 		char *SendData = IO_Status_Value;
 
 		//char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n%s";
@@ -47,16 +58,16 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 
 		char message[1024];
 
-		int LenOfData;							//This is done to get The LenOfData from an Integer to a string for proper formating
-		char LENOFData[5];						//This is done to get The LenOfData from an Integer to a string for proper formating
-		LenOfData = strlen(SendData)+ 81;			//This is done to get The LenOfData from an Integer to a string for proper formating
-		sprintf(LENOFData,"%d",LenOfData);		//This is done to get The LenOfData from an Integer to a string for proper formating
+		int LenOfData;							         //This is done to get The LenOfData from an Integer to a string for proper formating
+		char LENOFData[5];						         //This is done to get The LenOfData from an Integer to a string for proper formating
+		LenOfData = strlen(SendData)+ 81;			     //This is done to get The LenOfData from an Integer to a string for proper formating
+		sprintf(LENOFData,"%d",LenOfData);		         //This is done to get The LenOfData from an Integer to a string for proper formating
 
 		sprintf(message,message_fmt,LENOFData,SendData); //Format and apply data
 
 		printf("\n%s\n",message);
 
-		send(sock , message,strlen(message),0); 		//Send Built Stream To BlackBox
+		send(sock , message,strlen(message),0); 		 //Send Built Stream To BlackBox
 
 		close(sock);
 

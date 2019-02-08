@@ -73,16 +73,6 @@ Start of Digital INPUT Handler
 	PIN69_Status_Value = fgetc(PIN69_Status);
 	PIN69_Status_Value = PIN69_Status_Value - 48;
 	fclose(PIN69_Status);
-//=======================================================================================================================================
-//   Format the data to be sent to main modual
-//=======================================================================================================================================
-	char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d";
-	char IO_Status_Value[1024];
-
-	sprintf(IO_Status_Value, IO_Status_fmt, PIN44_Status_Value, PIN65_Status_Value, PIN46_Status_Value, PIN26_Status_Value, PIN68_Status_Value, PIN67_Status_Value, PIN66_Status_Value, PIN69_Status_Value); //Format and apply data
-
-	char *New_IO_Status_Value = {0};
-	New_IO_Status_Value = IO_Status_Value;
 /*
 ============================================================================================================================================
 End of Digital Input Handler
@@ -95,24 +85,39 @@ Start of Analog Input Handler
 	FILE *ANI00_file = NULL;
 	ANI00_file = fopen("/sys/bus/iio/devices/iio:device0/in_voltage0_raw", "r");
 	fgets(ANI00_Value, 3, ANI00_file);
+	//Debug Code
+	ANI00_Value[0] = '0' ;
+	ANI00_Value[1] = '0' ;
 	fclose(ANI00_file);
 
 	char ANI01_Value[3] = {0};
 	FILE *ANI01_file = NULL;
 	ANI01_file = fopen("/sys/bus/iio/devices/iio:device0/in_voltage1_raw", "r");
 	fgets(ANI01_Value, 3, ANI01_file);
+	//Debug Code
+	ANI01_Value[0] = '0';
+	ANI01_Value[1] = '0';
+	//End of Debug Code
 	fclose(ANI01_file);
 
 	char ANI02_Value[3] = {0};
 	FILE *ANI02_file = NULL;
 	ANI02_file = fopen("/sys/bus/iio/devices/iio:device0/in_voltage2_raw", "r");
 	fgets(ANI02_Value, 3, ANI02_file);
+	//Debug Code
+	ANI02_Value[0] = '0';
+	ANI02_Value[1] = '0';
+	//End of Debug Code
 	fclose(ANI02_file);
 
 	char ANI03_Value[3] = {0};
 	FILE *ANI03_file = NULL;
 	ANI03_file = fopen("/sys/bus/iio/devices/iio:device0/in_voltage3_raw", "r");
 	fgets(ANI03_Value, 3, ANI03_file);
+	//Debug Code
+	ANI03_Value[0] = '0';
+	ANI03_Value[1] = '0';
+	//End of Debug Code
 	fclose(ANI03_file);
 
 	char ANI04_Value[3] = {0};
@@ -125,23 +130,33 @@ Start of Analog Input Handler
 	FILE *ANI05_file = NULL;
 	ANI05_file = fopen("/sys/bus/iio/devices/iio:device0/in_voltage5_raw", "r");
 	fgets(ANI05_Value, 3, ANI05_file);
+	//Debug Code
+	ANI05_Value[0] = '0';
+	ANI05_Value[1] = '0';
+	//End of Debug Code
 	fclose(ANI05_file);
 
 	char ANI06_Value[3] = {0};
 	FILE *ANI06_file = NULL;
 	ANI06_file = fopen("/sys/bus/iio/devices/iio:device0/in_voltage6_raw", "r");
 	fgets(ANI06_Value, 3, ANI06_file);
+	//Debug Code
+	ANI06_Value[0] = '0';
+	ANI06_Value[1] = '0';
+ 	//End of Debug Code
 	fclose(ANI06_file);
 
-	char *ANIO_Status_fmt = "%s:%s:%s:%s:%s:%s:%s";
-	char ANIO_Status_Value[1024];
-	sprintf(ANIO_Status_Value, ANIO_Status_fmt, ANI00_Value, ANI01_Value, ANI02_Value, ANI03_Value, ANI04_Value, ANI05_Value, ANI06_Value); //Format and apply data
-	char *New_ANIO_Status_Value = {0};
-	New_ANIO_Status_Value = ANIO_Status_Value;
+/*
+=======================================================================================================================================
+   Format the data to be sent to main module
+=======================================================================================================================================
+*/
 
-
-	printf("\n%s\n",New_ANIO_Status_Value );
-
+	char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d|%s:%s:%s:%s:%s:%s:%s";
+	char IO_Status_Value[1024];
+	sprintf(IO_Status_Value, IO_Status_fmt, PIN44_Status_Value, PIN65_Status_Value, PIN46_Status_Value, PIN26_Status_Value, PIN68_Status_Value, PIN67_Status_Value, PIN66_Status_Value, PIN69_Status_Value, ANI00_Value, ANI01_Value, ANI02_Value, ANI03_Value, ANI04_Value, ANI05_Value, ANI06_Value); //Format and apply data
+	char *New_IO_Status_Value = {0};
+	New_IO_Status_Value = IO_Status_Value;
 
 	return (New_IO_Status_Value);
 

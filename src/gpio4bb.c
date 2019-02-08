@@ -32,10 +32,10 @@ char IP_Out_To_BlackBox[15] = {0};
 int Port_Out_To_BlackBox = 0;
 int Port_IN_From_BlackBox = 0;
 char *New_IO_Status_Value = {0};
-//char *New_ANIO_Status_Value = {0};
-char Last_IO_Status_Value[15];
-char IO_Status_Value[15];
-char HardwarePlatform[10];
+
+char Last_IO_Status_Value[37] = {0};
+char IO_Status_Value[37] = {0};
+char HardwarePlatform[10] = {0};
 
 /*
 ==========================================================================================================================
@@ -96,7 +96,19 @@ Load Command line arguments
 ======================================================================================================================
 Command line arguments Loaded
 ======================================================================================================================
+======================================================================================================================
+Simple Argument Verification
+======================================================================================================================
 */
+
+
+
+/*
+======================================================================================================================
+Simple Argument Verification Completed
+======================================================================================================================
+ */
+
 
 void BeagelBone_Hardware_Initialize_();
 
@@ -114,16 +126,21 @@ Main Program Loop
 
 while(1){
 
+
 	if(strcmp(IO_Status_Value, Last_IO_Status_Value) != 0){
-		strcpy(Last_IO_Status_Value,  IO_Status_Value);
-		//printf("\nI.O. Status = %s\n", IO_Status_Value);
+
+		//printf("\nLast_IO_Status_Value = %s\n",Last_IO_Status_Value);
+
 		Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, IO_Status_Value ); //Send New Data To BlackBox
+
+		Last_IO_Status_Value[0] ='\0';
+		strncpy(Last_IO_Status_Value,  IO_Status_Value, 37);
 
 	}
 
-	New_IO_Status_Value = BeagelBone_Get_IO_Status();               //Get IO Status
+		New_IO_Status_Value = BeagelBone_Get_IO_Status();               //Get IO Status
+		strncpy(IO_Status_Value, New_IO_Status_Value,37);
 
-	strcpy(IO_Status_Value, New_IO_Status_Value);
 	usleep(500000);								    //This is set to .5 Seconds to keep the CPU usage to a minimum
 
 	//RX_Data_From_BlackBox();                      // DEBUG INCOMING DATA FIRST !!!
