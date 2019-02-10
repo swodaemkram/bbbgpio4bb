@@ -5,7 +5,7 @@ Author		:	Mark Meadows
 Version		:	v 00.02.50
 Copyright	:	Fireking Security Group
 Description	:	Service to provide GPIO In and Out capability to BlackBox on the BeagelBone Hardware Platform
-===========================================================================================================================
+============================================================================================================================
 */
 
 
@@ -17,7 +17,7 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the B
 #include <stdlib.h>
 
 #include "BeagelBone_Get_IO_Status.h"
-#include "BeagelBone_Hardware_Initialize_.h"
+#include "BeagelBone_Hardware_Initialize.h"
 #include "BeagelBone_user_led2_flash.h"
 
 #include "Print_Help.h"
@@ -104,13 +104,14 @@ Simple Argument Verification
 
 
 /*
-======================================================================================================================
+=======================================================================================================================
 Simple Argument Verification Completed
 ======================================================================================================================
  */
 
 
-void BeagelBone_Hardware_Initialize_();
+BeagelBone_Hardware_Initialize();
+
 
 printf("\nIP_Out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
 printf("Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );
@@ -129,11 +130,12 @@ while(1){
 
 	if(strcmp(IO_Status_Value, Last_IO_Status_Value) != 0){
 
-		//printf("\nLast_IO_Status_Value = %s\n",Last_IO_Status_Value);
+		//Deubug Code printf("\nLast_IO_Status_Value = %s\nNew_IO_Status_Value = %s\n",Last_IO_Status_Value,New_IO_Status_Value);
 
 		Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, IO_Status_Value ); //Send New Data To BlackBox
 
-		Last_IO_Status_Value[0] ='\0';
+		//Last_IO_Status_Value[0] ='\0';
+
 		strncpy(Last_IO_Status_Value,  IO_Status_Value, 37);
 
 	}
