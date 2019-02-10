@@ -109,8 +109,13 @@ Simple Argument Verification Completed
 ======================================================================================================================
  */
 
-
-BeagelBone_Hardware_Initialize();
+//====================================================================================================================
+	int dif;								  //are we beagelbone ?
+dif = strcmp(HardwarePlatform, "beagelbone"); //are we beagelbone ?
+if (dif == 0){								  //are we beagelbone ?
+	BeagelBone_Hardware_Initialize();		  //are we beagelbone ?
+}											  //are we beagelbone ?
+//====================================================================================================================
 
 
 printf("\nIP_Out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
@@ -130,9 +135,13 @@ while(1){
 
 	if(strcmp(IO_Status_Value, Last_IO_Status_Value) != 0){
 
-		//Deubug Code printf("\nLast_IO_Status_Value = %s\nNew_IO_Status_Value = %s\n",Last_IO_Status_Value,New_IO_Status_Value);
+		// Deubug Code printf("\nLast_IO_Status_Value = %s\nNew_IO_Status_Value = %s\n",Last_IO_Status_Value,New_IO_Status_Value);
 
-		Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, IO_Status_Value ); //Send New Data To BlackBox
+
+
+			Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, IO_Status_Value ); //Send New Data To BlackBox
+
+
 
 		//Last_IO_Status_Value[0] ='\0';
 
@@ -140,7 +149,15 @@ while(1){
 
 	}
 
-		New_IO_Status_Value = BeagelBone_Get_IO_Status();               //Get IO Status
+
+//=========================================================================================================================
+	dif = strcmp(HardwarePlatform, "beagelbone");        //are we beagelbone ?
+	if (dif == 0){								         //are we beagelbone ?
+	   New_IO_Status_Value = BeagelBone_Get_IO_Status(); //are we beagelbone ?	get I/O from beagelbone
+	}											         //are we beagelbone ?
+//=========================================================================================================================
+
+
 		strncpy(IO_Status_Value, New_IO_Status_Value,37);
 
 	usleep(500000);								    //This is set to .5 Seconds to keep the CPU usage to a minimum
