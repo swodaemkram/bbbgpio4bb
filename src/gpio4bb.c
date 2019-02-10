@@ -20,6 +20,12 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the B
 #include "BeagelBone_Hardware_Initialize.h"
 #include "BeagelBone_user_led2_flash.h"
 
+#include "RaspberryPi_Hardware_Initialize.h"
+
+
+
+
+
 #include "Print_Help.h"
 #include "Send_Data_To_BlackBox.h"
 #include "RX_Data_From_BlackBox.h"
@@ -116,8 +122,11 @@ if (dif == 0){								  //are we beagelbone ?
 	BeagelBone_Hardware_Initialize();		  //are we beagelbone ?
 }											  //are we beagelbone ?
 //====================================================================================================================
-
-
+ 	 dif = strcmp(HardwarePlatform, "raspberrypi"); //are we RaspberryPi ?
+ if (dif == 0){										//are we RaspberriPi ?
+ 		 RaspberryPi_Hardware_Initialize();			//are we RaspberryPi ?
+ 		  }
+//====================================================================================================================
 printf("\nIP_Out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
 printf("Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );
 printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
