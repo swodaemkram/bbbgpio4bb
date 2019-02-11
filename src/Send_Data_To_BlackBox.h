@@ -28,6 +28,7 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 		if (sock == -1)
 		{
 			printf("Could not create socket");
+			return;
 		}
 		//puts("Socket created");
 
