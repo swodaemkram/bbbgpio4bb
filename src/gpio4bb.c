@@ -117,15 +117,15 @@ Simple Argument Verification Completed
  */
 
 //====================================================================================================================
-	int dif;								  //are we beagelbone ?
-dif = strcmp(HardwarePlatform, "beagelbone"); //are we beagelbone ?
-if (dif == 0){								  //are we beagelbone ?
-	BeagelBone_Hardware_Initialize();		  //are we beagelbone ?
-}											  //are we beagelbone ?
+	int dif;								                //are we beagelbone ?
+dif = strcmp(HardwarePlatform, "beagelbone");               //are we beagelbone ?
+if (dif == 0){								                //are we beagelbone ?
+	BeagelBone_Hardware_Initialize();		                //are we beagelbone ?
+}											                //are we beagelbone ?
 //====================================================================================================================
- 	 dif = strcmp(HardwarePlatform, "raspberrypi"); //are we RaspberryPi ?
- if (dif == 0){										//are we RaspberriPi ?
- 		 RaspberryPi_Hardware_Initialize();			//are we RaspberryPi ?
+ 	 dif = strcmp(HardwarePlatform, "raspberrypi");         //are we RaspberryPi ?
+ if (dif == 0){										        //are we RaspberriPi ?
+ 		 RaspberryPi_Hardware_Initialize();			        //are we RaspberryPi ?
  		  }
 //====================================================================================================================
 
@@ -160,10 +160,10 @@ while(1){
 
 
 //=========================================================================================================================
-	dif = strcmp(HardwarePlatform, "beagelbone");        //are we beagelbone ?
-	if (dif == 0){								         //are we beagelbone ?
-	   New_IO_Status_Value = BeagelBone_Get_IO_Status(); //are we beagelbone ?	get I/O from beagelbone
-	}											         //are we beagelbone ?
+	dif = strcmp(HardwarePlatform, "beagelbone");             //are we beagelbone ?
+	if (dif == 0){								              //are we beagelbone ?
+	   New_IO_Status_Value = BeagelBone_Get_IO_Status();      //are we beagelbone ?	get I/O from beagelbone
+	}											              //are we beagelbone ?
 //=========================================================================================================================
 
 //=========================================================================================================================
@@ -179,9 +179,9 @@ while(1){
 
 		strncpy(IO_Status_Value, New_IO_Status_Value,38);
 
-	usleep(500000);								    //This is set to .5 Seconds to keep the CPU usage to a minimum
+	usleep(500000);								             //This is set to .5 Seconds to keep the CPU usage to a minimum
 
-	//RX_Data_From_BlackBox();                      // DEBUG INCOMING DATA FIRST !!!
+	//RX_Data_From_BlackBox();                               // DEBUG INCOMING DATA FIRST !!!
 }
 /*
 ======================================================================================================================
