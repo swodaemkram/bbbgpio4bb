@@ -2,7 +2,7 @@
 ===========================================================================================================================
 Name		:	gpio4bb.c
 Author		:	Mark Meadows
-Version		:	v 00.02.50
+Version		:	v 00.03.00
 Copyright	:	Fireking Security Group
 Description	:	Service to provide GPIO In and Out capability to BlackBox on the Various Hardware Platforms
 				BeagleBone, RaspberryPi, USBI/O board
