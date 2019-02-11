@@ -39,6 +39,7 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 		if (connect(sock , (struct sockaddr *)&server , sizeof(server)) < 0)
 			{
 				perror("connect failed. Error");
+				return;
 			}
 
 		printf("Connected to BlackBox ....");
@@ -61,7 +62,7 @@ Connected to BlackBox Format data into JASON Format
 
 		int LenOfData;							         //This is done to get The LenOfData from an Integer to a string for proper formating
 		char LENOFData[5];						         //This is done to get The LenOfData from an Integer to a string for proper formating
-		LenOfData = strlen(SendData)+ 82;			     //This is done to get The LenOfData from an Integer to a string for proper formating
+		LenOfData = strlen(SendData)+ 78;			     //This is done to get The LenOfData from an Integer to a string for proper formating
 		sprintf(LENOFData,"%d",LenOfData);		         //This is done to get The LenOfData from an Integer to a string for proper formating
 
 /*

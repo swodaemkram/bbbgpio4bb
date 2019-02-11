@@ -100,21 +100,29 @@ Command line arguments Loaded
 Simple Argument Verification
 ======================================================================================================================
 */
-	if (strlen(IP_Out_To_BlackBox) < 7){
-		Print_Help();
-	}
+ if (strlen(IP_Out_To_BlackBox)< 7){
+	 Print_Help();
+}
 
-	if (Port_Out_To_BlackBox < 1){
-		Print_Help();
-	}
+ if (Port_Out_To_BlackBox < 80){
+	 Print_Help();
+ }
 
-	if (Port_IN_From_BlackBox < 1){
-		Print_Help();
-	}
+ if (Port_IN_From_BlackBox < 80){
+	 Print_Help();
+ }
 
-	if (strlen(HardwarePlatform) < 5){
-		Print_Help();
-	}
+ int dif;
+
+ dif =  strcmp(HardwarePlatform, "beaglebone");
+ 	 if (dif != 0){
+ 		 dif = strcmp(HardwarePlatform, "raspberrypi");
+ 		 if (dif != 0){
+ 			 printf("\nThe %s platform is not supported yet ....\n",HardwarePlatform);
+ 			 Print_Help();
+ 		 }
+ 	 }
+
 /*
 =======================================================================================================================
 Simple Argument Verification Completed
@@ -122,7 +130,7 @@ Simple Argument Verification Completed
  */
 
 //====================================================================================================================
-	int dif;								                //are we beagelbone ?
+	//int dif;								                //are we beagelbone ?
 dif = strcmp(HardwarePlatform, "beaglebone");               //are we beagelbone ?
 if (dif == 0){								                //are we beagelbone ?
 	BeagelBone_Hardware_Initialize();		                //are we beagelbone ?
@@ -137,8 +145,6 @@ if (dif == 0){								                //are we beagelbone ?
 printf("\nIP_Out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
 printf("Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );
 printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
-
-
 
 /*
 ======================================================================================================================
@@ -163,7 +169,7 @@ while(1){
 
 
 //=========================================================================================================================
-	dif = strcmp(HardwarePlatform, "beagelbone");             //are we beaglebone ?
+	dif = strcmp(HardwarePlatform, "beaglebone");             //are we beaglebone ?
 	if (dif == 0){								              //are we beaglebone ?
 	   New_IO_Status_Value = BeagelBone_Get_IO_Status();      //are we beaglebone ?	get I/O from beagelbone
 	   BeagelBone_user_led2_flash();                          //flash user LED to show service is running
