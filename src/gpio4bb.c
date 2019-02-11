@@ -4,7 +4,8 @@ Name		:	gpio4bb.c
 Author		:	Mark Meadows
 Version		:	v 00.02.50
 Copyright	:	Fireking Security Group
-Description	:	Service to provide GPIO In and Out capability to BlackBox on the BeagelBone Hardware Platform
+Description	:	Service to provide GPIO In and Out capability to BlackBox on the Various Hardware Platforms
+				BeagelBone, RaspberryPi, USBI/O board
 ============================================================================================================================
 */
 
@@ -21,7 +22,7 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the B
 #include "BeagelBone_user_led2_flash.h"
 
 #include "RaspberryPi_Hardware_Initialize.h"
-
+#include "RaspberryPi_Get_IO_Status.h"
 
 
 
@@ -127,6 +128,9 @@ if (dif == 0){								  //are we beagelbone ?
  		 RaspberryPi_Hardware_Initialize();			//are we RaspberryPi ?
  		  }
 //====================================================================================================================
+
+
+
 printf("\nIP_Out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
 printf("Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );
 printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
@@ -146,15 +150,11 @@ while(1){
 
 		// Deubug Code printf("\nLast_IO_Status_Value = %s\nNew_IO_Status_Value = %s\n",Last_IO_Status_Value,New_IO_Status_Value);
 
-
-
 			Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, IO_Status_Value ); //Send New Data To BlackBox
-
-
 
 		//Last_IO_Status_Value[0] ='\0';
 
-		strncpy(Last_IO_Status_Value,  IO_Status_Value, 37);
+		strncpy(Last_IO_Status_Value,  IO_Status_Value, 38);
 
 	}
 
@@ -166,8 +166,18 @@ while(1){
 	}											         //are we beagelbone ?
 //=========================================================================================================================
 
+//=========================================================================================================================
+	dif = strcmp(HardwarePlatform, "raspberrypi");            //are we raspberrypi ?
+		if (dif == 0){								          //are we raspberrypi ?
+		   New_IO_Status_Value = RaspberryPi_Get_IO_Status(); //are we raspberrypi ?	get I/O from raspberrypi
+		}											          //are we raspberrypi ?
 
-		strncpy(IO_Status_Value, New_IO_Status_Value,37);
+//=========================================================================================================================
+
+// DEBUG !!! printf("\nIO_Status_Value = %s New_IO_Status_Value = %s\n", IO_Status_Value, New_IO_Status_Value);
+
+
+		strncpy(IO_Status_Value, New_IO_Status_Value,38);
 
 	usleep(500000);								    //This is set to .5 Seconds to keep the CPU usage to a minimum
 
