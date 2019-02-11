@@ -19,8 +19,6 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 
 	//printf("IO_Status_Value = %s \n",IO_Status_Value);
 
-
-
 	int sock;
 	struct sockaddr_in server;
 
@@ -50,14 +48,10 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 Connected to BlackBox Format data into JASON Format
 ================================================================================================================================
  */
-
-
 		char *SendData = IO_Status_Value;
 		char *Duped_SendData = {0};
 		Duped_SendData = strdup(SendData);
 		//char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n%s";
-
-
 
 		char message[1024];
 
@@ -74,8 +68,6 @@ Break Digital and Analog Data Apart
 		char *Digital_Data = {0};
 		char *Analog_Data = {0};
 
-
-
 		Digital_Data = strsep(&Duped_SendData,"|");
 		Analog_Data = strsep(&Duped_SendData, "|");
 
@@ -83,11 +75,6 @@ Break Digital and Analog Data Apart
 		//printf("\nAnalog_Data = %s\n",Analog_Data);
 
 		//exit(0);
-
-
-
-
-
 
 		char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n{\"OnBoardIO\":[{\"id\":\"Digital_I/O\",\"Status\":\"%s\"},{\"id\":\"Analog_I/O\",\"Status\":\"%s\"}]}";
 
