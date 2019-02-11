@@ -8,8 +8,6 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the V
 				BeagelBone, RaspberryPi, USBI/O board
 ============================================================================================================================
 */
-
-
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
@@ -24,14 +22,9 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the V
 #include "RaspberryPi_Hardware_Initialize.h"
 #include "RaspberryPi_Get_IO_Status.h"
 
-
-
-
 #include "Print_Help.h"
 #include "Send_Data_To_BlackBox.h"
 #include "RX_Data_From_BlackBox.h"
-
-
 
 int main(int argc, char *argv[]){
 
@@ -128,8 +121,6 @@ if (dif == 0){								                //are we beagelbone ?
  		 RaspberryPi_Hardware_Initialize();			        //are we RaspberryPi ?
  		  }
 //====================================================================================================================
-
-
 
 printf("\nIP_Out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
 printf("Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );

@@ -21,6 +21,10 @@ Start of Digital INPUT Handler
 	char PIN44_Status_Value = {0};
 	FILE *PIN44_Status = NULL; //declare PIN44 Pointer
 	PIN44_Status = fopen("/sys/class/gpio/gpio44/value", "r");
+	if (PIN44_Status == NULL){
+		printf("\nProblem Reading PIN 44!\n");
+		exit(1);
+		}
 	PIN44_Status_Value = fgetc(PIN44_Status);
 	PIN44_Status_Value = PIN44_Status_Value - 48;
 	fclose(PIN44_Status);
@@ -28,6 +32,10 @@ Start of Digital INPUT Handler
 	char PIN65_Status_Value = {0};
 	FILE *PIN65_Status = NULL; //declare PIN65 Pointer
 	PIN65_Status = fopen("/sys/class/gpio/gpio65/value", "r");
+	if (PIN65_Status == NULL){
+		printf("\nProblem Reading PIN 65!\n");
+		exit(1);
+		}
 	PIN65_Status_Value = fgetc(PIN65_Status);
 	PIN65_Status_Value = PIN65_Status_Value -48;
 	fclose(PIN65_Status);
@@ -35,6 +43,10 @@ Start of Digital INPUT Handler
 	char PIN46_Status_Value = {0};
 	FILE *PIN46_Status = NULL; //declare PIN46 Pointer
 	PIN46_Status = fopen("/sys/class/gpio/gpio46/value", "r");
+	if (PIN46_Status == NULL){
+		printf("\nProblem Reading PIN 46!\n");
+		exit(1);
+		}
 	PIN46_Status_Value = fgetc(PIN46_Status);
 	PIN46_Status_Value = PIN46_Status_Value - 48;
 	fclose(PIN46_Status);
@@ -42,6 +54,10 @@ Start of Digital INPUT Handler
 	char PIN26_Status_Value = {0};
 	FILE *PIN26_Status = NULL; //declare PIN26 Pointer
 	PIN26_Status = fopen("/sys/class/gpio/gpio26/value", "r");
+	if (PIN26_Status == NULL){
+		printf("\nProblem Reading PIN 26!\n");
+		exit(1);
+		}
 	PIN26_Status_Value = fgetc(PIN26_Status);
 	PIN26_Status_Value = PIN26_Status_Value - 48;
 	fclose(PIN26_Status);
@@ -49,6 +65,10 @@ Start of Digital INPUT Handler
 	char PIN68_Status_Value = {0};
 	FILE *PIN68_Status = NULL; //declare PIN68 Pointer
 	PIN68_Status = fopen("/sys/class/gpio/gpio68/value", "r");
+	if (PIN68_Status == NULL){
+		printf("\nProblem Reading PIN 68!\n");
+		exit(1);
+		}
 	PIN68_Status_Value = fgetc(PIN68_Status);
 	PIN68_Status_Value = PIN68_Status_Value - 48;
 	fclose(PIN68_Status);
@@ -56,6 +76,10 @@ Start of Digital INPUT Handler
 	char PIN67_Status_Value = {0};
 	FILE *PIN67_Status = NULL; //declare PIN67 Pointer
 	PIN67_Status = fopen("/sys/class/gpio/gpio67/value", "r");
+	if (PIN67_Status == NULL){
+		printf("\nProblem Reading PIN 67!\n");
+		exit(1);
+		}
 	PIN67_Status_Value = fgetc(PIN67_Status);
 	PIN67_Status_Value = PIN67_Status_Value - 48;
 	fclose(PIN67_Status);
@@ -63,6 +87,10 @@ Start of Digital INPUT Handler
 	char PIN66_Status_Value = {0};
 	FILE *PIN66_Status = NULL; //declare PIN66 Pointer
 	PIN66_Status = fopen("/sys/class/gpio/gpio66/value", "r");
+	if (PIN66_Status == NULL){
+		printf("\nProblem Reading PIN 66!\n");
+		exit(1);
+		}
 	PIN66_Status_Value = fgetc(PIN66_Status);
 	PIN66_Status_Value = PIN66_Status_Value - 48;
 	fclose(PIN66_Status);
@@ -70,6 +98,10 @@ Start of Digital INPUT Handler
 	char PIN69_Status_Value = {0};
 	FILE *PIN69_Status = NULL; //declare PIN69 Pointer
 	PIN69_Status = fopen("/sys/class/gpio/gpio69/value", "r");
+	if (PIN69_Status == NULL){
+		printf("\nProblem Reading PIN 69!\n");
+		exit(1);
+		}
 	PIN69_Status_Value = fgetc(PIN69_Status);
 	PIN69_Status_Value = PIN69_Status_Value - 48;
 	fclose(PIN69_Status);
@@ -84,6 +116,10 @@ Start of Analog Input Handler
 	char ANI00_Value[3] = {0};
 	FILE *ANI00_file = NULL;
 	ANI00_file = fopen("/sys/bus/iio/devices/iio:device0/in_voltage0_raw", "r");
+	if (ANI00_file == NULL){
+		printf("\nProblem Reading in_voltage0_raw!\n");
+		exit(1);
+		}
 	fgets(ANI00_Value, 3, ANI00_file);
 	//Debug Code
 	ANI00_Value[0] = '0' ;
@@ -93,6 +129,10 @@ Start of Analog Input Handler
 	char ANI01_Value[3] = {0};
 	FILE *ANI01_file = NULL;
 	ANI01_file = fopen("/sys/bus/iio/devices/iio:device0/in_voltage1_raw", "r");
+	if (ANI01_file == NULL){
+			printf("\nProblem Reading in_voltage1_raw!\n");
+			exit(1);
+			}
 	fgets(ANI01_Value, 3, ANI01_file);
 	//Debug Code
 	ANI01_Value[0] = '0';
@@ -103,6 +143,10 @@ Start of Analog Input Handler
 	char ANI02_Value[3] = {0};
 	FILE *ANI02_file = NULL;
 	ANI02_file = fopen("/sys/bus/iio/devices/iio:device0/in_voltage2_raw", "r");
+	if (ANI02_file == NULL){
+			printf("\nProblem Reading in_voltage2_raw!\n");
+			exit(1);
+			}
 	fgets(ANI02_Value, 3, ANI02_file);
 	//Debug Code
 	ANI02_Value[0] = '0';
@@ -113,6 +157,10 @@ Start of Analog Input Handler
 	char ANI03_Value[3] = {0};
 	FILE *ANI03_file = NULL;
 	ANI03_file = fopen("/sys/bus/iio/devices/iio:device0/in_voltage3_raw", "r");
+	if (ANI03_file == NULL){
+			printf("\nProblem Reading in_voltage3_raw!\n");
+			exit(1);
+			}
 	fgets(ANI03_Value, 3, ANI03_file);
 	//Debug Code
 	ANI03_Value[0] = '0';
@@ -123,12 +171,20 @@ Start of Analog Input Handler
 	char ANI04_Value[3] = {0};
 	FILE *ANI04_file = NULL;
 	ANI04_file = fopen("/sys/bus/iio/devices/iio:device0/in_voltage4_raw", "r");
+	if (ANI04_file == NULL){
+			printf("\nProblem Reading in_voltage4_raw!\n");
+			exit(1);
+			}
 	fgets(ANI04_Value, 3, ANI04_file);
 	fclose(ANI04_file);
 
 	char ANI05_Value[3] = {0};
 	FILE *ANI05_file = NULL;
 	ANI05_file = fopen("/sys/bus/iio/devices/iio:device0/in_voltage5_raw", "r");
+	if (ANI05_file == NULL){
+			printf("\nProblem Reading in_voltage5_raw!\n");
+			exit(1);
+			}
 	fgets(ANI05_Value, 3, ANI05_file);
 	//Debug Code
 	ANI05_Value[0] = '0';
@@ -139,6 +195,10 @@ Start of Analog Input Handler
 	char ANI06_Value[3] = {0};
 	FILE *ANI06_file = NULL;
 	ANI06_file = fopen("/sys/bus/iio/devices/iio:device0/in_voltage6_raw", "r");
+	if (ANI06_file == NULL){
+			printf("\nProblem Reading in_voltage6_raw!\n");
+			exit(1);
+			}
 	fgets(ANI06_Value, 3, ANI06_file);
 	//Debug Code
 	ANI06_Value[0] = '0';
