@@ -1,5 +1,5 @@
 /*
- * BeagelBone_Hardware_Initialize.h
+ * BeagleBone_Hardware_Initialize.h
  *
  *  Created on: Feb 4, 2019
  *      Author: mark
@@ -180,7 +180,7 @@ Initialize Analog Inputs
 Finished Initializing Analog Inputs
 ===================================================================================================================================
  */
-	printf("\nBeagelBone Hardware Initialized... \n");
+	printf("\nBeagleBone Hardware Initialized... \n");
 
 return ;
 

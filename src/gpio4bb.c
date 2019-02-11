@@ -5,7 +5,7 @@ Author		:	Mark Meadows
 Version		:	v 00.02.50
 Copyright	:	Fireking Security Group
 Description	:	Service to provide GPIO In and Out capability to BlackBox on the Various Hardware Platforms
-				BeagelBone, RaspberryPi, USBI/O board
+				BeagleBone, RaspberryPi, USBI/O board
 ============================================================================================================================
 */
 #include <unistd.h>
@@ -100,9 +100,21 @@ Command line arguments Loaded
 Simple Argument Verification
 ======================================================================================================================
 */
+	if (strlen(IP_Out_To_BlackBox) < 7){
+		Print_Help();
+	}
 
+	if (Port_Out_To_BlackBox < 1){
+		Print_Help();
+	}
 
+	if (Port_IN_From_BlackBox < 1){
+		Print_Help();
+	}
 
+	if (strlen(HardwarePlatform) < 5){
+		Print_Help();
+	}
 /*
 =======================================================================================================================
 Simple Argument Verification Completed
@@ -111,7 +123,7 @@ Simple Argument Verification Completed
 
 //====================================================================================================================
 	int dif;								                //are we beagelbone ?
-dif = strcmp(HardwarePlatform, "beagelbone");               //are we beagelbone ?
+dif = strcmp(HardwarePlatform, "beaglebone");               //are we beagelbone ?
 if (dif == 0){								                //are we beagelbone ?
 	BeagelBone_Hardware_Initialize();		                //are we beagelbone ?
 }											                //are we beagelbone ?
@@ -126,7 +138,7 @@ printf("\nIP_Out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
 printf("Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );
 printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
 
-//BeagelBone_user_led2_flash();       //flash user LED to show service is running
+
 
 /*
 ======================================================================================================================
@@ -151,18 +163,17 @@ while(1){
 
 
 //=========================================================================================================================
-	dif = strcmp(HardwarePlatform, "beagelbone");             //are we beagelbone ?
-	if (dif == 0){								              //are we beagelbone ?
-	   New_IO_Status_Value = BeagelBone_Get_IO_Status();      //are we beagelbone ?	get I/O from beagelbone
-	}											              //are we beagelbone ?
+	dif = strcmp(HardwarePlatform, "beagelbone");             //are we beaglebone ?
+	if (dif == 0){								              //are we beaglebone ?
+	   New_IO_Status_Value = BeagelBone_Get_IO_Status();      //are we beaglebone ?	get I/O from beagelbone
+	   BeagelBone_user_led2_flash();                          //flash user LED to show service is running
+   	}											              //are we beaglebone ?
 //=========================================================================================================================
-
 //=========================================================================================================================
 	dif = strcmp(HardwarePlatform, "raspberrypi");            //are we raspberrypi ?
 		if (dif == 0){								          //are we raspberrypi ?
 		   New_IO_Status_Value = RaspberryPi_Get_IO_Status(); //are we raspberrypi ?	get I/O from raspberrypi
 		}											          //are we raspberrypi ?
-
 //=========================================================================================================================
 
 // DEBUG !!! printf("\nIO_Status_Value = %s New_IO_Status_Value = %s\n", IO_Status_Value, New_IO_Status_Value);
