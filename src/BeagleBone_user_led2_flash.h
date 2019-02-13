@@ -39,6 +39,7 @@ if (user_led2_value == 1){
 fclose(user_led2);
 }
 
+free(user_led2);
 return;
 
 }
