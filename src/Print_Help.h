@@ -14,15 +14,17 @@
 
 void Print_Help(void){
 
-printf("\n           gpio4bb By Mark Meadows v 00.03.00\n");
-printf(" Copyright (c) 2019 Fireking Security Group. All rights reserved.\n");
-printf("         The BlackBox interface to Hardware I/O \n");
-printf(" -A, The I.P. Address for out-going BlackBox communications\n");
+printf("\n             gpio4bb By Mark Meadows v 00.03.30\n");
+printf(" Copyright (c)2019 Fireking Security Group. All rights reserved.\n");
+printf("         The BlackBox interface to On Board Hardware I/O \n\n");
 printf(" -h, Print this help file\n");
-printf(" -P, The Port for out-going BlackBox communications\n");
-printf(" -p, The Port used for in-coming BlackBox communications\n");
-printf(" -w, The Hardware Platform being utilized [ beaglebone, usbio, raspberrypi ...ect.]\n ");
-printf("\n Example usage: gpio4bb -A 192.168.1.15 -P 12000 -p 8080 -w beaglebone \n " );
+printf(" -a, The I.P. Address for out-going BlackBox communications\n");
+printf(" -p, The Port for out-going BlackBox communications\n");
+printf(" -P, The Port used for in-coming BlackBox communications\n");
+printf(" -w, The Hardware Platform being utilized [ beaglebone, usbio, raspberrypi ...ect.]\n");
+printf(" -v, The Version of Software \n");
+printf(" -V, Print Verbose output to Standard Out (aka eric mode)\n");
+printf("\n Example usage: gpio4bb -a 192.168.1.15 -p 12000 -P 8080 -w beaglebone  -v\n\n" );
 
 exit(0);
 }

@@ -2,7 +2,7 @@
 ===========================================================================================================================
 Name		:	gpio4bb.c
 Author		:	Mark Meadows
-Version		:	v 00.03.00
+Version		:	v 00.03.30
 Copyright	:	Fireking Security Group
 Description	:	Service to provide GPIO In and Out capability to BlackBox on the Various Hardware Platforms
 				BeagleBone, RaspberryPi, USBI/O board
@@ -25,7 +25,6 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the V
 #include "USB_IO_Initialize.h"
 #include "USB_IO_Get_IO_Status.h"
 
-
 #include "Print_Help.h"
 #include "Send_Data_To_BlackBox.h"
 #include "RX_Data_From_BlackBox.h"
@@ -40,6 +39,7 @@ char *New_IO_Status_Value = {0};
 char Last_IO_Status_Value[37] = {0};
 char IO_Status_Value[37] = {0};
 char HardwarePlatform[10] = {0};
+int Verbose = 0;
 
 /*
 ==========================================================================================================================
@@ -57,17 +57,17 @@ Load Command line arguments
 
 				{
 
-				case 'A' :
+				case 'a' :
 
 					strcpy(IP_Out_To_BlackBox, argv[z+1]);
 					break;
 
-				case 'P':
+				case 'p':
 
 					Port_Out_To_BlackBox = atoi(argv[z+1]);
 					break;
 
-				case 'p' :
+				case 'P' :
 
 					Port_IN_From_BlackBox = atoi(argv[z+1]);
 					break;
@@ -85,7 +85,7 @@ Load Command line arguments
 					break;
 
  				case 'V' :
- 				   Print_Help();
+ 				   Verbose = 1;
  				    break;
 
  				case 'w' :
@@ -112,9 +112,9 @@ Simple Argument Verification
 	 Print_Help();
  }
 
- if (Port_IN_From_BlackBox < 80){
-	 Print_Help();
- }
+//if (Port_IN_From_BlackBox < 80){
+//	 Print_Help();
+// }
 
  int dif;
 
