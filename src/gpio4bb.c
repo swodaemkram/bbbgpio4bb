@@ -168,12 +168,11 @@ Main Program Loop
 
 while(1){
 
-
-	if(strcmp(IO_Status_Value, Last_IO_Status_Value) != 0){
+		if(strcmp(IO_Status_Value, Last_IO_Status_Value) != 0){
 
 		// Deubug Code printf("\nLast_IO_Status_Value = %s\nNew_IO_Status_Value = %s\n",Last_IO_Status_Value,New_IO_Status_Value);
 
-			Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, IO_Status_Value ); //Send New Data To BlackBox
+			Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, IO_Status_Value,  Verbose); //Send New Data To BlackBox
 
 		//Last_IO_Status_Value[0] ='\0';
 
@@ -191,13 +190,13 @@ while(1){
 //=========================================================================================================================
 	dif = strcmp(HardwarePlatform, "raspberrypi");            //are we raspberrypi ?
 		if (dif == 0){								          //are we raspberrypi ?
-		   New_IO_Status_Value = RaspberryPi_Get_IO_Status(); //are we raspberrypi ?	get I/O from raspberrypi
+		New_IO_Status_Value = RaspberryPi_Get_IO_Status(); //are we raspberrypi ?	get I/O from raspberrypi
 		}											          //are we raspberrypi ?
 //=========================================================================================================================
 //=========================================================================================================================
 		dif = strcmp(HardwarePlatform, "usbio");          			  //are we usbio ?
 				if (dif == 0){								          //are we usbio ?
-				   New_IO_Status_Value = USB_IO_Get_IO_Status(); //are we usbio ?	get I/O from usbio
+				New_IO_Status_Value = USB_IO_Get_IO_Status(); //are we usbio ?	get I/O from usbio
 				}											          //are we usbio ?
 //=========================================================================================================================
 

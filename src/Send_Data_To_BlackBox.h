@@ -13,7 +13,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, char *IO_Status_Value ){
+void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, char *IO_Status_Value, int Verbose){
 
 	//printf("IO_Status_Value = %s \n",IO_Status_Value);
 
@@ -23,8 +23,10 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 	sock = socket(AF_INET , SOCK_STREAM , 0);
 		if (sock == -1)
 		{
+			if (Verbose == 1){
 			printf("Could not create socket");
 			return;
+			}
 		}
 		//puts("Socket created");
 
@@ -35,15 +37,18 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 		//Connect to remote server
 		if (connect(sock , (struct sockaddr *)&server , sizeof(server)) < 0)
 			{
+				if (Verbose == 1){
 				perror("connect failed. Error");
 				return;
+				}
 			}
 
+		if (Verbose == 1){
 		printf("Connected to BlackBox ....");
-
+		}
 /*
 ================================================================================================================================
-Connected to BlackBox Format data into JASON Format
+Connected to BlackBox, Format data into JSON Format
 ================================================================================================================================
  */
 		char *SendData = IO_Status_Value;
@@ -76,11 +81,11 @@ Break Digital and Analog Data Apart
 
 		char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n{\"OnBoardIO\":[{\"id\":\"Digital_I/O\",\"Status\":\"%s\"},{\"id\":\"Analog_I/O\",\"Status\":\"%s\"}]}";
 
-
 		sprintf(message,message_fmt,LENOFData,Digital_Data,Analog_Data); //Format and apply data
 
+		if(Verbose == 1){
 		printf("\n%s\n",message);
-
+		}
 		send(sock , message,strlen(message),0); 		 //Send Built Stream To BlackBox
 
 		close(sock);
