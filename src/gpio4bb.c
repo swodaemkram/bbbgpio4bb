@@ -15,9 +15,9 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the V
 #include <sys/socket.h>
 #include <stdlib.h>
 
-#include "BeagelBone_Get_IO_Status.h"
-#include "BeagelBone_Hardware_Initialize.h"
-#include "BeagelBone_user_led2_flash.h"
+#include "BeagleBone_Get_IO_Status.h"
+#include "BeagleBone_Hardware_Initialize.h"
+#include "BeagleBone_user_led2_flash.h"
 
 #include "RaspberryPi_Hardware_Initialize.h"
 #include "RaspberryPi_Get_IO_Status.h"

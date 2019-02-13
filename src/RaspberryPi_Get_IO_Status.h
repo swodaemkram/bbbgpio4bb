@@ -8,8 +8,6 @@
 #ifndef RASPBERRYPI_GET_IO_STATUS_H_
 #define RASPBERRYPI_GET_IO_STATUS_H_
 
-
-
 #endif /* RASPBERRYPI_GET_IO_STATUS_H_ */
 
 #include <unistd.h>
