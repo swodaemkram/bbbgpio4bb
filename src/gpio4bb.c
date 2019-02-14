@@ -170,9 +170,9 @@ if (dif == 0){								                //are we beaglebone ?
  }															//are we USBIO ?
 //=====================================================================================================================
 
-printf("\nIP_Out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
-printf("Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );
-printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
+//printf("\nIP_Out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
+//printf("Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );
+//printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
 
 	log_message[0] = '\0';
 		strcat(log_message, "IP_Out_To_Blackbox  = " );
