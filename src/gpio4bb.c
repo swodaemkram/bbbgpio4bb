@@ -37,6 +37,16 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the V
 
 int main(int argc, char *argv[]){
 
+	//int gpio4bb_pid ;
+	//gpio4bb_pid = system("pidof -x gpio4bb");
+	//printf("\ngpio4bb pid is .. %d\n",gpio4bb_pid);
+	//if (gpio4bb_pid != 0){
+	//exit(0);
+	//}
+
+
+
+
 char log_message [250] = {0};								  // Send Program Started to the log
 strncpy(log_message,"gpio4bb service started ....",29);// Send Program Started to the log
 log_Function(log_message);									  // Send Program Started to the log
