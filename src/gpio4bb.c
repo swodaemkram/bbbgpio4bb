@@ -188,8 +188,6 @@ printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
 		message_fmt = "Port_IN_From_BlackBox = %d";
 		sprintf(log_message,message_fmt,Port_IN_From_BlackBox);
 		log_Function(log_message);
-
-
 /*
 ======================================================================================================================
 Main Program Loop
