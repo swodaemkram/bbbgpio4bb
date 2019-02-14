@@ -155,7 +155,10 @@ Finished Initializing Digital Input PINs
 
 printf("\nRaspberry Pi Hardware Initialized... \n");
 
-printf("Raspberry Pi");
+char log_message [250] = {0};
+	strncpy(log_message,"Raspberry Pi Hardware Initialized...",37);
+	log_Function(log_message);
+
 
 return;
 

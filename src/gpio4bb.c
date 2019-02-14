@@ -37,10 +37,9 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the V
 
 int main(int argc, char *argv[]){
 
-char log_message [250] = {0};
-strncpy(log_message,"gpio4bb service started at         ",35);
-log_Function(log_message);
-
+char log_message [250] = {0};								  // Send Program Started to the log
+strncpy(log_message,"gpio4bb service started ....",29);// Send Program Started to the log
+log_Function(log_message);									  // Send Program Started to the log
 
 char IP_Out_To_BlackBox[15] = {0};
 int Port_Out_To_BlackBox = 0;
@@ -59,8 +58,6 @@ int Verbose = 0;
 Load Command line arguments
 ==========================================================================================================================
  */
-
-
 
 	int z;
 	for (z=1; z < argc; z++)
@@ -142,7 +139,10 @@ Simple Argument Verification
 
  		 	 	 	 if (dif != 0){
  		 	 	 		 printf("\nThe %s platform is not supported yet ....\n",HardwarePlatform);
- 		 	 	 		 Print_Help();
+ 		 	 	 		char log_message [250] = {0};								  // Send to the log
+ 		 	 	 		strncpy(log_message,"platform is not supported yet .... ",35);// Send to the log
+ 		 	 	 		log_Function(log_message);									  // Send to the log
+ 		 	 	 		Print_Help();
  			 }
  	 }
 
@@ -170,11 +170,25 @@ if (dif == 0){								                //are we beaglebone ?
  }															//are we USBIO ?
 //=====================================================================================================================
 
-
-
 printf("\nIP_Out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
 printf("Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );
 printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
+
+	log_message[0] = '\0';
+		strcat(log_message, "IP_Out_To_Blackbox  = " );
+		strcat(log_message, IP_Out_To_BlackBox);
+		log_Function(log_message);
+
+	log_message[0] = '\0';
+	char *message_fmt = "Port_Out_To_BlackBox = %d";
+	sprintf(log_message,message_fmt,Port_Out_To_BlackBox);
+	log_Function(log_message);
+
+	log_message[0] = '\0';
+		message_fmt = "Port_IN_From_BlackBox = %d";
+		sprintf(log_message,message_fmt,Port_IN_From_BlackBox);
+		log_Function(log_message);
+
 
 /*
 ======================================================================================================================
@@ -182,13 +196,15 @@ Main Program Loop
 ======================================================================================================================
 */
 
-
-
 while(1){
 
 		if(strcmp(IO_Status_Value, Last_IO_Status_Value) != 0){
 
 		//printf("\nLast_IO_Status_Value = %s\n New_IO_Status_Value = %s\n",Last_IO_Status_Value,New_IO_Status_Value);
+
+
+
+			log_Function(IO_Status_Value);
 
 			Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, IO_Status_Value,  Verbose); //Send New Data To BlackBox
 
