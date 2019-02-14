@@ -37,6 +37,11 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the V
 
 int main(int argc, char *argv[]){
 
+char log_message [250] = {0};
+strncpy(log_message,"gpio4bb service started at         ",35);
+log_Function(log_message);
+
+
 char IP_Out_To_BlackBox[15] = {0};
 int Port_Out_To_BlackBox = 0;
 int Port_IN_From_BlackBox = 0;
@@ -166,6 +171,7 @@ if (dif == 0){								                //are we beaglebone ?
 //=====================================================================================================================
 
 
+
 printf("\nIP_Out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
 printf("Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );
 printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
@@ -175,7 +181,8 @@ printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
 Main Program Loop
 ======================================================================================================================
 */
- log_Function();
+
+
 
 while(1){
 

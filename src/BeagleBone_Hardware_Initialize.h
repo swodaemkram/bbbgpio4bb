@@ -181,7 +181,9 @@ Finished Initializing Analog Inputs
 ===================================================================================================================================
  */
 	printf("\nBeagleBone Hardware Initialized... \n");
-
+	char log_message [250] = {0};
+	strncpy(log_message,"BeagleBone Hardware Initialized... ",36);
+	log_Function(log_message);
 
 return ;
 
