@@ -33,7 +33,7 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the V
 #include "Send_Data_To_BlackBox.h"
 #include "RX_Data_From_BlackBox.h"
 
-
+#include "log_Function.h"
 
 int main(int argc, char *argv[]){
 
@@ -175,7 +175,7 @@ printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
 Main Program Loop
 ======================================================================================================================
 */
-
+void log_Function();
 
 while(1){
 
