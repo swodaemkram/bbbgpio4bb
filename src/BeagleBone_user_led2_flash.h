@@ -15,8 +15,6 @@
 #include <unistd.h>
 #include <stdio.h>
 
-extern  int user_led_status;
-
 
 void BeagelBone_user_led2_flash(void){
 

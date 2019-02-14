@@ -14,10 +14,14 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the V
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include <stdlib.h>
+#include <time.h>
+#include <sys/time.h>
+
 
 #include "BeagleBone_Get_IO_Status.h"
 #include "BeagleBone_Hardware_Initialize.h"
 #include "BeagleBone_user_led2_flash.h"
+
 
 #include "RaspberryPi_Hardware_Initialize.h"
 #include "RaspberryPi_Get_IO_Status.h"
@@ -28,6 +32,9 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the V
 #include "Print_Help.h"
 #include "Send_Data_To_BlackBox.h"
 #include "RX_Data_From_BlackBox.h"
+
+#include "log_Function.h"
+
 
 int main(int argc, char *argv[]){
 
@@ -48,6 +55,8 @@ int Verbose = 0;
 Load Command line arguments
 ==========================================================================================================================
  */
+
+
 
 	int z;
 	for (z=1; z < argc; z++)
@@ -167,6 +176,8 @@ printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
 Main Program Loop
 ======================================================================================================================
 */
+
+void log_Function();
 
 while(1){
 
