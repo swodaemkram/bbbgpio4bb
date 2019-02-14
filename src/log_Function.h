@@ -16,25 +16,26 @@
 void log_Function(void){
 
 
+		struct timespec ts;
+	    timespec_get(&ts, TIME_UTC);
+	    char buff[100];
+	    strftime(buff, sizeof buff, "%D %T", gmtime(&ts.tv_sec));
 
-	//  struct timeval te;
-		//    gettimeofday(&te, NULL); // get current time
-		//    long long milliseconds = te.tv_sec*1000LL + te.tv_usec/1000; // calculate milliseconds
-		//    printf("\n\nmilliseconds: %lld\n\n", milliseconds);
-		//    exit(0);
+		FILE *gpio4bb_log = NULL; //declare File Pointer
+		gpio4bb_log = fopen("/var/log/gpio4bb.log", "a");
 
-		printf("\n\nMARK IS COOL !!!/n/n");
+		char *Mytime_fmt = "%s.%09ld";
+		char MyTime[27];
+		sprintf(MyTime, Mytime_fmt, buff,ts.tv_nsec); //Format and apply data
 
-		exit(0);
+		int MyTimeLen = 0;
+		MyTimeLen = strlen(MyTime);
+
+		fwrite(MyTime,1,MyTimeLen,gpio4bb_log);
+		fclose(gpio4bb_log);
 
 
-
-		//FILE *gpio4bb_log = NULL; //declare User LED Pointer
-
-		//gpio4bb_log = fopen("/var/log/gpio4bb.log", "a");
-		//	fwrite(LogMessage,1,sizeof(LogMessage),gpio4bb_log);
-		//fclose(gpio4bb_log);
-
+		return;
 
 
 

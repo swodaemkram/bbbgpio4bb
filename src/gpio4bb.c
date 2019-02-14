@@ -175,7 +175,7 @@ printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
 Main Program Loop
 ======================================================================================================================
 */
-void log_Function();
+ log_Function();
 
 while(1){
 
