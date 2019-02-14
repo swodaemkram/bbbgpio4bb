@@ -26,6 +26,7 @@ FILE *user_led2 = NULL; //declare User LED Pointer
 
 user_led2 = fopen("/sys/devices/platform/leds/leds/beaglebone:green:usr2/brightness", "r");
 user_led2_value = fgetc(user_led2) - 48;
+fclose(user_led2);
 
 if (user_led2_value == 0){
 	user_led2 = fopen("/sys/devices/platform/leds/leds/beaglebone:green:usr2/brightness", "w");
@@ -39,7 +40,7 @@ if (user_led2_value == 1){
 fclose(user_led2);
 }
 
-free(user_led2);
+
 return;
 
 }

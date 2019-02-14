@@ -38,7 +38,7 @@ char *New_IO_Status_Value = {0};
 
 //char Last_IO_Status_Value[37] = "0:0:0:0:0:0:0:0|00:00:00:00:00:00:00|";
 char Last_IO_Status_Value[38] = {0};
-//char IO_Status_Value[37] = {0};
+//char IO_Status_Value[38] = {0};
 char IO_Status_Value[38] = "0:0:0:0:0:0:0:0|00:00:00:00:00:00:00|";
 char HardwarePlatform[10] = {0};
 int Verbose = 0;

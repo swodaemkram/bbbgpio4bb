@@ -18,6 +18,10 @@ char *BeagelBone_Get_IO_Status(void){
 Start of Digital INPUT Handler
 ====================================================================================================================================
  */
+
+
+
+
 	char PIN44_Status_Value = {0};
 	FILE *PIN44_Status = NULL; //declare PIN44 Pointer
 	PIN44_Status = fopen("/sys/class/gpio/gpio44/value", "r");
@@ -124,6 +128,7 @@ Start of Analog Input Handler
 	//Debug Code
 	ANI00_Value[0] = '0' ;
 	ANI00_Value[1] = '0' ;
+	//End of Debug Code
 	fclose(ANI00_file);
 
 	char ANI01_Value[3] = {0};
