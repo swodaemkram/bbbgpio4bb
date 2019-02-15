@@ -242,6 +242,8 @@ Main Program Loop
 
 while(1){
 
+	    signal(SIGTERM,Signal_Handler);
+
 
 		if(strcmp(IO_Status_Value, Last_IO_Status_Value) != 0){
 
@@ -284,9 +286,9 @@ while(1){
 
 		strncpy(IO_Status_Value, New_IO_Status_Value,37);
 
-
+	signal(SIGTERM,Signal_Handler);
 	usleep(500000);								             //This is set to .5 Seconds to keep the CPU usage to a minimum
-
+	signal(SIGTERM,Signal_Handler);
 	//RX_Data_From_BlackBox();                               // DEBUG INCOMING DATA FIRST !!!
 }
 /*

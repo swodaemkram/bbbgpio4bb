@@ -12,7 +12,7 @@
 
 #endif /* SIGNAL_HANDLER_H_ */
 
-void Signal_Handler(int signal){
+void Signal_Handler(int signum){
 
 
 			remove("/run/gpio4bb.pid");
