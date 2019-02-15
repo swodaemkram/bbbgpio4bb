@@ -16,7 +16,7 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the V
 #include <stdlib.h>
 #include <time.h>
 #include <sys/time.h>
-
+#include <signal.h>
 
 #include "BeagleBone_Get_IO_Status.h"
 #include "BeagleBone_Hardware_Initialize.h"
@@ -34,21 +34,55 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the V
 #include "RX_Data_From_BlackBox.h"
 
 #include "log_Function.h"
+#include "Signal_Handler.h"
+
+
+#define SIGHUP  1   /* Hangup the process */
+#define SIGINT  2   /* Interrupt the process */
+#define SIGQUIT 3   /* Quit the process */
+#define SIGILL  4   /* Illegal instruction. */
+#define SIGTRAP 5   /* Trace trap. */
+#define SIGABRT 6   /* Abort. */
+
+
 
 int main(int argc, char *argv[]){
 
-	//int gpio4bb_pid ;
-	//gpio4bb_pid = system("pidof -x gpio4bb");
-	//printf("\ngpio4bb pid is .. %d\n",gpio4bb_pid);
-	//if (gpio4bb_pid != 0){
-	//exit(0);
-	//}
+/*
+===================================================================================================================
+Make Sure We Only Run Once
+===================================================================================================================
+ */
 
+FILE *pid_lock = NULL;                            	// declare pid lock file
 
+	pid_lock = fopen("/run/gpio4bb.pid", "r");
+	if (pid_lock != NULL){
+		fclose(pid_lock);
+		printf("\n gpio4bb is all ready running\n");
+		exit(1);
+	}
 
+	pid_lock = fopen("/run/gpio4bb.pid", "w+");  	// Open the pid file for writing
+	if (pid_lock == NULL){
+	printf("\ncould not open lock file.\n");
+	exit(1);
+	}
+	char strpid[6] = {0} ;
+	int pid;
+	pid = getpid();
+	sprintf(strpid,"%d",pid);
+	fwrite(strpid,1,sizeof(strpid),pid_lock);
+	fclose(pid_lock);										// Close pid lock file
+
+/*
+======================================================================================================================
+end of run once check
+======================================================================================================================
+ */
 
 char log_message [250] = {0};								  // Send Program Started to the log
-strncpy(log_message,"gpio4bb service started ....",29);// Send Program Started to the log
+strncpy(log_message,"gpio4bb service started ....",29);       // Send Program Started to the log
 log_Function(log_message);									  // Send Program Started to the log
 
 char IP_Out_To_BlackBox[15] = {0};
@@ -204,7 +238,10 @@ Main Program Loop
 ======================================================================================================================
 */
 
+
+
 while(1){
+
 
 		if(strcmp(IO_Status_Value, Last_IO_Status_Value) != 0){
 

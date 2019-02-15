@@ -16,7 +16,7 @@
 void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, char *IO_Status_Value, int Verbose){
 
 	//printf("IO_Status_Value = %s \n",IO_Status_Value);
-
+	char log_message [250] = {0};
 	//char LogMessage_From_Send_Data_To_BlackBox[250] = {0};
 	int sock;
 	struct sockaddr_in server;
@@ -40,13 +40,29 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 			{
 				if (Verbose == 1){
 				perror("connect failed. Error");
+				log_message[0] = '\0';
+				strcat(log_message, "BlackBox connection failed" );
+				log_Function(log_message);
+				close(sock);
 				return;
 				}
+
+				log_message[0] = '\0';
+				strcat(log_message, "BlackBox connection failed" );
+				log_Function(log_message);
+				close(sock);
+				return;
 			}
 
 		if (Verbose == 1){
 		printf("Connected to BlackBox ....");
 				}
+
+log_message[0] = '\0';
+strcat(log_message, "Connected to BlackBox ...." );
+log_Function(log_message);
+
+
 /*
 ================================================================================================================================
 Connected to BlackBox, Format data into JSON Format
