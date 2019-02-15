@@ -14,8 +14,9 @@
 
 void Signal_Handler(int signum){
 
-
 			remove("/run/gpio4bb.pid");
-			//strcat(log_message, "Caught terminate Signal" );
+			char log_message [250] = {0};
+			strcat(log_message, "teminate signal received shutting gpio4bb service down" );
+			log_Function(log_message);
 			exit(0);
 }
