@@ -35,6 +35,8 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 		server.sin_family = AF_INET;
 		server.sin_port = htons(Port_Out_To_BlackBox);
 
+
+
 		//Connect to remote server
 		if (connect(sock , (struct sockaddr *)&server , sizeof(server)) < 0)
 			{
@@ -54,9 +56,9 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 				return;
 			}
 
-		if (Verbose == 1){
-		printf("Connected to BlackBox ....");
-				}
+		//if (Verbose == 1){
+		//printf("Connected to BlackBox ....");
+		//		}
 
 log_message[0] = '\0';
 strcat(log_message, "Connected to BlackBox ...." );
@@ -100,13 +102,14 @@ Break Digital and Analog Data Apart
 
 		sprintf(message,message_fmt,LENOFData,Digital_Data,Analog_Data); //Format and apply data
 
-		if(Verbose == 1){
-		printf("\n%s\n",message);
-		}
+		//if(Verbose == 1){
+		//printf("\n%s\n",message);
+		//}
 		send(sock , message,strlen(message),0); 		 //Send Built Stream To BlackBox
-
 		close(sock);
-
+		//log_message[0] = '\0';
+		//strcat(log_message, "Sent Data & Disconnected from BlackBox" );
+		//log_Function(log_message);
 	return;
 }
 

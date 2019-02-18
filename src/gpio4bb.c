@@ -205,23 +205,19 @@ Simple Argument Verification Completed
 
 	 		FILE *Config_File = NULL;                        // declare config file Pointer
 
-
 	 		Config_File = fopen("/etc/gpio4bb.conf", "r");  	// Open config file
 	 		if (Config_File == NULL){
 	 			log_message[0] = '\0';
 	 			strcat(log_message, "Could not open /etc/gpio4bb.conf" );
 	 			log_Function(log_message);
-	 		exit(1);
+	 			remove("/run/gpio4bb.pid");
+	 			exit(1);
 	 		}
-
-	 		//fgets(HardwarePlatform,250,Config_File);
-	 		//fgets(IP_Out_To_BlackBox,250,Config_File);
 
 	 		fscanf(Config_File,"%s", HardwarePlatform);
 	 		fscanf(Config_File,"%s", IP_Out_To_BlackBox);
 	 		fscanf(Config_File,"%d",&Port_Out_To_BlackBox);
 	 		fscanf(Config_File,"%d",&Port_IN_From_BlackBox);
-
 	 		fclose(Config_File);
 
  }
@@ -276,42 +272,33 @@ Simple Argument Verification Completed
 Main Program Loop
 ======================================================================================================================
 */
-
-
+sleep(10);                            // This delay makes sure everything has settled before the service starts
 
 while(1){
 
 	    signal(SIGTERM,Signal_Handler);
 
-
 		if(strcmp(IO_Status_Value, Last_IO_Status_Value) != 0){
-
 		//printf("\nLast_IO_Status_Value = %s\n New_IO_Status_Value = %s\n",Last_IO_Status_Value,New_IO_Status_Value);
-
-
-
-			log_Function(IO_Status_Value);
-
-			Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, IO_Status_Value,  Verbose); //Send New Data To BlackBox
-
+		log_Function(IO_Status_Value);
+		Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, IO_Status_Value,  Verbose); //Send New Data To BlackBox
 		//Last_IO_Status_Value[0] ='\0';
-
 		strncpy(Last_IO_Status_Value,  IO_Status_Value, 37);
 
 	}
 
 //=========================================================================================================================
-	dif = strcmp(HardwarePlatform, "beaglebone");             //are we beaglebone ?
-	if (dif == 0){								              //are we beaglebone ?
-	   New_IO_Status_Value = BeagelBone_Get_IO_Status();      //are we beaglebone ?	get I/O from beagelbone
-	   BeagelBone_user_led2_flash();                          //flash user LED to show service is running
-   	}											              //are we beaglebone ?
+	dif = strcmp(HardwarePlatform, "beaglebone");            	  //are we beaglebone ?
+		if (dif == 0){								              //are we beaglebone ?
+	    New_IO_Status_Value = BeagelBone_Get_IO_Status();    	  //are we beaglebone ?	get I/O from beagelbone
+	    BeagelBone_user_led2_flash();                         	  //flash user LED to show service is running
+   	}											             	  //are we beaglebone ?
 //=========================================================================================================================
 //=========================================================================================================================
-		dif = strcmp(HardwarePlatform, "raspberrypi");    	  //are we raspberrypi ?
-		if (dif == 0){								          //are we raspberrypi ?
-		New_IO_Status_Value = RaspberryPi_Get_IO_Status();    //are we raspberrypi ?	get I/O from raspberrypi
-		}											          //are we raspberrypi ?
+		dif = strcmp(HardwarePlatform, "raspberrypi");    	      //are we raspberrypi ?
+			if (dif == 0){								          //are we raspberrypi ?
+			New_IO_Status_Value = RaspberryPi_Get_IO_Status();    //are we raspberrypi ?	get I/O from raspberrypi
+		}											              //are we raspberrypi ?
 //=========================================================================================================================
 //=========================================================================================================================
 		dif = strcmp(HardwarePlatform, "usbio");          			  //are we usbio ?
@@ -323,8 +310,7 @@ while(1){
 // DEBUG !!! printf("\nIO_Status_Value = %s New_IO_Status_Value = %s\n", IO_Status_Value, New_IO_Status_Value);
 
 
-		strncpy(IO_Status_Value, New_IO_Status_Value,37);
-
+	strncpy(IO_Status_Value, New_IO_Status_Value,37);
 	signal(SIGTERM,Signal_Handler);
 	usleep(500000);								             //This is set to .5 Seconds to keep the CPU usage to a minimum
 	signal(SIGTERM,Signal_Handler);
@@ -335,6 +321,6 @@ while(1){
 End of Main Program Loop
 =======================================================================================================================
  */
-
+remove("/run/gpio4bb.pid");
 return(0);
 }

@@ -16,6 +16,11 @@
 void RaspberryPi_Hardware_Initialize(void){
 
 
+	char log_message [250] = {0};
+		strncpy(log_message,"Start Raspberry Pi Hardware Initialization...",45);
+		log_Function(log_message);
+
+
 	FILE *IO_Config_File = NULL;                            	// declare GPIO file Setup Pointer
 
 		IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
@@ -155,7 +160,7 @@ Finished Initializing Digital Input PINs
 
 printf("\nRaspberry Pi Hardware Initialized... \n");
 
-char log_message [250] = {0};
+	//char log_message [250] = {0};
 	strncpy(log_message,"Raspberry Pi Hardware Initialized...",37);
 	log_Function(log_message);
 
