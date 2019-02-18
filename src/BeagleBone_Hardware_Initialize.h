@@ -23,6 +23,13 @@ Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69]
 ===================================================================================================================================
 */
 
+
+	char log_message [250] = {0};
+		strncpy(log_message,"Starting BeagleBone Hardware Initialization... ",47);
+		log_Function(log_message);
+
+
+
 	FILE *IO_Config_File = NULL;                            	// declare GPIO file Setup Pointer
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
@@ -181,7 +188,7 @@ Finished Initializing Analog Inputs
 ===================================================================================================================================
  */
 	//printf("\nBeagleBone Hardware Initialized... \n");
-	char log_message [250] = {0};
+	//char log_message [250] = {0};
 	strncpy(log_message,"BeagleBone Hardware Initialized... ",36);
 	log_Function(log_message);
 

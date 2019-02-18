@@ -2,7 +2,7 @@
 ===========================================================================================================================
 Name		:	gpio4bb.c
 Author		:	Mark Meadows
-Version		:	v 00.03.30
+Version		:	v 00.70.00
 Copyright	:	Fireking Security Group
 Description	:	Service to provide GPIO In and Out capability to BlackBox on the Various Hardware Platforms
 				BeagleBone, RaspberryPi, USBI/O board
@@ -43,6 +43,8 @@ int main(int argc, char *argv[]){
 Make Sure We Only Run Once
 ===================================================================================================================
  */
+
+int Config_File = 0;
 
 FILE *pid_lock = NULL;                            	// declare pid lock file
 
@@ -138,6 +140,10 @@ Load Command line arguments
  					strcpy(HardwarePlatform, argv[z+1]);
  					break;
 
+ 				case 'c':
+ 					Config_File = 1;
+ 					break;
+
 				}
 
 			}
@@ -150,78 +156,121 @@ Command line arguments Loaded
 Simple Argument Verification
 ======================================================================================================================
 */
- if (strlen(IP_Out_To_BlackBox)< 7){
-	 Print_Help();
-}
 
- if (Port_Out_To_BlackBox < 80){
+if (Config_File != 1){
+
+	if (strlen(IP_Out_To_BlackBox)< 7){
 	 Print_Help();
- }
+	}
+
+	if (Port_Out_To_BlackBox < 80){
+	 Print_Help();
+	}
 
 //if (Port_IN_From_BlackBox < 80){
 //	 Print_Help();
 // }
 
- int dif;
+	int dif;
 
- dif =  strcmp(HardwarePlatform, "beaglebone");
- 	 if (dif != 0){
+	dif =  strcmp(HardwarePlatform, "beaglebone");
+ 	if (dif != 0){
  		 	 dif = strcmp(HardwarePlatform, "raspberrypi");
  		 	 	 if (dif != 0){
  		 	 		 	 dif = strcmp(HardwarePlatform, "usbio");
- 		 	 	 }
+ 		 	 	 	 	 	   }
 
- 		 	 	 	 if (dif != 0){
- 		 	 	 		 printf("\nThe %s platform is not supported yet ....\n",HardwarePlatform);
- 		 	 	 		char log_message [250] = {0};								  // Send to the log
- 		 	 	 		strncpy(log_message,"platform is not supported yet .... ",35);// Send to the log
- 		 	 	 		log_Function(log_message);									  // Send to the log
- 		 	 	 		Print_Help();
- 			 }
- 	 }
-
+ 		 	 	 	 	 if (dif != 0){
+ 		 	 	 	 		 // printf("\nThe %s platform is not supported yet ....\n",HardwarePlatform);
+ 		 	 	 	 		 char log_message [250] = {0};								  // Send to the log
+ 		 	 	 	 		 strncpy(log_message,"platform is not supported yet .... ",35);// Send to the log
+ 		 	 	 	 		 log_Function(log_message);									  // Send to the log
+ 		 	 	 	 		 Print_Help();
+ 		 	 	 	 	 	 	 	 }
+ 	 	 	 	 }
+	}
 /*
 =======================================================================================================================
 Simple Argument Verification Completed
-======================================================================================================================
+=======================================================================================================================
+ Read Configuration from config file c argument provided
+=======================================================================================================================
  */
 
+ if (Config_File == 1) {
+
+	        log_message[0] = '\0';
+	 		strcat(log_message, "Reading config from /etc/gpio4bb.conf" );
+	 		log_Function(log_message);
+
+	 		FILE *Config_File = NULL;                        // declare config file Pointer
+
+
+	 		Config_File = fopen("/etc/gpio4bb.conf", "r");  	// Open config file
+	 		if (Config_File == NULL){
+	 			log_message[0] = '\0';
+	 			strcat(log_message, "Could not open /etc/gpio4bb.conf" );
+	 			log_Function(log_message);
+	 		exit(1);
+	 		}
+
+	 		//fgets(HardwarePlatform,250,Config_File);
+	 		//fgets(IP_Out_To_BlackBox,250,Config_File);
+
+	 		fscanf(Config_File,"%s", HardwarePlatform);
+	 		fscanf(Config_File,"%s", IP_Out_To_BlackBox);
+	 		fscanf(Config_File,"%d",&Port_Out_To_BlackBox);
+	 		fscanf(Config_File,"%d",&Port_IN_From_BlackBox);
+
+	 		fclose(Config_File);
+
+ }
+//=======================================================================================================================
+// Finished Reading Config File
+//=======================================================================================================================
+
+		log_message[0] = '\0';
+		char *message_fmt = "Port_Out_To_BlackBox = %d";
+		sprintf(log_message,message_fmt,Port_Out_To_BlackBox);
+		log_Function(log_message);
+
+		log_message[0] = '\0';
+		message_fmt = "Port_IN_From_BlackBox = %d";
+		sprintf(log_message,message_fmt,Port_IN_From_BlackBox);
+		log_Function(log_message);
+
+		log_message[0] = '\0';
+		message_fmt = "Hardware Platform is  = %s";
+		sprintf(log_message,message_fmt,HardwarePlatform);
+		log_Function(log_message);
+
+		log_message[0] = '\0';
+	 	message_fmt = "IP Out to BlackBox is  = %s";
+	 	sprintf(log_message,message_fmt,IP_Out_To_BlackBox);
+	 	log_Function(log_message);
+
 //====================================================================================================================
-	//int dif;								                //are we beaglebone ?
-dif = strcmp(HardwarePlatform, "beaglebone");               //are we beaglebone ?
-if (dif == 0){								                //are we beaglebone ?
-	BeagelBone_Hardware_Initialize();		                //are we beaglebone ?
-}											                //are we beaglebone ?
+		int dif;								                    //are we beaglebone ?
+		dif = strcmp(HardwarePlatform, "beaglebone");               //are we beaglebone ?
+		if (dif == 0){								                //are we beaglebone ?
+				BeagelBone_Hardware_Initialize();	                //are we beaglebone ?
+		}											                //are we beaglebone ?
 //====================================================================================================================
- 	 dif = strcmp(HardwarePlatform, "raspberrypi");         //are we RaspberryPi ?
- if (dif == 0){										        //are we RaspberriPi ?
- 		 RaspberryPi_Hardware_Initialize();			        //are we RaspberryPi ?
- 		  }													//are we RaspberryPi ?
+		 	 dif = strcmp(HardwarePlatform, "raspberrypi");         //are we RaspberryPi ?
+		 	 if (dif == 0){									        //are we RaspberriPi ?
+		 		 RaspberryPi_Hardware_Initialize();			        //are we RaspberryPi ?
+		 		  }													//are we RaspberryPi ?
 //====================================================================================================================
- 	 dif = strcmp(HardwarePlatform, "usbio");				//are we USBIO ?
- if (dif == 0){												//are we USBIO ?
-	 	 USB_IO_Initialize();								//are we USBIO ?
- }															//are we USBIO ?
+		 	 dif = strcmp(HardwarePlatform, "usbio");				//are we USBIO ?
+		 	 if (dif == 0){											//are we USBIO ?
+			 	 USB_IO_Initialize();								//are we USBIO ?
+		 }															//are we USBIO ?
 //=====================================================================================================================
 
 //printf("\nIP_Out_To_BlackBox = %s\n", IP_Out_To_BlackBox);
 //printf("Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );
 //printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
 
-	log_message[0] = '\0';
-		strcat(log_message, "IP_Out_To_Blackbox  = " );
-		strcat(log_message, IP_Out_To_BlackBox);
-		log_Function(log_message);
-
-	log_message[0] = '\0';
-	char *message_fmt = "Port_Out_To_BlackBox = %d";
-	sprintf(log_message,message_fmt,Port_Out_To_BlackBox);
-	log_Function(log_message);
-
-	log_message[0] = '\0';
-		message_fmt = "Port_IN_From_BlackBox = %d";
-		sprintf(log_message,message_fmt,Port_IN_From_BlackBox);
-		log_Function(log_message);
 /*
 ======================================================================================================================
 Main Program Loop
@@ -259,7 +308,7 @@ while(1){
    	}											              //are we beaglebone ?
 //=========================================================================================================================
 //=========================================================================================================================
-	dif = strcmp(HardwarePlatform, "raspberrypi");            //are we raspberrypi ?
+		dif = strcmp(HardwarePlatform, "raspberrypi");    	  //are we raspberrypi ?
 		if (dif == 0){								          //are we raspberrypi ?
 		New_IO_Status_Value = RaspberryPi_Get_IO_Status();    //are we raspberrypi ?	get I/O from raspberrypi
 		}											          //are we raspberrypi ?
