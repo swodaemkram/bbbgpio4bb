@@ -23,7 +23,6 @@ Start of Digital INPUT Handler
 	FILE *PIN44_Status = NULL; //declare PIN44 Pointer
 	PIN44_Status = fopen("/sys/class/gpio/gpio44/value", "r");
 	if (PIN44_Status == NULL){
-
 		char log_message[0];
 		strcat(log_message, "Problem Reading PIN 44!" );
 		log_Function(log_message);

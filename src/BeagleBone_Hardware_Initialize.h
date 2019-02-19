@@ -34,7 +34,11 @@ Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69]
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 	if (IO_Config_File == NULL){
-	printf("\nProblem opening the export file this program must be run as root.\n");
+	//printf("\nProblem opening the export file this program must be run as root.\n");
+	char log_message[0];
+	strcat(log_message, "Problem setting up PIN 44!" );
+	log_Function(log_message);
+	remove("/run/gpio4bb.pid");
 	exit(1);
 	}
 	fwrite("44",1,sizeof("44"),IO_Config_File);					// Export pin 44
@@ -42,58 +46,86 @@ Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69]
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 	if (IO_Config_File == NULL){
-		printf("\nProblem opening the export file this program must be run as root.\n");
+		//printf("\nProblem opening the export file this program must be run as root.\n");
+		char log_message[0];
+		strcat(log_message, "Problem setting up PIN 65!" );
+		log_Function(log_message);
+		remove("/run/gpio4bb.pid");
 		exit(1);
 		}
-	fwrite("65",1,sizeof("65"),IO_Config_File);				// Export pin 65
+	fwrite("65",1,sizeof("65"),IO_Config_File);				    // Export pin 65
 		fclose(IO_Config_File);									// Close the export file
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 	if (IO_Config_File == NULL){
-		printf("\nProblem opening the export file this program must be run as root.\n");
+		//printf("\nProblem opening the export file this program must be run as root.\n");
+		char log_message[0];
+		strcat(log_message, "Problem setting up PIN 46!" );
+		log_Function(log_message);
+		remove("/run/gpio4bb.pid");
 		exit(1);
 		}
-	fwrite("46",1,sizeof("46"),IO_Config_File);				// Export pin 46
+	fwrite("46",1,sizeof("46"),IO_Config_File);				    // Export pin 46
 		fclose(IO_Config_File);									// Close the export file
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 		if (IO_Config_File == NULL){
-		printf("\nProblem opening the export file this program must be run as root.\n");
+		//printf("\nProblem opening the export file this program must be run as root.\n");
+		char log_message[0];
+		strcat(log_message, "Problem setting up PIN 26!" );
+		log_Function(log_message);
+		remove("/run/gpio4bb.pid");
 		exit(1);
 		}
-	fwrite("26",1,sizeof("26"),IO_Config_File);				// Export pin 26
+	fwrite("26",1,sizeof("26"),IO_Config_File);				    // Export pin 26
 		fclose(IO_Config_File);									// Close the export file
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 	    if (IO_Config_File == NULL){
-		printf("\nProblem opening the export file this program must be run as root.\n");
+		//printf("\nProblem opening the export file this program must be run as root.\n");
+		char log_message[0];
+		strcat(log_message, "Problem setting up PIN 68!" );
+		log_Function(log_message);
+		remove("/run/gpio4bb.pid");
 		exit(1);
 		}
-	fwrite("68",1,sizeof("68"),IO_Config_File);				// Export pin 68
+	fwrite("68",1,sizeof("68"),IO_Config_File);				    // Export pin 68
 		fclose(IO_Config_File);									// Close the export file
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 		if (IO_Config_File == NULL){
-		printf("\nProblem opening the export file this program must be run as root.\n");
+		//printf("\nProblem opening the export file this program must be run as root.\n");
+		char log_message[0];
+		strcat(log_message, "Problem setting up PIN 67!" );
+		log_Function(log_message);
+		remove("/run/gpio4bb.pid");
 		exit(1);
 		}
-	fwrite("67",1,sizeof("67"),IO_Config_File);				// Export pin 67
+	fwrite("67",1,sizeof("67"),IO_Config_File);				    // Export pin 67
 		fclose(IO_Config_File);									// Close the export file
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 		if (IO_Config_File == NULL){
-		printf("\nProblem opening the export file this program must be run as root.\n");
+		//printf("\nProblem opening the export file this program must be run as root.\n");
+		char log_message[0];
+		strcat(log_message, "Problem setting up PIN 66!" );
+		log_Function(log_message);
+		remove("/run/gpio4bb.pid");
 		exit(1);
 		}
-	fwrite("66",1,sizeof("66"),IO_Config_File);				// Export pin 66
+	fwrite("66",1,sizeof("66"),IO_Config_File);				    // Export pin 66
 		fclose(IO_Config_File);									// Close the export file
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 		if (IO_Config_File == NULL){
-		printf("\nProblem opening the export file this program must be run as root.\n");
+		//printf("\nProblem opening the export file this program must be run as root.\n");
+		char log_message[0];
+		strcat(log_message, "Problem setting up PIN 69!" );
+		log_Function(log_message);
+		remove("/run/gpio4bb.pid");
 		exit(1);
 		}
-	fwrite("69",1,sizeof("69"),IO_Config_File);				// Export pin 69
+	fwrite("69",1,sizeof("69"),IO_Config_File);				    // Export pin 69
 		fclose(IO_Config_File);									// Close the export file
 /*
 =================================================================================================================================
@@ -102,39 +134,59 @@ Make sure all the above PINs are set to INPUTS
  */
 		IO_Config_File = fopen("/sys/class/gpio/gpio44/direction", "w");  	// Open the pin 44 direction file for writing
 			if (IO_Config_File == NULL){
-			printf("\nProblem opening the export file this program must be run as root.\n");
+			//printf("\nProblem opening the export file this program must be run as root.\n");
+			char log_message[0];
+			strcat(log_message, "Problem setting up PIN 44s Direction!" );
+			log_Function(log_message);
+			remove("/run/gpio4bb.pid");
 			exit(1);
 			}
-		fwrite("in",1,sizeof("in"),IO_Config_File);					    // Set direction for PIN44 to in
+		fwrite("in",1,sizeof("in"),IO_Config_File);					        // Set direction for PIN44 to in
 			fclose(IO_Config_File);										    // Close the direction file
 
 		IO_Config_File = fopen("/sys/class/gpio/gpio65/direction", "w");  	// Open the pin 65 direction file for writing
 			if (IO_Config_File == NULL){
-			printf("\nProblem opening the export file this program must be run as root.\n");
+			//printf("\nProblem opening the export file this program must be run as root.\n");
+			char log_message[0];
+			strcat(log_message, "Problem setting up PIN 65s Direction!" );
+			log_Function(log_message);
+			remove("/run/gpio4bb.pid");
 			exit(1);
 			}
-		fwrite("in",1,sizeof("in"),IO_Config_File);					    // Set direction for PIN65 to in
+		fwrite("in",1,sizeof("in"),IO_Config_File);					        // Set direction for PIN65 to in
 			fclose(IO_Config_File);										    // Close the direction file
 
 		IO_Config_File = fopen("/sys/class/gpio/gpio46/direction", "w");  	// Open the pin 46 direction file for writing
 			if (IO_Config_File == NULL){
-			printf("\nProblem opening the export file this program must be run as root.\n");
+			//printf("\nProblem opening the export file this program must be run as root.\n");
+			char log_message[0];
+			strcat(log_message, "Problem setting up PIN 46s Direction!" );
+			log_Function(log_message);
+			remove("/run/gpio4bb.pid");
 			exit(1);
 			}
-		fwrite("in",1,sizeof("in"),IO_Config_File);					    // Set direction for PIN46 to in
+		fwrite("in",1,sizeof("in"),IO_Config_File);					        // Set direction for PIN46 to in
 			fclose(IO_Config_File);										    // Close the direction file
 
 		IO_Config_File = fopen("/sys/class/gpio/gpio26/direction", "w");  	// Open the pin 26 direction file for writing
 			if (IO_Config_File == NULL){
-			printf("\nProblem opening the export file this program must be run as root.\n");
+			//printf("\nProblem opening the export file this program must be run as root.\n");
+			char log_message[0];
+			strcat(log_message, "Problem setting up PIN 26s Direction!" );
+			log_Function(log_message);
+			remove("/run/gpio4bb.pid");
 			exit(1);
 			}
-		fwrite("in",1,sizeof("in"),IO_Config_File);					    // Set direction for PIN26 to in
+		fwrite("in",1,sizeof("in"),IO_Config_File);					        // Set direction for PIN26 to in
 			fclose(IO_Config_File);										    // Close the direction file
 
 		IO_Config_File = fopen("/sys/class/gpio/gpio68/direction", "w");  	// Open the pin 68 direction file for writing
 			if (IO_Config_File == NULL){
-			printf("\nProblem opening the export file this program must be run as root.\n");
+			//printf("\nProblem opening the export file this program must be run as root.\n");
+			char log_message[0];
+			strcat(log_message, "Problem setting up PIN 68s Direction!" );
+			log_Function(log_message);
+			remove("/run/gpio4bb.pid");
 			exit(1);
 			}
 		fwrite("low",1,sizeof("low"),IO_Config_File);					    // Set direction for PIN68 to in
@@ -142,7 +194,11 @@ Make sure all the above PINs are set to INPUTS
 
 		IO_Config_File = fopen("/sys/class/gpio/gpio67/direction", "w");  	// Open the pin 67 direction file for writing
 			if (IO_Config_File == NULL){
-			printf("\nProblem opening the export file this program must be run as root.\n");
+			//printf("\nProblem opening the export file this program must be run as root.\n");
+			char log_message[0];
+			strcat(log_message, "Problem setting up PIN 67s Direction!" );
+			log_Function(log_message);
+			remove("/run/gpio4bb.pid");
 			exit(1);
 			}
 		fwrite("low",1,sizeof("low"),IO_Config_File);					    // Set direction for PIN67 to in
@@ -150,7 +206,11 @@ Make sure all the above PINs are set to INPUTS
 
 		IO_Config_File = fopen("/sys/class/gpio/gpio66/direction", "w");  	// Open the pin 66 direction file for writing
 			if (IO_Config_File == NULL){
-			printf("\nProblem opening the export file this program must be run as root.\n");
+			//printf("\nProblem opening the export file this program must be run as root.\n");
+			char log_message[0];
+			strcat(log_message, "Problem setting up PIN 66s Direction!" );
+			log_Function(log_message);
+			remove("/run/gpio4bb.pid");
 			exit(1);
 			}
 		fwrite("low",1,sizeof("low"),IO_Config_File);					    // Set direction for PIN66 to in
@@ -158,7 +218,11 @@ Make sure all the above PINs are set to INPUTS
 
 		IO_Config_File = fopen("/sys/class/gpio/gpio69/direction", "w");  	// Open the pin 69 direction file for writing
 			if (IO_Config_File == NULL){
-			printf("\nProblem opening the export file this program must be run as root.\n");
+			//printf("\nProblem opening the export file this program must be run as root.\n");
+			char log_message[0];
+			strcat(log_message, "Problem setting up PIN 69s Direction!" );
+			log_Function(log_message);
+			remove("/run/gpio4bb.pid");
 			exit(1);
 			}
 		fwrite("low",1,sizeof("low"),IO_Config_File);					    // Set direction for PIN69 to in
@@ -176,7 +240,11 @@ Initialize Analog Inputs
 
 		IO_Config_File = fopen("/sys/devices/platform/bone_capemgr/slots", "w");  	// Enable The Analog Input Driver
 			if (IO_Config_File == NULL){
-			printf("\nProblem opening the analog pins export file make sure the ADC driver is installed.\n");
+			//printf("\nProblem opening the analog pins export file make sure the ADC driver is installed.\n");
+			char log_message[0];
+			strcat(log_message, "Problem opening the analog pins export file make sure the ADC driver is installed." );
+			log_Function(log_message);
+			remove("/run/gpio4bb.pid");
 			exit(1);
 			}
 		fwrite("BB-ADC",1,sizeof("BB-ADC"),IO_Config_File);					    // Write the Drivers name in file
