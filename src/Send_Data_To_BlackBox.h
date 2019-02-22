@@ -79,8 +79,8 @@ Connected to BlackBox, Format data into JSON Format
 
 		int LenOfData;							         //This is done to get The LenOfData from an Integer to a string for proper formating
 		char LENOFData[5];						         //This is done to get The LenOfData from an Integer to a string for proper formating
-		LenOfData = strlen(SendData)+ 176;	//??????     //This is done to get The LenOfData from an Integer to a string for proper formating
-		//LenOfData = strlen(SendData);
+		//LenOfData = strlen(SendData)+ 175;	//??????     //This is done to get The LenOfData from an Integer to a string for proper formating
+		LenOfData = 150;
 		sprintf(LENOFData,"%d",LenOfData);		         //This is done to get The LenOfData from an Integer to a string for proper formating
 
 /*
@@ -116,12 +116,12 @@ Break Digital and Analog Data Apart
 		close(sock);
 
 
-		log_message[0] = '\0';                            //debug
-		sprintf(log_message,"\n%s\n",message);			  //debug
-		log_Function(log_message);						  //debug
-		log_message[0] = '\0';							  //debug
-		sprintf(log_message,"\n((%d))\n",strlen(message));//debug
-		log_Function(log_message);						  //debug
+		//log_message[0] = '\0';                            //debug
+		//sprintf(log_message,"\n%s\n",message);			  //debug
+		//log_Function(log_message);						  //debug
+		//log_message[0] = '\0';							  //debug
+		//sprintf(log_message,"\n((%d))\n",strlen(message));//debug
+		//log_Function(log_message);						  //debug
 
 
 		return;

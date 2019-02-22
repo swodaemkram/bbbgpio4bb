@@ -271,7 +271,7 @@ Simple Argument Verification Completed
 Main Program Loop
 ======================================================================================================================
 */
-sleep(2);                            // This delay makes sure everything has settled before the service starts
+sleep(5);                            // This delay makes sure everything has settled before the service starts
 
 while(1){
 
@@ -311,7 +311,7 @@ while(1){
 
 	strncpy(IO_Status_Value, New_IO_Status_Value,47); ///////////////////////
 	signal(SIGTERM,Signal_Handler);
-	usleep(500000);								             //This is set to .5 Seconds to keep the CPU usage to a minimum
+	usleep(200000);								             //This is set to .5 Seconds to keep the CPU usage to a minimum
 	signal(SIGTERM,Signal_Handler);
 	//RX_Data_From_BlackBox();                               // DEBUG INCOMING DATA FIRST !!!
 }
