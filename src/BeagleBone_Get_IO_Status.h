@@ -11,7 +11,7 @@
 
 #include <unistd.h>
 #include <stdio.h>
-
+#include "bbb_dht_read.h"
 char *BeagelBone_Get_IO_Status(void){
 /*
 ====================================================================================================================================
@@ -231,6 +231,8 @@ Start of Analog Input Handler
 			exit(1);
 			}
 	fgets(ANI04_Value, 3, ANI04_file);
+	ANI04_Value[0] = '0';
+	ANI04_Value[1] = '0';
 	fclose(ANI04_file);
 
 	char ANI05_Value[3] = {0};
@@ -269,17 +271,41 @@ Start of Analog Input Handler
 	fclose(ANI06_file);
 
 /*
+======================================================================================================================================
+Get Reading from DHT11 Temp/Humidity Sensor
+======================================================================================================================================
+ */
+
+	int type = 11;
+		int gpio_base = 1;
+		int gpio_number = 29;
+		float humidity = 00.0f;
+		float temperature = 00.0f;
+		float reported_temperature = 00.0f;
+
+
+		bbb_dht_read(type,gpio_base,gpio_number,&humidity,&temperature);
+
+		while (humidity <= 1){
+
+			bbb_dht_read(type,gpio_base,gpio_number,&humidity,&temperature);
+
+		}
+
+
+		reported_temperature = (temperature * 1.8 + 32); //convert to Fahrenheit
+
+/*
 =======================================================================================================================================
    Format the data to be sent to main module
 =======================================================================================================================================
 */
 
-	char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d|%s:%s:%s:%s:%s:%s:%s|";
+	char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d|%s:%s:%s:%s:%s:%s:%s|%2.1f:%2.1f|";
 	char IO_Status_Value[1024];
-	sprintf(IO_Status_Value, IO_Status_fmt, PIN44_Status_Value, PIN65_Status_Value, PIN46_Status_Value, PIN26_Status_Value, PIN68_Status_Value, PIN67_Status_Value, PIN66_Status_Value, PIN69_Status_Value, ANI00_Value, ANI01_Value, ANI02_Value, ANI03_Value, ANI04_Value, ANI05_Value, ANI06_Value); //Format and apply data
+	sprintf(IO_Status_Value, IO_Status_fmt, PIN44_Status_Value, PIN65_Status_Value, PIN46_Status_Value, PIN26_Status_Value, PIN68_Status_Value, PIN67_Status_Value, PIN66_Status_Value, PIN69_Status_Value, ANI00_Value, ANI01_Value, ANI02_Value, ANI03_Value, ANI04_Value, ANI05_Value, ANI06_Value,humidity,reported_temperature); //Format and apply data
 	char *New_IO_Status_Value = {0};
 	New_IO_Status_Value = IO_Status_Value;
-
 
 	return (New_IO_Status_Value);
 

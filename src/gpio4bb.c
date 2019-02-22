@@ -36,6 +36,8 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the V
 #include "log_Function.h"
 #include "Signal_Handler.h"
 
+#include "dht11Read.h"
+
 int main(int argc, char *argv[]){
 
 /*
@@ -83,9 +85,9 @@ int Port_IN_From_BlackBox = 0;
 char *New_IO_Status_Value = {0};
 
 //char Last_IO_Status_Value[37] = "0:0:0:0:0:0:0:0|00:00:00:00:00:00:00|";
-char Last_IO_Status_Value[38] = {0};
+char Last_IO_Status_Value[47] = {0};////////////////
 //char IO_Status_Value[38] = {0};
-char IO_Status_Value[38] = "0:0:0:0:0:0:0:0|00:00:00:00:00:00:00|";
+char IO_Status_Value[47] = "0:0:0:0:0:0:0:0|00:00:00:00:00:00:00|00.0:00.0|";/////////////////
 char HardwarePlatform[10] = {0};
 int Verbose = 0;
 
@@ -269,7 +271,7 @@ Simple Argument Verification Completed
 Main Program Loop
 ======================================================================================================================
 */
-sleep(10);                            // This delay makes sure everything has settled before the service starts
+sleep(2);                            // This delay makes sure everything has settled before the service starts
 
 while(1){
 
@@ -280,7 +282,7 @@ while(1){
 		log_Function(IO_Status_Value);
 		Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, IO_Status_Value,  Verbose); //Send New Data To BlackBox
 		//Last_IO_Status_Value[0] ='\0';
-		strncpy(Last_IO_Status_Value,  IO_Status_Value, 37);
+		strncpy(Last_IO_Status_Value,  IO_Status_Value, 47);//////////////////////
 
 	}
 
@@ -307,7 +309,7 @@ while(1){
 // DEBUG !!! printf("\nIO_Status_Value = %s New_IO_Status_Value = %s\n", IO_Status_Value, New_IO_Status_Value);
 
 
-	strncpy(IO_Status_Value, New_IO_Status_Value,37);
+	strncpy(IO_Status_Value, New_IO_Status_Value,47); ///////////////////////
 	signal(SIGTERM,Signal_Handler);
 	usleep(500000);								             //This is set to .5 Seconds to keep the CPU usage to a minimum
 	signal(SIGTERM,Signal_Handler);

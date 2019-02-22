@@ -19,7 +19,7 @@ void BeagelBone_Hardware_Initialize(void){
 
 /*
 ====================================================================================================================================
-Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69]
+Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69] & [61 for temp & humidity]
 ===================================================================================================================================
 */
 
@@ -127,6 +127,20 @@ Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69]
 		}
 	fwrite("69",1,sizeof("69"),IO_Config_File);				    // Export pin 69
 		fclose(IO_Config_File);									// Close the export file
+
+//-----------------------------------------------------------------------------------------------------------------------------
+
+	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
+		if (IO_Config_File == NULL){
+		//printf("\nProblem opening the export file this program must be run as root.\n");
+		char log_message[0];
+		strcat(log_message, "Problem setting up PIN 61" );
+		log_Function(log_message);
+		remove("/run/gpio4bb.pid");
+		exit(1);
+		}
+	fwrite("61",1,sizeof("61"),IO_Config_File);				 // Export pin 61 for temp & humidity sensor
+	fclose(IO_Config_File);									// Close the export file
 /*
 =================================================================================================================================
 Make sure all the above PINs are set to INPUTS

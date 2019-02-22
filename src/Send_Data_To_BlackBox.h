@@ -79,7 +79,8 @@ Connected to BlackBox, Format data into JSON Format
 
 		int LenOfData;							         //This is done to get The LenOfData from an Integer to a string for proper formating
 		char LENOFData[5];						         //This is done to get The LenOfData from an Integer to a string for proper formating
-		LenOfData = strlen(SendData)+ 78;			     //This is done to get The LenOfData from an Integer to a string for proper formating
+		LenOfData = strlen(SendData)+ 176;	//??????     //This is done to get The LenOfData from an Integer to a string for proper formating
+		//LenOfData = strlen(SendData);
 		sprintf(LENOFData,"%d",LenOfData);		         //This is done to get The LenOfData from an Integer to a string for proper formating
 
 /*
@@ -89,27 +90,40 @@ Break Digital and Analog Data Apart
  */
 		char *Digital_Data = {0};
 		char *Analog_Data = {0};
+		char *temp = {0};
 
 		Digital_Data = strsep(&Duped_SendData,"|");
 		Analog_Data = strsep(&Duped_SendData, "|");
-
+		temp = strsep(&Duped_SendData, "|");
 		//printf("\nDigital_Data = %s\n",Digital_Data);
 		//printf("\nAnalog_Data = %s\n",Analog_Data);
 
 		//exit(0);
 
-		char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n{\"OnBoardIO\":[{\"id\":\"Digital_I/O\",\"Status\":\"%s\"},{\"id\":\"Analog_I/O\",\"Status\":\"%s\"}]}";
+		//char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n{\"OnBoardIO\":[{\"id\":\"Digital_I/O\",\"Status\":\"%s\"},{\"id\":\"Analog_I/O\",\"Status\":\"%s\"}]}";
 
-		sprintf(message,message_fmt,LENOFData,Digital_Data,Analog_Data); //Format and apply data
+
+		char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n{\"onboard_io\":[{\"id\":\"digital_io\",\"value\":\"%s\"},{\"id\":\"analog_io\",\"value\":\"%s\"}{\"id\":\"humi_temp\",\"value\":\"%s\"}]}";
+		sprintf(message,message_fmt,LENOFData,Digital_Data,Analog_Data,temp); //Format and apply data
+
+
+
 
 		//if(Verbose == 1){
 		//printf("\n%s\n",message);
 		//}
 		send(sock , message,strlen(message),0); 		 //Send Built Stream To BlackBox
 		close(sock);
-		//log_message[0] = '\0';
-		//strcat(log_message, "Sent Data & Disconnected from BlackBox" );
-		//log_Function(log_message);
-	return;
+
+
+		log_message[0] = '\0';                            //debug
+		sprintf(log_message,"\n%s\n",message);			  //debug
+		log_Function(log_message);						  //debug
+		log_message[0] = '\0';							  //debug
+		sprintf(log_message,"\n((%d))\n",strlen(message));//debug
+		log_Function(log_message);						  //debug
+
+
+		return;
 }
 
