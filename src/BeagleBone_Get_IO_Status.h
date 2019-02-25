@@ -276,12 +276,12 @@ Get Reading from DHT11 Temp/Humidity Sensor
 ======================================================================================================================================
  */
 
-	int type = 11;
-		int gpio_base = 1;
-		int gpio_number = 29;
-		float humidity = 00.0f;
-		float temperature = 00.0f;
-		float reported_temperature = 00.0f;
+	    int type = 11;														  //Type of Sensor 11=DHT11 22=DHT22
+		int gpio_base = 1;                                                    //Connector P8
+		int gpio_number = 29;                                                 //PIN 29 (Physical Pin 26) GPIO_61
+		float humidity = 00.0f;												  //Humidity Pointer
+		float temperature = 00.0f;											  //Temperature Pointer
+		float reported_temperature = 00.0f;									  //Pointer for Converted Temperature
 
 
 		bbb_dht_read(type,gpio_base,gpio_number,&humidity,&temperature);
@@ -293,7 +293,7 @@ Get Reading from DHT11 Temp/Humidity Sensor
 		}
 
 
-		reported_temperature = (temperature * 1.8 + 32); //convert to Fahrenheit
+		reported_temperature = (temperature * 1.8 + 32);                       //convert to Fahrenheit
 
 /*
 =======================================================================================================================================
