@@ -146,7 +146,7 @@ End of Digital Input Handler
    Format the data to be sent to main module
 =======================================================================================================================================
 */
-	char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d|00:00:00:00:00:00:00|";
+	char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d|00:00:00:00:00:00:00|00.0:00.0|";
 	char IO_Status_Value[1024];
 
 	sprintf(IO_Status_Value, IO_Status_fmt, PIN0_Status_Value, PIN1_Status_Value, PIN2_Status_Value, PIN3_Status_Value, PIN4_Status_Value, PIN5_Status_Value, PIN6_Status_Value, PIN7_Status_Value); //Format and apply data
