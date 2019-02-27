@@ -148,7 +148,7 @@ void USB_IO_Initialize(void){
 
 	sprintf(log_message,"USBGPIO Firmware Version is %s",USBGPIO_Version);
 	log_Function(log_message);
-	strncpy(log_message,"USBGPIO Hardware Initialized... ",32);
+	sprintf(log_message,"USBGPIO Hardware Initialized... ");
 	log_Function(log_message);
 
 
