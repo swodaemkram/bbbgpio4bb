@@ -37,6 +37,7 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the V
 #include "Signal_Handler.h"
 
 #include "dht11Read.h"
+#include "get_ip_address.h"
 
 int main(int argc, char *argv[]){
 
@@ -271,6 +272,8 @@ Simple Argument Verification Completed
 Main Program Loop
 ======================================================================================================================
 */
+
+get_ip_address();
 sleep(5);                            // This delay makes sure everything has settled before the service starts
 
 while(1){

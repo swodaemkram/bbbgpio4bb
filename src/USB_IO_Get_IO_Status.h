@@ -8,13 +8,10 @@
 #ifndef USB_IO_GET_IO_STATUS_H_
 #define USB_IO_GET_IO_STATUS_H_
 
-
-
 #endif /* USB_IO_GET_IO_STATUS_H_ */
 
 /* baudrate settings are defined in <asm/termbits.h>, which is
 included by <termios.h> */
-
 #define FALSE 0
 #define TRUE 1
 
@@ -29,8 +26,6 @@ char *USB_IO_Get_IO_Status(void){
 		struct termios oldtio,newtio;
 		char buf[255] = {0};
 		int numofcr = 1;
-
-
 /*
 =======================================================================================================================
 Define Variables for all PINs
@@ -55,9 +50,6 @@ Define Variables for all PINs
 =======================================================================================================================
 All PINs defined
 =======================================================================================================================
-*/
-
-/*
 Open GPIO device for reading and writing and not as controlling tty
 because we don't want to get killed if linenoise sends CTRL−C.
 */
@@ -132,14 +124,12 @@ because we don't want to get killed if linenoise sends CTRL−C.
 		tcsetattr(fd,TCSANOW,&newtio);
 
 		//terminal settings done, now handle input
-
 /*
 =============================================================================================================================
 Get Reading from the first Digital Pin this is Pin 8
 =============================================================================================================================
 */
-
-		sleep(1);
+		sleep(1); //slow things dow so we don't  the USBGPIO Board
 		write(fd,"gpio read 8\n",12); //Ask for the Value of PIN 8
 		while (NEWSTOP==FALSE) {
 		/* loop until we have a terminating condition */
@@ -168,7 +158,6 @@ Get Reading from the first Digital Pin this is Pin 8
 						  }
 							}
 
-
 /*
 =================================================================================================================================
 Finished PIN 8
@@ -177,7 +166,6 @@ Finished PIN 8
 Get Reading from the first Digital Pin this is Pin 9
 =============================================================================================================================
 */
-
 		res = 0;		//reset everything
 		NEWSTOP=FALSE;	//reset everything
 		buf[0] = '\0';	//reset everything
@@ -581,22 +569,15 @@ Get Reading from the first Analog Pin this is Pin 6
 Finished ANALOG PIN 5
 =================================================================================================================================
 */
-
-
 		 //log_Function(DIGPIN15); //DEBUG CODE !!!
 
-
-
-
-			//char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d|%s:%s:%s:%s:%s:%s:%s|%2.1f:%2.1f|";
 			char *IO_Status_fmt = "%s:%s:%s:%s:%s:%s:%s:%s|%s:%s:%s:%s:%s:%s:%s|00.0:00.0|";
 		    char IO_Status_Value[1024];
 			sprintf(IO_Status_Value, IO_Status_fmt,DIGPIN8,DIGPIN9,DIGPIN10,DIGPIN11,DIGPIN12,DIGPIN13,DIGPIN14,DIGPIN15,SANALOGPIN0,SANALOGPIN1,SANALOGPIN2,SANALOGPIN3,SANALOGPIN4,SANALOGPIN5,SANALOGPIN6); //Format and apply data
 			char *New_IO_Status_Value = {0};
 			New_IO_Status_Value = IO_Status_Value;
-
 			close(fd);
 
-
 			return (New_IO_Status_Value);
+
 }
