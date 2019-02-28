@@ -273,7 +273,7 @@ Main Program Loop
 ======================================================================================================================
 */
 
-get_ip_address();
+get_ip_address();						//Lets find out what our I.P. Address is
 sleep(5);                            // This delay makes sure everything has settled before the service starts
 
 while(1){
