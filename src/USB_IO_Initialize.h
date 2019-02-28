@@ -47,8 +47,11 @@ void USB_IO_Initialize(void){
 	if (fd <0)
 			{
 		    perror(MODEMDEVICE);
-		    exit(0);
-			}
+		    strncpy(log_message,"Could not open USBGPIO Hardware",31);
+		    log_Function(log_message);
+		    remove("/run/gpio4bb.pid");
+		    exit(1);
+		   	}
 	tcgetattr(fd,&oldtio); /* save current serial port settings */
 	bzero(&newtio, sizeof(newtio)); /* clear struct for new port settings */
 	/*
