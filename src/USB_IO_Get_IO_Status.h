@@ -44,13 +44,13 @@ Define Variables for all PINs
 		char DIGPIN13[255] = {0};
 		char DIGPIN14[255] = {0};
 		char DIGPIN15[255] = {0};
-		//char ANALOG_PIN_0[] = {0};
-		//char ANALOG_PIN_1[] = {0};
-		//char ANALOG_PIN_2[] = {0};
-		//char ANALOG_PIN_3[] = {0};
-		//char ANALOG_PIN_4[] = {0};
-		//char ANALOG_PIN_5[] = {0};
-		//char ANALOG_PIN_6[] = {0};
+		char ANALOGPIN0[255] = {0};
+		char ANALOGPIN1[255] = {0};
+		char ANALOGPIN2[255] = {0};
+		char ANALOGPIN3[255] = {0};
+		char ANALOGPIN4[255] = {0};
+		char ANALOGPIN5[255] = {0};
+		char ANALOGPIN6[255] = {0};
 /*
 =======================================================================================================================
 All PINs defined
@@ -369,7 +369,218 @@ Get Reading from the first Digital Pin this is Pin 14
 =================================================================================================================================
 Finished PIN 14
 =================================================================================================================================
- */
+=============================================================================================================================
+Get Reading from the first Analog Pin this is Pin 0
+=============================================================================================================================
+*/
+		res = 0;
+		NEWSTOP=FALSE;
+		buf[0] = '\0';
+		numofcr = 1;
+
+		write(fd,"adc read 0\n",11);
+		while (NEWSTOP==FALSE) {
+		res = read(fd,buf,255);
+		buf[res]=0;
+		if(numofcr >= 2) {
+        strncpy(ANALOGPIN0,buf,strlen(buf)-1);
+				}
+			if (buf[0]=='\n'){
+				numofcr = numofcr + 1;
+		if (numofcr >= 3) {
+		NEWSTOP=TRUE;
+			}
+							  }
+							}
+
+		char SANALOGPIN0[2] = {0};
+		strncpy(SANALOGPIN0,ANALOGPIN0,strlen(ANALOGPIN0)-1);
+		strncpy(SANALOGPIN0,"00",2);//Remove this line to allow this pin to function
+/*
+=================================================================================================================================
+Finished ANALOG PIN 0
+=================================================================================================================================
+=============================================================================================================================
+Get Reading from the first Analog Pin this is Pin 1
+=============================================================================================================================
+*/
+				res = 0;
+				NEWSTOP=FALSE;
+				buf[0] = '\0';
+				numofcr = 1;
+
+				write(fd,"adc read 1\n",11);
+				while (NEWSTOP==FALSE) {
+				res = read(fd,buf,255);
+				buf[res]=0;
+				if(numofcr >= 2) {
+		        strncpy(ANALOGPIN1,buf,strlen(buf)-1);
+						}
+					if (buf[0]=='\n'){
+						numofcr = numofcr + 1;
+				if (numofcr >= 3) {
+				NEWSTOP=TRUE;
+					}
+									  }
+									}
+
+				char SANALOGPIN1[2] = {0};
+				strncpy(SANALOGPIN1,ANALOGPIN1,strlen(ANALOGPIN1)-1);
+				strncpy(SANALOGPIN1,"00",2);//Remove this line to allow this pin to function
+/*
+=================================================================================================================================
+Finished ANALOG PIN 1
+=================================================================================================================================
+=============================================================================================================================
+Get Reading from the first Analog Pin this is Pin 2
+=============================================================================================================================
+*/
+				res = 0;
+				NEWSTOP=FALSE;
+				buf[0] = '\0';
+				numofcr = 1;
+				write(fd,"adc read 2\n",11);
+				while (NEWSTOP==FALSE) {
+				res = read(fd,buf,255);
+				buf[res]=0;
+				if(numofcr >= 2) {
+		        strncpy(ANALOGPIN2,buf,strlen(buf)-1);
+						}
+					if (buf[0]=='\n'){
+						numofcr = numofcr + 1;
+				if (numofcr >= 3) {
+				NEWSTOP=TRUE;
+					}
+									  }
+									}
+
+				char SANALOGPIN2[2] = {0};
+				strncpy(SANALOGPIN2,ANALOGPIN2,strlen(ANALOGPIN2)-1);
+				strncpy(SANALOGPIN2,"00",2);//Remove this line to allow this pin to function;
+/*
+=================================================================================================================================
+Finished ANALOG PIN 2
+=================================================================================================================================
+=============================================================================================================================
+Get Reading from the first Analog Pin this is Pin 3
+=============================================================================================================================
+*/
+				res = 0;
+				NEWSTOP=FALSE;
+				buf[0] = '\0';
+				numofcr = 1;
+				write(fd,"adc read 3\n",11);
+				while (NEWSTOP==FALSE) {
+				res = read(fd,buf,255);
+				buf[res]=0;
+				if(numofcr >= 2) {
+		        strncpy(ANALOGPIN3,buf,strlen(buf)-1);
+						}
+					if (buf[0]=='\n'){
+						numofcr = numofcr + 1;
+				if (numofcr >= 3) {
+				NEWSTOP=TRUE;
+					}
+									  }
+									}
+
+				char SANALOGPIN3[2] = {0};
+				strncpy(SANALOGPIN3,ANALOGPIN3,strlen(ANALOGPIN3)-1);
+				strncpy(SANALOGPIN3,"00",2); //Remove this line to allow this pin to function
+/*
+=================================================================================================================================
+Finished ANALOG PIN 3
+=================================================================================================================================
+=============================================================================================================================
+Get Reading from the first Analog Pin this is Pin 4
+=============================================================================================================================
+*/
+				res = 0;
+				NEWSTOP=FALSE;
+				buf[0] = '\0';
+				numofcr = 1;
+				write(fd,"adc read 4\n",11);
+				while (NEWSTOP==FALSE) {
+				res = read(fd,buf,255);
+				buf[res]=0;
+				if(numofcr >= 2) {
+		        strncpy(ANALOGPIN4,buf,strlen(buf)-1);
+						}
+					if (buf[0]=='\n'){
+						numofcr = numofcr + 1;
+				if (numofcr >= 3) {
+				NEWSTOP=TRUE;
+					}
+									  }
+									}
+
+				char SANALOGPIN4[2] = {0};
+				strncpy(SANALOGPIN4,ANALOGPIN4,strlen(ANALOGPIN4)-1);
+				strncpy(SANALOGPIN4,"00",2); //Remove this line to allow this pin to function
+/*
+=================================================================================================================================
+Finished ANALOG PIN 4
+=================================================================================================================================
+=============================================================================================================================
+Get Reading from the first Analog Pin this is Pin 5
+=============================================================================================================================
+*/
+				res = 0;
+				NEWSTOP=FALSE;
+				buf[0] = '\0';
+				numofcr = 1;
+				write(fd,"adc read 5\n",11);
+				while (NEWSTOP==FALSE) {
+				res = read(fd,buf,255);
+				buf[res]=0;
+				if(numofcr >= 2) {
+		        strncpy(ANALOGPIN5,buf,strlen(buf)-1);
+						}
+					if (buf[0]=='\n'){
+						numofcr = numofcr + 1;
+				if (numofcr >= 3) {
+				NEWSTOP=TRUE;
+					}
+									  }
+									}
+
+				char SANALOGPIN5[2] = {0};
+				strncpy(SANALOGPIN5,ANALOGPIN5,strlen(ANALOGPIN5)-1);
+				strncpy(SANALOGPIN5,"00",2); //Remove this line to allow this pin to function
+/*
+=================================================================================================================================
+Finished ANALOG PIN 5
+=================================================================================================================================
+=============================================================================================================================
+Get Reading from the first Analog Pin this is Pin 6
+=============================================================================================================================
+*/
+				res = 0;
+				NEWSTOP=FALSE;
+				buf[0] = '\0';
+				numofcr = 1;
+				write(fd,"adc read 6\n",11);
+				while (NEWSTOP==FALSE) {
+				res = read(fd,buf,255);
+				buf[res]=0;
+				if(numofcr >= 2) {
+		        strncpy(ANALOGPIN6,buf,strlen(buf)-1);
+						}
+					if (buf[0]=='\n'){
+						numofcr = numofcr + 1;
+				if (numofcr >= 3) {
+				NEWSTOP=TRUE;
+					}
+									  }
+									}
+					char SANALOGPIN6[2] = {0};
+				strncpy(SANALOGPIN6,ANALOGPIN6,strlen(ANALOGPIN6)-1);
+				strncpy(SANALOGPIN6,"00",2); //Remove this line to allow this pin to function
+/*
+=================================================================================================================================
+Finished ANALOG PIN 5
+=================================================================================================================================
+*/
 
 
 		 //log_Function(DIGPIN15); //DEBUG CODE !!!
@@ -378,9 +589,9 @@ Finished PIN 14
 
 
 			//char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d|%s:%s:%s:%s:%s:%s:%s|%2.1f:%2.1f|";
-			char *IO_Status_fmt = "%s:%s:%s:%s:%s:%s:%s:%s|00:00:00:00:00:00:00|00.0:00.0|";
+			char *IO_Status_fmt = "%s:%s:%s:%s:%s:%s:%s:%s|%s:%s:%s:%s:%s:%s:%s|00.0:00.0|";
 		    char IO_Status_Value[1024];
-			sprintf(IO_Status_Value, IO_Status_fmt,DIGPIN8,DIGPIN9,DIGPIN10,DIGPIN11,DIGPIN12,DIGPIN13,DIGPIN14,DIGPIN15); //Format and apply data
+			sprintf(IO_Status_Value, IO_Status_fmt,DIGPIN8,DIGPIN9,DIGPIN10,DIGPIN11,DIGPIN12,DIGPIN13,DIGPIN14,DIGPIN15,SANALOGPIN0,SANALOGPIN1,SANALOGPIN2,SANALOGPIN3,SANALOGPIN4,SANALOGPIN5,SANALOGPIN6); //Format and apply data
 			char *New_IO_Status_Value = {0};
 			New_IO_Status_Value = IO_Status_Value;
 
