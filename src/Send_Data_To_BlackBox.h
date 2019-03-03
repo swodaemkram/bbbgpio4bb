@@ -104,9 +104,29 @@ Break Digital and Analog Data Apart
 
 /*
 ===============================================================================================================================
-Break Digital Data Apart
+Break Digital Data Apart b
 ===============================================================================================================================
  */
+
+		char *Digital_IO_Pin1 = {0};
+		char *Digital_IO_Pin2 = {0};
+		char *Digital_IO_Pin3 = {0};
+		char *Digital_IO_Pin4 = {0};
+		char *Digital_IO_Pin5 = {0};
+		char *Digital_IO_Pin6 = {0};
+		char *Digital_IO_Pin7 = {0};
+		char *Digital_IO_Pin8 = {0};
+
+		Digital_IO_Pin1 = strsep(&Digital_Data,":");
+		Digital_IO_Pin2 = strsep(&Digital_Data,":");
+		Digital_IO_Pin3 = strsep(&Digital_Data,":");
+		Digital_IO_Pin4 = strsep(&Digital_Data,":");
+		Digital_IO_Pin5 = strsep(&Digital_Data,":");
+		Digital_IO_Pin6 = strsep(&Digital_Data,":");
+		Digital_IO_Pin7 = strsep(&Digital_Data,":");
+		Digital_IO_Pin8 = strsep(&Digital_Data,":");
+
+
 
 
 
@@ -125,15 +145,19 @@ New Json Object Below
 ================================================================================================================================
 */
 
-//GOOD CODE !!!!!!!!!!!!!!!!!!
-//char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: 230 {"service":"[OnBoardIO]","type":"[Digital]","inputs":[{"id":1,"data":["1"]},{"id":2,"data":["4"]},{"id":3,"data":["4"]},{"id":4,"data":["4"]},{"id":5,"data":["4"]},{"id":6,"data":["4"]},{"id":7,"data":["4"]},{"id":8,"data":["5"]}]}"
-//sprintf(message,message_fmt,LENOFData,Digital_Data,Analog_Data,temp); //Format and apply data
-//GOOD CODE !!!!!!!!!!!!!!!!!!!
+char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: 230 {\"service\":\"[OnBoardIO]\",\"type\":\"[Digital]\",\"inputs\":[{\"id\":1,\"%s\":"
+		"[\"1\"]},{\"id\":2,\"%s\":[\"4\"]},{\"id\":3,\"%s\":[\"4\"]},{\"id\":4,\"%s\":[\"4\"]},{\"id\":5,\"%s\":[\"4\"]},{\"id\":6,\"%s\":[\"4\"]},{\"id\":7,"
+		"\"%s\":[\"4\"]},{\"id\":8,\"%s\":[\"5\"]}]}";
+
+sprintf(message,message_fmt,Digital_IO_Pin1,Digital_IO_Pin2,Digital_IO_Pin3,Digital_IO_Pin4,Digital_IO_Pin5,Digital_IO_Pin6,Digital_IO_Pin7,Digital_IO_Pin8); //Format and apply data
+
+log_Function(message);
 
 		//if(Verbose == 1){
 		//printf("\n%s\n",message);
 		//}
 send(sock , message,strlen(message),0); 		 //Send Built Stream To BlackBox
+
 close(sock);
 
 
