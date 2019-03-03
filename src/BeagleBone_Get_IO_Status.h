@@ -276,34 +276,39 @@ Get Reading from DHT11 Temp/Humidity Sensor
 ======================================================================================================================================
  */
 
-	    int type = 11;														  //Type of Sensor 11=DHT11 22=DHT22
-		int gpio_base = 1;                                                    //Connector P8
-		int gpio_number = 29;                                                 //PIN 29 (Physical Pin 26) GPIO_61
-		float humidity = 00.0f;												  //Humidity Pointer
-		float temperature = 00.0f;											  //Temperature Pointer
-		float reported_temperature = 00.0f;									  //Pointer for Converted Temperature
+	   // int type = 11;														  //Type of Sensor 11=DHT11 22=DHT22
+		//int gpio_base = 1;                                                    //Connector P8
+		//int gpio_number = 29;                                                 //PIN 29 (Physical Pin 26) GPIO_61
+		//float humidity = 00.0f;												  //Humidity Pointer
+		//float temperature = 00.0f;											  //Temperature Pointer
+		//float reported_temperature = 00.0f;									  //Pointer for Converted Temperature
 
 
-		bbb_dht_read(type,gpio_base,gpio_number,&humidity,&temperature);
+		//bbb_dht_read(type,gpio_base,gpio_number,&humidity,&temperature);
 
-		while (humidity <= 1){
+		//while (humidity <= 1){
 
-			bbb_dht_read(type,gpio_base,gpio_number,&humidity,&temperature);
+		//	bbb_dht_read(type,gpio_base,gpio_number,&humidity,&temperature);
 
-		}
+		//}
 
 
-		reported_temperature = (temperature * 1.8 + 32);                       //convert to Fahrenheit
-
+		//reported_temperature = (temperature * 1.8 + 32);                       //convert to Fahrenheit
+sleep(1); //Remove if the above lines are enabled for the DHT11 Temp Sensor
 /*
 =======================================================================================================================================
    Format the data to be sent to main module
 =======================================================================================================================================
 */
 
-	char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d|%s:%s:%s:%s:%s:%s:%s|%2.1f:%2.1f|";
+	//char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d|%s:%s:%s:%s:%s:%s:%s|%2.1f:%2.1f|";
+	char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d|%s:%s:%s:%s:%s:%s:%s|00.0:00.0|";
 	char IO_Status_Value[1024];
-	sprintf(IO_Status_Value, IO_Status_fmt, PIN44_Status_Value, PIN65_Status_Value, PIN46_Status_Value, PIN26_Status_Value, PIN68_Status_Value, PIN67_Status_Value, PIN66_Status_Value, PIN69_Status_Value, ANI00_Value, ANI01_Value, ANI02_Value, ANI03_Value, ANI04_Value, ANI05_Value, ANI06_Value,humidity,reported_temperature); //Format and apply data
+
+	//sprintf(IO_Status_Value, IO_Status_fmt, PIN44_Status_Value, PIN65_Status_Value, PIN46_Status_Value, PIN26_Status_Value, PIN68_Status_Value, PIN67_Status_Value, PIN66_Status_Value, PIN69_Status_Value, ANI00_Value, ANI01_Value, ANI02_Value, ANI03_Value, ANI04_Value, ANI05_Value, ANI06_Value,humidity,reported_temperature); //Format and apply data
+	sprintf(IO_Status_Value, IO_Status_fmt, PIN44_Status_Value, PIN65_Status_Value, PIN46_Status_Value, PIN26_Status_Value, PIN68_Status_Value, PIN67_Status_Value, PIN66_Status_Value, PIN69_Status_Value, ANI00_Value, ANI01_Value, ANI02_Value, ANI03_Value, ANI04_Value, ANI05_Value,ANI06_Value); //Format and apply data
+
+
 	char *New_IO_Status_Value = {0};
 	New_IO_Status_Value = IO_Status_Value;
 

@@ -42,16 +42,16 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 			{
 				if (Verbose == 1){
 				perror("connect failed. Error");
-				log_message[0] = '\0';
-				strcat(log_message, "BlackBox connection failed" );
-				log_Function(log_message);
+				//log_message[0] = '\0';
+				//strcat(log_message, "BlackBox connection failed" );
+				log_Function("BlackBox connection failed");
 				close(sock);
 				return;
 				}
 
-				log_message[0] = '\0';
-				strcat(log_message, "BlackBox connection failed" );
-				log_Function(log_message);
+				//log_message[0] = '\0';
+				//strcat(log_message, "BlackBox connection failed" );
+				log_Function("BlackBox connection failed");
 				close(sock);
 				return;
 			}
@@ -60,9 +60,9 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 		//printf("Connected to BlackBox ....");
 		//		}
 
-log_message[0] = '\0';
-strcat(log_message, "Connected to BlackBox ...." );
-log_Function(log_message);
+//log_message[0] = '\0';
+//strcat(log_message, "Connected to BlackBox ...." );
+log_Function("Connected to BlackBox ....");
 
 
 /*
@@ -102,18 +102,39 @@ Break Digital and Analog Data Apart
 
 		//char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n{\"OnBoardIO\":[{\"id\":\"Digital_I/O\",\"Status\":\"%s\"},{\"id\":\"Analog_I/O\",\"Status\":\"%s\"}]}";
 
+/*
+===============================================================================================================================
+Break Digital Data Apart
+===============================================================================================================================
+ */
 
-		char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n{\"onboard_io\":[{\"id\":\"digital_io\",\"value\":\"%s\"},{\"id\":\"analog_io\",\"value\":\"%s\"}{\"id\":\"humi_temp\",\"value\":\"%s\"}]}";
-		sprintf(message,message_fmt,LENOFData,Digital_Data,Analog_Data,temp); //Format and apply data
 
 
 
+/*
+ ==============================================================================================================================
+ Finished Breaking Digital Data Apart
+ ==============================================================================================================================
+ Old Json Object Sent to BlackBox
+-------------------------------------------------------------------------------------------------------------------------------
+char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n{\"onboard_io\":[{\"id\":\"digital_io\",\"value\":\"%s\"},{\"id\":\"analog_io\",\"value\":\"%s\"}{\"id\":\"humi_temp\",\"value\":\"%s\"}]}";
+sprintf(message,message_fmt,LENOFData,Digital_Data,Analog_Data,temp); //Format and apply data
+-------------------------------------------------------------------------------------------------------------------------------
+================================================================================================================================
+New Json Object Below
+================================================================================================================================
+*/
+
+//GOOD CODE !!!!!!!!!!!!!!!!!!
+//char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: 230 {"service":"[OnBoardIO]","type":"[Digital]","inputs":[{"id":1,"data":["1"]},{"id":2,"data":["4"]},{"id":3,"data":["4"]},{"id":4,"data":["4"]},{"id":5,"data":["4"]},{"id":6,"data":["4"]},{"id":7,"data":["4"]},{"id":8,"data":["5"]}]}"
+//sprintf(message,message_fmt,LENOFData,Digital_Data,Analog_Data,temp); //Format and apply data
+//GOOD CODE !!!!!!!!!!!!!!!!!!!
 
 		//if(Verbose == 1){
 		//printf("\n%s\n",message);
 		//}
-		send(sock , message,strlen(message),0); 		 //Send Built Stream To BlackBox
-		close(sock);
+send(sock , message,strlen(message),0); 		 //Send Built Stream To BlackBox
+close(sock);
 
 
 		//log_message[0] = '\0';                            //debug
@@ -124,6 +145,6 @@ Break Digital and Analog Data Apart
 		//log_Function(log_message);						  //debug
 
 
-		return;
+return;
 }
 
