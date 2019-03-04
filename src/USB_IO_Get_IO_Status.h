@@ -18,7 +18,7 @@ included by <termios.h> */
 char *USB_IO_Get_IO_Status(void){
 
 		int NEWSTOP=FALSE;
-		char log_message [250] = {0};
+		//char log_message [250] = {0};
 
 
 		int fd;
@@ -58,8 +58,8 @@ because we don't want to get killed if linenoise sends CTRL−C.
 		if (fd <0)
 				{
 			    perror("/dev/ttyACM0");
-			    strncpy(log_message,"Could not open USBGPIO Hardware",31);
-			    log_Function(log_message);
+			    //strncpy(log_message,"Could not open USBGPIO Hardware",31);
+			    log_Function("Could not open USBGPIO Hardware");
 			    remove("/run/gpio4bb.pid");
 			    exit(1);
 				}

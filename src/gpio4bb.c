@@ -77,8 +77,8 @@ end of run once check
  */
 
 char log_message [250] = {0};								  // Send Program Started to the log
-strncpy(log_message,"gpio4bb service started ....",29);       // Send Program Started to the log
-log_Function(log_message);									  // Send Program Started to the log
+//strncpy(log_message,"gpio4bb service started ....",29);       // Send Program Started to the log
+log_Function("gpio4bb service started ....");				  // Send Program Started to the log
 
 char IP_Out_To_BlackBox[15] = {0};
 int Port_Out_To_BlackBox = 0;
@@ -182,9 +182,9 @@ if (Config_File != 1){
 
  		 	 	 	 	 if (dif != 0){
  		 	 	 	 		 // printf("\nThe %s platform is not supported yet ....\n",HardwarePlatform);
- 		 	 	 	 		 char log_message [250] = {0};								  // Send to the log
- 		 	 	 	 		 strncpy(log_message,"platform is not supported yet .... ",35);// Send to the log
- 		 	 	 	 		 log_Function(log_message);									  // Send to the log
+ 		 	 	 	 		 //char log_message [250] = {0};								  // Send to the log
+ 		 	 	 	 		 //strncpy(log_message,"platform is not supported yet .... ",35);   // Send to the log
+ 		 	 	 	 		 log_Function("platform is not supported yet .... ");			  // Send to the log
  		 	 	 	 		 Print_Help();
  		 	 	 	 	 	 	 	 }
  	 	 	 	 }
@@ -207,9 +207,9 @@ Simple Argument Verification Completed
 
 	 		Config_File = fopen("/etc/gpio4bb.conf", "r");  	// Open config file
 	 		if (Config_File == NULL){
-	 			log_message[0] = '\0';
-	 			strcat(log_message, "Could not open /etc/gpio4bb.conf" );
-	 			log_Function(log_message);
+	 			//log_message[0] = '\0';
+	 			//strcat(log_message, "Could not open /etc/gpio4bb.conf" );
+	 			log_Function("Could not open /etc/gpio4bb.conf");
 	 			remove("/run/gpio4bb.pid");
 	 			exit(1);
 	 		}
