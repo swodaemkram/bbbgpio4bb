@@ -79,7 +79,7 @@ Connected to BlackBox, Format data into JSON Format
 		Duped_SendData = strdup(SendData);
 		//char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n%s";
 
-		char message[1024];
+		char message[1024]= {0};
 
 		int LenOfData;							         //This is done to get The LenOfData from an Integer to a string for proper formating
 		char LENOFData[5];						         //This is done to get The LenOfData from an Integer to a string for proper formating
@@ -111,7 +111,6 @@ Break Digital and Analog Data Apart
 Break Digital Data Apart b
 ===============================================================================================================================
  */
-
 		char *Digital_IO_Pin1 = {0};
 		char *Digital_IO_Pin2 = {0};
 		char *Digital_IO_Pin3 = {0};
@@ -129,11 +128,6 @@ Break Digital Data Apart b
 		Digital_IO_Pin6 = strsep(&Digital_Data,":");
 		Digital_IO_Pin7 = strsep(&Digital_Data,":");
 		Digital_IO_Pin8 = strsep(&Digital_Data,":");
-
-
-
-
-
 
 /*
  ==============================================================================================================================
@@ -155,7 +149,7 @@ char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Leng
 
 sprintf(message,message_fmt,Digital_IO_Pin1,Digital_IO_Pin2,Digital_IO_Pin3,Digital_IO_Pin4,Digital_IO_Pin5,Digital_IO_Pin6,Digital_IO_Pin7,Digital_IO_Pin8); //Format and apply data
 
-log_Function(message);
+//log_Function(message);//DEBUG TO SHOW TRANSMIT DATA
 
 		//if(Verbose == 1){
 		//printf("\n%s\n",message);

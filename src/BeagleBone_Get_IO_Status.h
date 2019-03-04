@@ -304,7 +304,7 @@ sleep(1); //Remove if the above lines are enabled for the DHT11 Temp Sensor
 
 	//char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d|%s:%s:%s:%s:%s:%s:%s|%2.1f:%2.1f|";
 	char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d|%s:%s:%s:%s:%s:%s:%s|00.0:00.0|";
-	char IO_Status_Value[1024];
+	char IO_Status_Value[1024] = {0};
 
 	//sprintf(IO_Status_Value, IO_Status_fmt, PIN44_Status_Value, PIN65_Status_Value, PIN46_Status_Value, PIN26_Status_Value, PIN68_Status_Value, PIN67_Status_Value, PIN66_Status_Value, PIN69_Status_Value, ANI00_Value, ANI01_Value, ANI02_Value, ANI03_Value, ANI04_Value, ANI05_Value, ANI06_Value,humidity,reported_temperature); //Format and apply data
 	sprintf(IO_Status_Value, IO_Status_fmt, PIN44_Status_Value, PIN65_Status_Value, PIN46_Status_Value, PIN26_Status_Value, PIN68_Status_Value, PIN67_Status_Value, PIN66_Status_Value, PIN69_Status_Value, ANI00_Value, ANI01_Value, ANI02_Value, ANI03_Value, ANI04_Value, ANI05_Value,ANI06_Value); //Format and apply data

@@ -86,9 +86,10 @@ int Port_IN_From_BlackBox = 0;
 char *New_IO_Status_Value = {0};
 
 //char Last_IO_Status_Value[37] = "0:0:0:0:0:0:0:0|00:00:00:00:00:00:00|";
-char Last_IO_Status_Value[47] = {0};
+char Last_IO_Status_Value[48] = {0};/////!!!!! 47 48?
+Last_IO_Status_Value[0] = '\0';
 //char IO_Status_Value[38] = {0};
-char IO_Status_Value[47] = "0:0:0:0:0:0:0:0|00:00:00:00:00:00:00|00.0:00.0|";
+char IO_Status_Value[48] = "0:0:0:0:0:0:0:0|00:00:00:00:00:00:00|00.0:00.0|";
 char HardwarePlatform[10] = {0};
 int Verbose = 0;
 
@@ -244,7 +245,7 @@ Simple Argument Verification Completed
 	 	message_fmt = "IP Out to BlackBox is  = %s";
 	 	sprintf(log_message,message_fmt,IP_Out_To_BlackBox);
 	 	log_Function(log_message);
-
+	 	log_message[0] = '\0';
 //====================================================================================================================
 		int dif;								                    //are we beaglebone ?
 		dif = strcmp(HardwarePlatform, "beaglebone");               //are we beaglebone ?
@@ -283,9 +284,10 @@ while(1){
 		if(strcmp(IO_Status_Value, Last_IO_Status_Value) != 0){
 		//printf("\nLast_IO_Status_Value = %s\n New_IO_Status_Value = %s\n",Last_IO_Status_Value,New_IO_Status_Value);
 		log_Function(IO_Status_Value);
+		//log_Function(Last_IO_Status_Value);
 		Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, IO_Status_Value,  Verbose); //Send New Data To BlackBox
 		//Last_IO_Status_Value[0] ='\0';
-		strncpy(Last_IO_Status_Value,  IO_Status_Value, 47);
+		strncpy(Last_IO_Status_Value,  IO_Status_Value, 48);/////!!!!!
 
 	}
 
@@ -311,7 +313,7 @@ while(1){
 
 // DEBUG !!! printf("\nIO_Status_Value = %s New_IO_Status_Value = %s\n", IO_Status_Value, New_IO_Status_Value);
 
-	strncpy(IO_Status_Value, New_IO_Status_Value,47);
+	strncpy(IO_Status_Value, New_IO_Status_Value,48);/////!!!!!
 	signal(SIGTERM,Signal_Handler);
 	//usleep(200000); //after adding DHT11 this delay was no longer needed //This is set to .5 Seconds to keep the CPU usage to a minimum
 	signal(SIGTERM,Signal_Handler);
