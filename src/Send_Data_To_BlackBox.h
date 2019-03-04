@@ -62,7 +62,11 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 
 //log_message[0] = '\0';
 //strcat(log_message, "Connected to BlackBox ...." );
+//<<<<<<< HEAD
 //log_Function(log_message);
+//=======
+//log_Function("Connected to BlackBox ....");
+//>>>>>>> branch 'master' of https://github.com/swodaemkram/bbbgpio4bb
 
 
 /*
@@ -102,18 +106,63 @@ Break Digital and Analog Data Apart
 
 		//char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n{\"OnBoardIO\":[{\"id\":\"Digital_I/O\",\"Status\":\"%s\"},{\"id\":\"Analog_I/O\",\"Status\":\"%s\"}]}";
 
+/*
+===============================================================================================================================
+Break Digital Data Apart b
+===============================================================================================================================
+ */
 
-		char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n{\"onboard_io\":[{\"id\":\"digital_io\",\"value\":\"%s\"},{\"id\":\"analog_io\",\"value\":\"%s\"}{\"id\":\"humi_temp\",\"value\":\"%s\"}]}";
-		sprintf(message,message_fmt,LENOFData,Digital_Data,Analog_Data,temp); //Format and apply data
+		char *Digital_IO_Pin1 = {0};
+		char *Digital_IO_Pin2 = {0};
+		char *Digital_IO_Pin3 = {0};
+		char *Digital_IO_Pin4 = {0};
+		char *Digital_IO_Pin5 = {0};
+		char *Digital_IO_Pin6 = {0};
+		char *Digital_IO_Pin7 = {0};
+		char *Digital_IO_Pin8 = {0};
+
+		Digital_IO_Pin1 = strsep(&Digital_Data,":");
+		Digital_IO_Pin2 = strsep(&Digital_Data,":");
+		Digital_IO_Pin3 = strsep(&Digital_Data,":");
+		Digital_IO_Pin4 = strsep(&Digital_Data,":");
+		Digital_IO_Pin5 = strsep(&Digital_Data,":");
+		Digital_IO_Pin6 = strsep(&Digital_Data,":");
+		Digital_IO_Pin7 = strsep(&Digital_Data,":");
+		Digital_IO_Pin8 = strsep(&Digital_Data,":");
 
 
 
+
+
+
+/*
+ ==============================================================================================================================
+ Finished Breaking Digital Data Apart
+ ==============================================================================================================================
+ Old Json Object Sent to BlackBox
+-------------------------------------------------------------------------------------------------------------------------------
+char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n{\"onboard_io\":[{\"id\":\"digital_io\",\"value\":\"%s\"},{\"id\":\"analog_io\",\"value\":\"%s\"}{\"id\":\"humi_temp\",\"value\":\"%s\"}]}";
+sprintf(message,message_fmt,LENOFData,Digital_Data,Analog_Data,temp); //Format and apply data
+-------------------------------------------------------------------------------------------------------------------------------
+================================================================================================================================
+New Json Object Below
+================================================================================================================================
+*/
+
+char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: 230 {\"service\":\"[OnBoardIO]\",\"type\":\"[Digital]\",\"inputs\":[{\"id\":1,\"%s\":"
+		"[\"1\"]},{\"id\":2,\"%s\":[\"4\"]},{\"id\":3,\"%s\":[\"4\"]},{\"id\":4,\"%s\":[\"4\"]},{\"id\":5,\"%s\":[\"4\"]},{\"id\":6,\"%s\":[\"4\"]},{\"id\":7,"
+		"\"%s\":[\"4\"]},{\"id\":8,\"%s\":[\"5\"]}]}";
+
+sprintf(message,message_fmt,Digital_IO_Pin1,Digital_IO_Pin2,Digital_IO_Pin3,Digital_IO_Pin4,Digital_IO_Pin5,Digital_IO_Pin6,Digital_IO_Pin7,Digital_IO_Pin8); //Format and apply data
+
+log_Function(message);
 
 		//if(Verbose == 1){
 		//printf("\n%s\n",message);
 		//}
-		send(sock , message,strlen(message),0); 		 //Send Built Stream To BlackBox
-		close(sock);
+send(sock , message,strlen(message),0); 		 //Send Built Stream To BlackBox
+
+close(sock);
 
 
 		//log_message[0] = '\0';                            //debug
@@ -124,6 +173,6 @@ Break Digital and Analog Data Apart
 		//log_Function(log_message);						  //debug
 
 
-		return;
+return;
 }
 
