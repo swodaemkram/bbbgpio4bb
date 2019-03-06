@@ -48,6 +48,8 @@ Make Sure We Only Run Once
  */
 
 int Config_File = 0;
+time_t start, end;
+double elapsed;
 
 FILE *pid_lock = NULL;                            	// declare pid lock file
 
@@ -277,17 +279,39 @@ Main Program Loop
 get_ip_address();						//Lets find out what our I.P. Address is
 sleep(5);                            // This delay makes sure everything has settled before the service starts
 
+time(&end);
+time(&start);
+
 while(1){
 
 	    signal(SIGTERM,Signal_Handler);
 
-		if(strcmp(IO_Status_Value, Last_IO_Status_Value) != 0){
+// New Code for timer
+	    elapsed = difftime(start,end);
+	    if (elapsed >= 540){
+
+	    	log_Function("Sending Data To Prevent time Out");
+	    	log_Function(IO_Status_Value);
+
+	    	//log_Function(Last_IO_Status_Value);
+	    	Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, IO_Status_Value,  Verbose); //Send New Data To BlackBox
+	    	//Last_IO_Status_Value[0] ='\0';
+	    	strncpy(Last_IO_Status_Value,  IO_Status_Value, 48);/////!!!!!
+	    	time(&end);
+
+	    }
+
+// New Code for time
+
+	    if(strcmp(IO_Status_Value, Last_IO_Status_Value) != 0){
 		//printf("\nLast_IO_Status_Value = %s\n New_IO_Status_Value = %s\n",Last_IO_Status_Value,New_IO_Status_Value);
 		log_Function(IO_Status_Value);
 		//log_Function(Last_IO_Status_Value);
 		Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, IO_Status_Value,  Verbose); //Send New Data To BlackBox
 		//Last_IO_Status_Value[0] ='\0';
 		strncpy(Last_IO_Status_Value,  IO_Status_Value, 48);/////!!!!!
+		time(&end);// New Code For timer
+
 
 	}
 
@@ -318,6 +342,8 @@ while(1){
 	//usleep(200000); //after adding DHT11 this delay was no longer needed //This is set to .5 Seconds to keep the CPU usage to a minimum
 	signal(SIGTERM,Signal_Handler);
 	//RX_Data_From_BlackBox();                               // DEBUG INCOMING DATA FIRST !!!
+	time(&start);
+
 }
 /*
 ======================================================================================================================
