@@ -252,17 +252,17 @@ Initialize Analog Inputs
 ===================================================================================================================================
 */
 
-		IO_Config_File = fopen("/sys/devices/platform/bone_capemgr/slots", "w");  	// Enable The Analog Input Driver
-			if (IO_Config_File == NULL){
+//		IO_Config_File = fopen("/sys/devices/platform/bone_capemgr/slots", "w");  	// Enable The Analog Input Driver
+//			if (IO_Config_File == NULL){
 			//printf("\nProblem opening the analog pins export file make sure the ADC driver is installed.\n");
-			char log_message[0];
-			strcat(log_message, "Problem opening the analog pins export file make sure the ADC driver is installed." );
-			log_Function(log_message);
-			remove("/run/gpio4bb.pid");
-			exit(1);
-			}
-		fwrite("BB-ADC",1,sizeof("BB-ADC"),IO_Config_File);					    // Write the Drivers name in file
-			fclose(IO_Config_File);										            // Close the file
+//			char log_message[0];
+//			strcat(log_message, "Problem opening the analog pins export file make sure the ADC driver is installed." );
+//			log_Function(log_message);
+//			remove("/run/gpio4bb.pid");
+//			exit(1);
+//			}
+//		fwrite("BB-ADC",1,sizeof("BB-ADC"),IO_Config_File);					    // Write the Drivers name in file
+//			fclose(IO_Config_File);										            // Close the file
 
 /*
 ===================================================================================================================================

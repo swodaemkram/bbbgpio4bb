@@ -147,7 +147,7 @@ End of Digital Input Handler
 Start of Analog Input Handler
 ============================================================================================================================================
 */
-	char ANI00_Value[3] = {0};
+/*	char ANI00_Value[3] = {0};
 	FILE *ANI00_file = NULL;
 	ANI00_file = fopen("/sys/bus/iio/devices/iio:device0/in_voltage0_raw", "r");
 	if (ANI00_file == NULL){
@@ -270,7 +270,7 @@ Start of Analog Input Handler
 	ANI06_Value[1] = '0';
  	//End of Debug Code
 	fclose(ANI06_file);
-
+*/
 /*
 ======================================================================================================================================
 Get Reading from DHT11 Temp/Humidity Sensor
@@ -303,11 +303,12 @@ sleep(1); //Remove if the above lines are enabled for the DHT11 Temp Sensor
 */
 
 	//char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d|%s:%s:%s:%s:%s:%s:%s|%2.1f:%2.1f|";
-	char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d|%s:%s:%s:%s:%s:%s:%s|00.0:00.0|";
+	char *IO_Status_fmt = "%d:%d:%d:%d:%d:%d:%d:%d|00:00:00:00:00:00:00|00.0:00.0|";
 	char IO_Status_Value[1024] = {0};
 
 	//sprintf(IO_Status_Value, IO_Status_fmt, PIN44_Status_Value, PIN65_Status_Value, PIN46_Status_Value, PIN26_Status_Value, PIN68_Status_Value, PIN67_Status_Value, PIN66_Status_Value, PIN69_Status_Value, ANI00_Value, ANI01_Value, ANI02_Value, ANI03_Value, ANI04_Value, ANI05_Value, ANI06_Value,humidity,reported_temperature); //Format and apply data
-	sprintf(IO_Status_Value, IO_Status_fmt, PIN44_Status_Value, PIN65_Status_Value, PIN46_Status_Value, PIN26_Status_Value, PIN68_Status_Value, PIN67_Status_Value, PIN66_Status_Value, PIN69_Status_Value, ANI00_Value, ANI01_Value, ANI02_Value, ANI03_Value, ANI04_Value, ANI05_Value,ANI06_Value); //Format and apply data
+	//sprintf(IO_Status_Value, IO_Status_fmt, PIN44_Status_Value, PIN65_Status_Value, PIN46_Status_Value, PIN26_Status_Value, PIN68_Status_Value, PIN67_Status_Value, PIN66_Status_Value, PIN69_Status_Value, ANI00_Value, ANI01_Value, ANI02_Value, ANI03_Value, ANI04_Value, ANI05_Value,ANI06_Value); //Format and apply data
+	sprintf(IO_Status_Value, IO_Status_fmt, PIN44_Status_Value, PIN65_Status_Value, PIN46_Status_Value, PIN26_Status_Value, PIN68_Status_Value, PIN67_Status_Value, PIN66_Status_Value, PIN69_Status_Value); //Format and apply data ALL Analog inputs have been removed ! the above line has them all enabled
 
 
 	char *New_IO_Status_Value = {0};
