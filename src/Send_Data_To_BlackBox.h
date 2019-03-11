@@ -142,8 +142,8 @@ sprintf(message,message_fmt,LENOFData,Digital_Data,Analog_Data,temp); //Format a
 New Json Object Below
 ================================================================================================================================
 */
-
-char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: 168\r\n\r\n {\"service\":\"[OnBoardIO]\",\"type\":\"[Digital]\",\"inputs\":[{\"id\":1,\"%s\":[\"1\"]},{\"id\":2,\"%s\":[\"2\"]},{\"id\":3,\"%s\":[\"3\"]},{\"id\":4,\"%s\":[\"4\"]},{\"id\":5,\"%s\":[\"5\"]},{\"id\":6,\"%s\":[\"6\"]},{\"id\":7,\"%s\":[\"7\"]},{\"id\":8,\"%s\":[\"8\"]}]}";
+////////////////////////////////////////////////////////////////////////////////////168
+char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: 208\r\n\r\n {\"service\":\"[OnBoardIO]\",\"type\":\"[Digital]\",\"inputs\":[{\"id\":1,\"%s\":[\"1\"]},{\"id\":2,\"%s\":[\"2\"]},{\"id\":3,\"%s\":[\"3\"]},{\"id\":4,\"%s\":[\"4\"]},{\"id\":5,\"%s\":[\"5\"]},{\"id\":6,\"%s\":[\"6\"]},{\"id\":7,\"%s\":[\"7\"]},{\"id\":8,\"%s\":[\"8\"]}]}";
 
 
 sprintf(message,message_fmt,Digital_IO_Pin1,Digital_IO_Pin2,Digital_IO_Pin3,Digital_IO_Pin4,Digital_IO_Pin5,Digital_IO_Pin6,Digital_IO_Pin7,Digital_IO_Pin8); //Format and apply data
