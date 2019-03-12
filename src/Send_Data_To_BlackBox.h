@@ -228,9 +228,6 @@ New Json Object Below
 
 	    sprintf(message_len_str,"%d",message_len);
 
-
-
-
 	   	strcat(final_message,message_header);
 	   	//log_Function(final_message);
 
