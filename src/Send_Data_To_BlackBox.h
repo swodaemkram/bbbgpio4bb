@@ -133,6 +133,68 @@ Break Digital Data Apart b
  ==============================================================================================================================
  Finished Breaking Digital Data Apart
  ==============================================================================================================================
+*/
+
+		if (strcmp(Digital_IO_Pin1,"0")){
+			Digital_IO_Pin1 = "true";
+			}
+			else {
+				Digital_IO_Pin1 = "false";
+			}
+
+		if (strcmp(Digital_IO_Pin2,"0")){
+					Digital_IO_Pin2 = "true";
+				}
+				else {
+					Digital_IO_Pin2 = "false";
+				}
+
+		if (strcmp(Digital_IO_Pin3,"0")){
+					Digital_IO_Pin3 = "true";
+				}
+				else {
+					Digital_IO_Pin3 = "false";
+				}
+
+		if (strcmp(Digital_IO_Pin4,"0")){
+					Digital_IO_Pin4 = "true";
+				}
+				else {
+					Digital_IO_Pin4 = "false";
+				}
+
+		if (strcmp(Digital_IO_Pin5,"0")){
+					Digital_IO_Pin5 = "true";
+				}
+				else {
+					Digital_IO_Pin5 = "false";
+				}
+
+		if (strcmp(Digital_IO_Pin6,"0")){
+					Digital_IO_Pin6 = "true";
+				}
+				else {
+					Digital_IO_Pin6 = "false";
+				}
+
+		if (strcmp(Digital_IO_Pin7,"0")){
+					Digital_IO_Pin7 = "true";
+				}
+				else {
+					Digital_IO_Pin7 = "false";
+				}
+
+		if (strcmp(Digital_IO_Pin8,"0")){
+					Digital_IO_Pin8 = "true";
+				}
+				else {
+					Digital_IO_Pin8 = "false";
+				}
+
+/*
+We want to make this boolean now !
+===============================================================================================================================
+-------------------------------------------------------------------------------------------------------------------------------
  Old Json Object Sent to BlackBox
 -------------------------------------------------------------------------------------------------------------------------------
 char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: %s\r\n\r\n{\"onboard_io\":[{\"id\":\"digital_io\",\"value\":\"%s\"},{\"id\":\"analog_io\",\"value\":\"%s\"}{\"id\":\"humi_temp\",\"value\":\"%s\"}]}";
@@ -143,18 +205,51 @@ New Json Object Below
 ================================================================================================================================
 */
 ////////////////////////////////////////////////////////////////////////////////////168
-char *message_fmt = "POST / HTTP/1.0 content-type: application/json Content-Length: 208\r\n\r\n {\"service\":\"[OnBoardIO]\",\"type\":\"[Digital]\",\"inputs\":[{\"id\":1,\"%s\":[\"1\"]},{\"id\":2,\"%s\":[\"2\"]},{\"id\":3,\"%s\":[\"3\"]},{\"id\":4,\"%s\":[\"4\"]},{\"id\":5,\"%s\":[\"5\"]},{\"id\":6,\"%s\":[\"6\"]},{\"id\":7,\"%s\":[\"7\"]},{\"id\":8,\"%s\":[\"8\"]}]}";
+//char *message_fmt = "POST / HTTP/1.0 Content-Type: application/json Content-Length: 205\r\n\r\n {\"service\":\"onboard_io\",\"type\":\"digital\",\"inputs\":[{\"id\":1,\"%s\":[\"1\"]},{\"id\":2,\"%s\":[\"2\"]},{\"id\":3,\"%s\":[\"3\"]},{\"id\":4,\"%s\":[\"4\"]},{\"id\":5,\"%s\":[\"5\"]},{\"id\":6,\"%s\":[\"6\"]},{\"id\":7,\"%s\":[\"7\"]},{\"id\":8,\"%s\":[\"8\"]}]}";
+//char *message_fmt = "POST / HTTP/1.0\r\nContent-Type: application/json\r\nContent-Length: 204\r\n\r\n{\"service\":\"onboard_io\",\"type\":\"digital\",\"inputs\":[{\"id\":1,\"%s\":[\"1\"]},{\"id\":2,\"%s\":[\"2\"]},{\"id\":3,\"%s\":[\"3\"]},{\"id\":4,\"%s\":[\"4\"]},{\"id\":5,\"%s\":[\"5\"]},{\"id\":6,\"%s\":[\"6\"]},{\"id\":7,\"%s\":[\"7\"]},{\"id\":8,\"%s\":[\"8\"]}]}";
+
+		char message_header[65] = "POST / HTTP/1.0\r\nContent-Type: application/json\r\nContent-Length:";
+
+		char final_message[1024];
+		final_message[0] = '\0';
+
+		char *message_fmt = "\r\n\r\n{\"service\":\"onboard_io\",\"type\":\"digital\",\"inputs\":[{\"id\":1,\"data\":\"%s\"},{\"id\":2,\"data\":\"%s\"},{\"id\":3,\"data\":\"%s\"},{\"id\":4,\"data\":\"%s\"},{\"id\":5,\"data\":\"%s\"},{\"id\":6,\"data\":\"%s\"},{\"id\":7,\"data\":\"%s\"},{\"id\":8,\"data\":\"%s\"}]}";
+
+//char *message_fmt = "POST / HTTP/1.0\r\nContent-Type: application/json\r\nContent-Length: 212\r\n\r\n{\"service\":\"onboard_io\",\"type\":\"digital\",\"inputs\":[{\"id\":1,\"data\":\"%s\"},{\"id\":2,\"data\":\"%s\"},{\"id\":3,\"data\":\"%s\"},{\"id\":4,\"data\":\"%s\"},{\"id\":5,\"data\":\"%s\"},{\"id\":6,\"data\":\"%s\"},{\"id\":7,\"data\":\"%s\"},{\"id\":8,\"data\":\"%s\"}]}";
+
+	    sprintf(message,message_fmt,Digital_IO_Pin1,Digital_IO_Pin2,Digital_IO_Pin3,Digital_IO_Pin4,Digital_IO_Pin5,Digital_IO_Pin6,Digital_IO_Pin7,Digital_IO_Pin8); //Format and apply data
+
+	    int message_len;
+
+	    message_len = strlen(message);
+
+	    char message_len_str[4];
+	    message_len_str[0] = '\0';
+
+	    sprintf(message_len_str,"%d",message_len);
 
 
-sprintf(message,message_fmt,Digital_IO_Pin1,Digital_IO_Pin2,Digital_IO_Pin3,Digital_IO_Pin4,Digital_IO_Pin5,Digital_IO_Pin6,Digital_IO_Pin7,Digital_IO_Pin8); //Format and apply data
+
+
+	   	strcat(final_message,message_header);
+	   	//log_Function(final_message);
+
+	   	strcat(final_message, message_len_str);
+	   	//log_Function(final_message);
+
+	   	strcat(final_message, message);
+	    log_Function(final_message);
+
+
 
 //log_Function(message);//DEBUG TO SHOW TRANSMIT DATA
 
 		//if(Verbose == 1){
 		//printf("\n%s\n",message);
 		//}
-send(sock , message,strlen(message),0); 		 //Send Built Stream To BlackBox
+//send(sock , message,strlen(message),0); 		 //Send Built Stream To BlackBox
 
+send(sock , final_message,strlen(final_message),0);
 close(sock);
 
 
@@ -164,7 +259,7 @@ close(sock);
 		//log_message[0] = '\0';							  //debug
 		//sprintf(log_message,"\n((%d))\n",strlen(message));//debug
 		//log_Function(log_message);						  //debug
-
+final_message[0] = '\0';
 
 return;
 }
