@@ -221,7 +221,7 @@ New Json Object Below
 
 	    int message_len;
 
-	    message_len = strlen(message);
+	    message_len = strlen(message) - 3;
 
 	    char message_len_str[4];
 	    message_len_str[0] = '\0';
