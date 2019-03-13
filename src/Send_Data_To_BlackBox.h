@@ -208,20 +208,22 @@ New Json Object Below
 //char *message_fmt = "POST / HTTP/1.0 Content-Type: application/json Content-Length: 205\r\n\r\n {\"service\":\"onboard_io\",\"type\":\"digital\",\"inputs\":[{\"id\":1,\"%s\":[\"1\"]},{\"id\":2,\"%s\":[\"2\"]},{\"id\":3,\"%s\":[\"3\"]},{\"id\":4,\"%s\":[\"4\"]},{\"id\":5,\"%s\":[\"5\"]},{\"id\":6,\"%s\":[\"6\"]},{\"id\":7,\"%s\":[\"7\"]},{\"id\":8,\"%s\":[\"8\"]}]}";
 //char *message_fmt = "POST / HTTP/1.0\r\nContent-Type: application/json\r\nContent-Length: 204\r\n\r\n{\"service\":\"onboard_io\",\"type\":\"digital\",\"inputs\":[{\"id\":1,\"%s\":[\"1\"]},{\"id\":2,\"%s\":[\"2\"]},{\"id\":3,\"%s\":[\"3\"]},{\"id\":4,\"%s\":[\"4\"]},{\"id\":5,\"%s\":[\"5\"]},{\"id\":6,\"%s\":[\"6\"]},{\"id\":7,\"%s\":[\"7\"]},{\"id\":8,\"%s\":[\"8\"]}]}";
 
-		char message_header[65] = "POST / HTTP/1.0\r\nContent-Type: application/json\r\nContent-Length:";
+		char message_header[77] = "POST / HTTP/1.0\r\nContent-Type: application/json\r\nContent-Length: ";
 
 		char final_message[1024];
 		final_message[0] = '\0';
 
-		char *message_fmt = "\r\n\r\n{\"service\":\"onboard_io\",\"type\":\"digital\",\"inputs\":[{\"id\":1,\"data\":\"%s\"},{\"id\":2,\"data\":\"%s\"},{\"id\":3,\"data\":\"%s\"},{\"id\":4,\"data\":\"%s\"},{\"id\":5,\"data\":\"%s\"},{\"id\":6,\"data\":\"%s\"},{\"id\":7,\"data\":\"%s\"},{\"id\":8,\"data\":\"%s\"}]}";
+		//char *message_fmt = "\r\n\r\n\{\"service\":\"onboard_io\",\"type\":\"digital\",\"inputs\":[{\"id\":1,\"data\":\"%s\"},{\"id\":2,\"data\":\"%s\"},{\"id\":3,\"data\":\"%s\"},{\"id\":4,\"data\":\"%s\"},{\"id\":5,\"data\":\"%s\"},{\"id\":6,\"data\":\"%s\"},{\"id\":7,\"data\":\"%s\"},{\"id\":8,\"data\":\"%s\"}]}";
 
-//char *message_fmt = "POST / HTTP/1.0\r\nContent-Type: application/json\r\nContent-Length: 212\r\n\r\n{\"service\":\"onboard_io\",\"type\":\"digital\",\"inputs\":[{\"id\":1,\"data\":\"%s\"},{\"id\":2,\"data\":\"%s\"},{\"id\":3,\"data\":\"%s\"},{\"id\":4,\"data\":\"%s\"},{\"id\":5,\"data\":\"%s\"},{\"id\":6,\"data\":\"%s\"},{\"id\":7,\"data\":\"%s\"},{\"id\":8,\"data\":\"%s\"}]}";
+		char *message_fmt = "\r\n\r\n\{\"service\":\"onboard_io\",\"type\":\"digital\",\"inputs\":[{\"id\":1,\"data\":%s},{\"id\":2,\"data\":%s},{\"id\":3,\"data\":%s},{\"id\":4,\"data\":%s},{\"id\":5,\"data\":%s},{\"id\":6,\"data\":%s},{\"id\":7,\"data\":%s},{\"id\":8,\"data\":%s}]}";
+
+		//char *message_fmt = "POST / HTTP/1.0\r\nContent-Type: application/json\r\nContent-Length: 212\r\n\r\n{\"service\":\"onboard_io\",\"type\":\"digital\",\"inputs\":[{\"id\":1,\"data\":\"%s\"},{\"id\":2,\"data\":\"%s\"},{\"id\":3,\"data\":\"%s\"},{\"id\":4,\"data\":\"%s\"},{\"id\":5,\"data\":\"%s\"},{\"id\":6,\"data\":\"%s\"},{\"id\":7,\"data\":\"%s\"},{\"id\":8,\"data\":\"%s\"}]}";
 
 	    sprintf(message,message_fmt,Digital_IO_Pin1,Digital_IO_Pin2,Digital_IO_Pin3,Digital_IO_Pin4,Digital_IO_Pin5,Digital_IO_Pin6,Digital_IO_Pin7,Digital_IO_Pin8); //Format and apply data
 
 	    int message_len;
 
-	    message_len = strlen(message) - 3;
+	    message_len = strlen(message) - 4;
 
 	    char message_len_str[4];
 	    message_len_str[0] = '\0';

@@ -17,6 +17,7 @@ Description	:	Service to provide GPIO In and Out capability to BlackBox on the V
 #include <time.h>
 #include <sys/time.h>
 #include <signal.h>
+#include <stdbool.h>
 
 #include "BeagleBone_Get_IO_Status.h"
 #include "BeagleBone_Hardware_Initialize.h"
