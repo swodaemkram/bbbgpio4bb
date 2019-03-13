@@ -237,11 +237,9 @@ New Json Object Below
 	   	//log_Function(final_message);
 
 	   	strcat(final_message, message);
-	    log_Function(final_message);
 
+	   	// Debug to show Json output to BlackBox log_Function(final_message);
 
-
-//log_Function(message);//DEBUG TO SHOW TRANSMIT DATA
 
 		//if(Verbose == 1){
 		//printf("\n%s\n",message);
