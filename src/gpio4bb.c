@@ -271,6 +271,13 @@ Simple Argument Verification Completed
 //printf("Port_Out_To_BlackBox = %d\n", Port_Out_To_BlackBox );
 //printf("Port_IN_From_BlackBox = %d\n\n", Port_IN_From_BlackBox );
 
+if ( strcmp(HardwarePlatform, "beaglebone") != 0 && strcmp(HardwarePlatform,"raspberrypi") != 0 && strcmp(HardwarePlatform, "usbio") !=0){
+
+					log_Function("Invalid Hardware Platform Supplied ....");
+					remove("/run/gpio4bb.pid");
+					exit(1);
+}
+
 /*
 ======================================================================================================================
 Main Program Loop
