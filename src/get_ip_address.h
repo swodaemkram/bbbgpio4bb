@@ -18,7 +18,7 @@
 
 void get_ip_address(void) {
 
-
+	log_Function("I.P. Addresses Bound to GPIO4BB hardware are....");
 	struct ifaddrs *ifaddr, *ifa;
 	    int family, s;
 	    char host[NI_MAXHOST];
@@ -49,7 +49,7 @@ void get_ip_address(void) {
 	            //printf("\tInterface : <%s>\n",ifa->ifa_name );
 	            //printf("\t  Address : <%s>\n", host);
 
-	            log_Function("I.P. Addresses Bound to GPIO4BB are ....");
+
 	            log_Function(host);
 
 	        }
