@@ -39,13 +39,13 @@ Define Variables for all PINs
 		char DIGPIN13[255] = {0};
 		char DIGPIN14[255] = {0};
 		char DIGPIN15[255] = {0};
-		char ANALOGPIN0[255] = {0};
-		char ANALOGPIN1[255] = {0};
-		char ANALOGPIN2[255] = {0};
-		char ANALOGPIN3[255] = {0};
-		char ANALOGPIN4[255] = {0};
-		char ANALOGPIN5[255] = {0};
-		char ANALOGPIN6[255] = {0};
+//		char ANALOGPIN0[255] = {0};
+//		char ANALOGPIN1[255] = {0};
+//		char ANALOGPIN2[255] = {0};
+//		char ANALOGPIN3[255] = {0};
+//		char ANALOGPIN4[255] = {0};
+//		char ANALOGPIN5[255] = {0};
+//		char ANALOGPIN6[255] = {0};
 /*
 =======================================================================================================================
 All PINs defined
@@ -360,7 +360,7 @@ Finished PIN 14
 =============================================================================================================================
 Get Reading from the first Analog Pin this is Pin 0
 =============================================================================================================================
-*/
+
 		res = 0;
 		NEWSTOP=FALSE;
 		buf[0] = '\0';
@@ -384,14 +384,14 @@ Get Reading from the first Analog Pin this is Pin 0
 		char SANALOGPIN0[2] = {0};
 		strncpy(SANALOGPIN0,ANALOGPIN0,strlen(ANALOGPIN0)-1);
 		strncpy(SANALOGPIN0,"00",2);//Remove this line to allow this pin to function
-/*
+
 =================================================================================================================================
 Finished ANALOG PIN 0
 =================================================================================================================================
 =============================================================================================================================
-Get Reading from the first Analog Pin this is Pin 1
+Get Reading from Analog Pin 1
 =============================================================================================================================
-*/
+
 				res = 0;
 				NEWSTOP=FALSE;
 				buf[0] = '\0';
@@ -415,14 +415,14 @@ Get Reading from the first Analog Pin this is Pin 1
 				char SANALOGPIN1[2] = {0};
 				strncpy(SANALOGPIN1,ANALOGPIN1,strlen(ANALOGPIN1)-1);
 				strncpy(SANALOGPIN1,"00",2);//Remove this line to allow this pin to function
-/*
+
 =================================================================================================================================
 Finished ANALOG PIN 1
 =================================================================================================================================
 =============================================================================================================================
-Get Reading from the first Analog Pin this is Pin 2
+Get Reading from Analog Pin 2
 =============================================================================================================================
-*/
+
 				res = 0;
 				NEWSTOP=FALSE;
 				buf[0] = '\0';
@@ -445,14 +445,14 @@ Get Reading from the first Analog Pin this is Pin 2
 				char SANALOGPIN2[2] = {0};
 				strncpy(SANALOGPIN2,ANALOGPIN2,strlen(ANALOGPIN2)-1);
 				strncpy(SANALOGPIN2,"00",2);//Remove this line to allow this pin to function;
-/*
+
 =================================================================================================================================
 Finished ANALOG PIN 2
 =================================================================================================================================
 =============================================================================================================================
-Get Reading from the first Analog Pin this is Pin 3
+Get Reading from Analog Pin 3
 =============================================================================================================================
-*/
+
 				res = 0;
 				NEWSTOP=FALSE;
 				buf[0] = '\0';
@@ -475,14 +475,14 @@ Get Reading from the first Analog Pin this is Pin 3
 				char SANALOGPIN3[2] = {0};
 				strncpy(SANALOGPIN3,ANALOGPIN3,strlen(ANALOGPIN3)-1);
 				strncpy(SANALOGPIN3,"00",2); //Remove this line to allow this pin to function
-/*
+
 =================================================================================================================================
 Finished ANALOG PIN 3
 =================================================================================================================================
 =============================================================================================================================
-Get Reading from the first Analog Pin this is Pin 4
+Get Reading from Analog Pin 4
 =============================================================================================================================
-*/
+
 				res = 0;
 				NEWSTOP=FALSE;
 				buf[0] = '\0';
@@ -505,14 +505,14 @@ Get Reading from the first Analog Pin this is Pin 4
 				char SANALOGPIN4[2] = {0};
 				strncpy(SANALOGPIN4,ANALOGPIN4,strlen(ANALOGPIN4)-1);
 				strncpy(SANALOGPIN4,"00",2); //Remove this line to allow this pin to function
-/*
+
 =================================================================================================================================
 Finished ANALOG PIN 4
 =================================================================================================================================
 =============================================================================================================================
-Get Reading from the first Analog Pin this is Pin 5
+Get Reading from  Analog Pin 5
 =============================================================================================================================
-*/
+
 				res = 0;
 				NEWSTOP=FALSE;
 				buf[0] = '\0';
@@ -535,14 +535,14 @@ Get Reading from the first Analog Pin this is Pin 5
 				char SANALOGPIN5[2] = {0};
 				strncpy(SANALOGPIN5,ANALOGPIN5,strlen(ANALOGPIN5)-1);
 				strncpy(SANALOGPIN5,"00",2); //Remove this line to allow this pin to function
-/*
+
 =================================================================================================================================
 Finished ANALOG PIN 5
 =================================================================================================================================
 =============================================================================================================================
-Get Reading from the first Analog Pin this is Pin 6
+Get Reading from Analog Pin 6
 =============================================================================================================================
-*/
+
 				res = 0;
 				NEWSTOP=FALSE;
 				buf[0] = '\0';
@@ -564,16 +564,20 @@ Get Reading from the first Analog Pin this is Pin 6
 					char SANALOGPIN6[2] = {0};
 				strncpy(SANALOGPIN6,ANALOGPIN6,strlen(ANALOGPIN6)-1);
 				strncpy(SANALOGPIN6,"00",2); //Remove this line to allow this pin to function
-/*
+
 =================================================================================================================================
-Finished ANALOG PIN 5
+Finished ANALOG PIN 6
 =================================================================================================================================
 */
 		 //log_Function(DIGPIN15); //DEBUG CODE !!!
 
-			char *IO_Status_fmt = "%s:%s:%s:%s:%s:%s:%s:%s|%s:%s:%s:%s:%s:%s:%s|00.0:00.0|";
-		    char IO_Status_Value[1024];
-			sprintf(IO_Status_Value, IO_Status_fmt,DIGPIN8,DIGPIN9,DIGPIN10,DIGPIN11,DIGPIN12,DIGPIN13,DIGPIN14,DIGPIN15,SANALOGPIN0,SANALOGPIN1,SANALOGPIN2,SANALOGPIN3,SANALOGPIN4,SANALOGPIN5,SANALOGPIN6); //Format and apply data
+			//char *IO_Status_fmt = "%s:%s:%s:%s:%s:%s:%s:%s|%s:%s:%s:%s:%s:%s:%s|00.0:00.0|";
+			  char *IO_Status_fmt = "%s:%s:%s:%s:%s:%s:%s:%s|00:00:00:00:00:00:00|00.0:00.0|";
+			char IO_Status_Value[1024];
+
+		    //sprintf(IO_Status_Value, IO_Status_fmt,DIGPIN8,DIGPIN9,DIGPIN10,DIGPIN11,DIGPIN12,DIGPIN13,DIGPIN14,DIGPIN15,SANALOGPIN0,SANALOGPIN1,SANALOGPIN2,SANALOGPIN3,SANALOGPIN4,SANALOGPIN5,SANALOGPIN6); //Format and apply data
+
+			sprintf(IO_Status_Value, IO_Status_fmt,DIGPIN8,DIGPIN9,DIGPIN10,DIGPIN11,DIGPIN12,DIGPIN13,DIGPIN14,DIGPIN15); //Format and apply data
 			char *New_IO_Status_Value = {0};
 			New_IO_Status_Value = IO_Status_Value;
 			close(fd);

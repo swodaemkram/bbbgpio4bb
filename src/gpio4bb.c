@@ -2,7 +2,7 @@
 ===========================================================================================================================
 Name		:	gpio4bb.c
 Author		:	Mark Meadows
-Version		:	v 01.00.13
+Version		:	v 01.00.15
 Copyright	:	Fireking Security Group
 Description	:	Service to provide GPIO In and Out capability to BlackBox on the Various Hardware Platforms
 				BeagleBone, RaspberryPi, USBI/O board
@@ -81,7 +81,7 @@ end of run once check
 
 char log_message [250] = {0};								  // Send Program Started to the log
 //strncpy(log_message,"gpio4bb service started ....",29);       // Send Program Started to the log
-log_Function("gpio4bb service started Ver 01.00.13 ....");				  // Send Program Started to the log
+log_Function("gpio4bb service started Ver 01.00.15 ....");				  // Send Program Started to the log
 
 char IP_Out_To_BlackBox[15] = {0};
 int Port_Out_To_BlackBox = 0;

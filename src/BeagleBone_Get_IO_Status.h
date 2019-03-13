@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include "bbb_dht_read.h"
+//#include "log_Function.h"
 char *BeagelBone_Get_IO_Status(void){
 /*
 ====================================================================================================================================
