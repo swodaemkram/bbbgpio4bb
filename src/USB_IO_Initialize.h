@@ -30,7 +30,7 @@ volatile int STOP=FALSE;
 void USB_IO_Initialize(void){
 
 	char log_message [250] = {0};
-	//strncpy(log_message,"Starting USBGPIO Hardware Initialization... ",47);
+
 	log_Function("Starting USBGPIO Hardware Initialization... ");
 
 	int fd;
@@ -47,7 +47,6 @@ void USB_IO_Initialize(void){
 	if (fd <0)
 			{
 		    perror(MODEMDEVICE);
-		    //strncpy(log_message,"Could not open USBGPIO Hardware",31);
 		    log_Function("Could not open USBGPIO Hardware");
 		    remove("/run/gpio4bb.pid");
 		    exit(1);

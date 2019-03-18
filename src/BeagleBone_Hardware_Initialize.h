@@ -34,7 +34,6 @@ Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69] & [61 f
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 	if (IO_Config_File == NULL){
-	//printf("\nProblem opening the export file this program must be run as root.\n");
 	char log_message[0];
 	strcat(log_message, "Problem setting up PIN 44!" );
 	log_Function(log_message);
@@ -46,7 +45,6 @@ Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69] & [61 f
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 	if (IO_Config_File == NULL){
-		//printf("\nProblem opening the export file this program must be run as root.\n");
 		char log_message[0];
 		strcat(log_message, "Problem setting up PIN 65!" );
 		log_Function(log_message);
@@ -58,7 +56,6 @@ Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69] & [61 f
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 	if (IO_Config_File == NULL){
-		//printf("\nProblem opening the export file this program must be run as root.\n");
 		char log_message[0];
 		strcat(log_message, "Problem setting up PIN 46!" );
 		log_Function(log_message);
@@ -70,7 +67,6 @@ Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69] & [61 f
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 		if (IO_Config_File == NULL){
-		//printf("\nProblem opening the export file this program must be run as root.\n");
 		char log_message[0];
 		strcat(log_message, "Problem setting up PIN 26!" );
 		log_Function(log_message);
@@ -82,7 +78,6 @@ Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69] & [61 f
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 	    if (IO_Config_File == NULL){
-		//printf("\nProblem opening the export file this program must be run as root.\n");
 		char log_message[0];
 		strcat(log_message, "Problem setting up PIN 68!" );
 		log_Function(log_message);
@@ -94,7 +89,6 @@ Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69] & [61 f
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 		if (IO_Config_File == NULL){
-		//printf("\nProblem opening the export file this program must be run as root.\n");
 		char log_message[0];
 		strcat(log_message, "Problem setting up PIN 67!" );
 		log_Function(log_message);
@@ -106,7 +100,6 @@ Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69] & [61 f
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 		if (IO_Config_File == NULL){
-		//printf("\nProblem opening the export file this program must be run as root.\n");
 		char log_message[0];
 		strcat(log_message, "Problem setting up PIN 66!" );
 		log_Function(log_message);
@@ -118,7 +111,6 @@ Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69] & [61 f
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 		if (IO_Config_File == NULL){
-		//printf("\nProblem opening the export file this program must be run as root.\n");
 		char log_message[0];
 		strcat(log_message, "Problem setting up PIN 69!" );
 		log_Function(log_message);
@@ -132,7 +124,6 @@ Initialize 8 PINs for Export as Digital Inputs [44,65,46,26,68,67,66,69] & [61 f
 
 	IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 		if (IO_Config_File == NULL){
-		//printf("\nProblem opening the export file this program must be run as root.\n");
 		char log_message[0];
 		strcat(log_message, "Problem setting up PIN 61" );
 		log_Function(log_message);

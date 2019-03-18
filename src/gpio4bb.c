@@ -185,10 +185,7 @@ if (Config_File != 1){
  		 	 	 	 	 	   }
 
  		 	 	 	 	 if (dif != 0){
- 		 	 	 	 		 // printf("\nThe %s platform is not supported yet ....\n",HardwarePlatform);
- 		 	 	 	 		 //char log_message [250] = {0};								  // Send to the log
- 		 	 	 	 		 //strncpy(log_message,"platform is not supported yet .... ",35);   // Send to the log
- 		 	 	 	 		 log_Function("platform is not supported yet .... ");			  // Send to the log
+ 		 	 	 	 		 log_Function("platform is not supported yet .... ");	 // Send to the log
  		 	 	 	 		 Print_Help();
  		 	 	 	 	 	 	 	 }
  	 	 	 	 }
@@ -204,8 +201,7 @@ Simple Argument Verification Completed
  if (Config_File == 1) {
 
 	        log_message[0] = '\0';
-	 		strcat(log_message, "Reading config from /etc/gpio4bb.conf" );
-	 		log_Function(log_message);
+	 		log_Function("Reading config from /etc/gpio4bb.conf");
 
 	 		FILE *Config_File = NULL;                        // declare config file Pointer
 
@@ -312,7 +308,6 @@ while(1){
 // New Code for time
 
 	    if(strcmp(IO_Status_Value, Last_IO_Status_Value) != 0){
-		//printf("\nLast_IO_Status_Value = %s\n New_IO_Status_Value = %s\n",Last_IO_Status_Value,New_IO_Status_Value);
 		log_Function(IO_Status_Value);
 		//log_Function(Last_IO_Status_Value);
 		Send_Data_To_BlackBox(IP_Out_To_BlackBox, Port_Out_To_BlackBox, IO_Status_Value,  Verbose); //Send New Data To BlackBox

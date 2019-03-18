@@ -16,19 +16,18 @@
 void RaspberryPi_Hardware_Initialize(void){
 
 
-	char log_message [250] = {0};
-		strncpy(log_message,"Start Raspberry Pi Hardware Initialization...",45);
-		log_Function(log_message);
+
+
+		log_Function("Start Raspberry Pi Hardware Initialization...");
 
 
 	FILE *IO_Config_File = NULL;                            	// declare GPIO file Setup Pointer
 
 		IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 			if (IO_Config_File == NULL){
-			//printf("\nProblem opening the export file this program must be run as root.\n");
-			char log_message[0];
-			strcat(log_message, "Problem opening the export file this program must be run as root." );
-			log_Function(log_message);
+
+
+			log_Function("Problem opening the export file this program must be run as root.");
 			remove("/run/gpio4bb.pid");
 			exit(1);
 			}
@@ -37,10 +36,9 @@ void RaspberryPi_Hardware_Initialize(void){
 
 		IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 			if (IO_Config_File == NULL){
-			//printf("\nProblem opening the export file this program must be run as root.\n");
-			char log_message[0];
-			strcat(log_message, "Problem opening the export file this program must be run as root." );
-			log_Function(log_message);
+
+
+			log_Function("Problem opening the export file this program must be run as root.");
 			remove("/run/gpio4bb.pid");
 			exit(1);
 			}
@@ -49,10 +47,9 @@ void RaspberryPi_Hardware_Initialize(void){
 
 		IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 			if (IO_Config_File == NULL){
-			//printf("\nProblem opening the export file this program must be run as root.\n");
-			char log_message[0];
-			strcat(log_message, "Problem opening the export file this program must be run as root." );
-			log_Function(log_message);
+
+
+			log_Function("Problem opening the export file this program must be run as root.");
 			remove("/run/gpio4bb.pid");
 			exit(1);
 			}
@@ -61,10 +58,9 @@ void RaspberryPi_Hardware_Initialize(void){
 
 		IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 			if (IO_Config_File == NULL){
-			//printf("\nProblem opening the export file this program must be run as root.\n");
-			char log_message[0];
-			strcat(log_message, "Problem opening the export file this program must be run as root." );
-			log_Function(log_message);
+
+
+			log_Function("Problem opening the export file this program must be run as root.");
 			remove("/run/gpio4bb.pid");
 			exit(1);
 			}
@@ -73,10 +69,7 @@ void RaspberryPi_Hardware_Initialize(void){
 
 		IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 			if (IO_Config_File == NULL){
-			//printf("\nProblem opening the export file this program must be run as root.\n");
-			char log_message[0];
-			strcat(log_message, "Problem opening the export file this program must be run as root." );
-			log_Function(log_message);
+			log_Function("Problem opening the export file this program must be run as root.");
 			remove("/run/gpio4bb.pid");
 			exit(1);
 			}
@@ -85,10 +78,7 @@ void RaspberryPi_Hardware_Initialize(void){
 
 		IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 			if (IO_Config_File == NULL){
-			//printf("\nProblem opening the export file this program must be run as root.\n");
-			char log_message[0];
-			strcat(log_message, "Problem opening the export file this program must be run as root." );
-			log_Function(log_message);
+			log_Function("Problem opening the export file this program must be run as root.");
 			remove("/run/gpio4bb.pid");
 			exit(1);
 			}
@@ -101,10 +91,7 @@ void RaspberryPi_Hardware_Initialize(void){
 
 		IO_Config_File = fopen("/sys/class/gpio/export", "w");  	// Open the export file for writing
 			if (IO_Config_File == NULL){
-			//printf("\nProblem opening the export file this program must be run as root.\n");
-			char log_message[0];
-			strcat(log_message, "Problem opening the export file this program must be run as root." );
-			log_Function(log_message);
+			log_Function("Problem opening the export file this program must be run as root.");
 			remove("/run/gpio4bb.pid");
 			exit(1);
 			}
@@ -117,10 +104,7 @@ void RaspberryPi_Hardware_Initialize(void){
 	 */
 			IO_Config_File = fopen("/sys/class/gpio/gpio0/direction", "w");  	// Open the pin 0 direction file for writing
 				if (IO_Config_File == NULL){
-				//printf("\nProblem opening the export file this program must be run as root.\n");
-				char log_message[0];
-				strcat(log_message, "Problem opening the export file this program must be run as root." );
-				log_Function(log_message);
+				log_Function("Problem opening the export file this program must be run as root.");
 				remove("/run/gpio4bb.pid");
 				exit(1);
 				}
@@ -129,10 +113,7 @@ void RaspberryPi_Hardware_Initialize(void){
 
 			IO_Config_File = fopen("/sys/class/gpio/gpio1/direction", "w");  	// Open the pin 1 direction file for writing
 				if (IO_Config_File == NULL){
-				//printf("\nProblem opening the export file this program must be run as root.\n");
-				char log_message[0];
-				strcat(log_message, "Problem opening the export file this program must be run as root." );
-				log_Function(log_message);
+				log_Function("Problem opening the export file this program must be run as root.");
 				remove("/run/gpio4bb.pid");
 				exit(1);
 				}
@@ -141,10 +122,7 @@ void RaspberryPi_Hardware_Initialize(void){
 
 			IO_Config_File = fopen("/sys/class/gpio/gpio2/direction", "w");  	// Open the pin 2 direction file for writing
 				if (IO_Config_File == NULL){
-				//printf("\nProblem opening the export file this program must be run as root.\n");
-				char log_message[0];
-				strcat(log_message, "Problem opening the export file this program must be run as root." );
-				log_Function(log_message);
+				log_Function("Problem opening the export file this program must be run as root.");
 				remove("/run/gpio4bb.pid");
 				exit(1);
 				}
@@ -153,10 +131,7 @@ void RaspberryPi_Hardware_Initialize(void){
 
 			IO_Config_File = fopen("/sys/class/gpio/gpio3/direction", "w");  	// Open the pin 3 direction file for writing
 				if (IO_Config_File == NULL){
-				//printf("\nProblem opening the export file this program must be run as root.\n");
-				char log_message[0];
-				strcat(log_message, "Problem opening the export file this program must be run as root." );
-				log_Function(log_message);
+				log_Function("Problem opening the export file this program must be run as root.");
 				remove("/run/gpio4bb.pid");
 				exit(1);
 				}
@@ -165,10 +140,7 @@ void RaspberryPi_Hardware_Initialize(void){
 
 			IO_Config_File = fopen("/sys/class/gpio/gpio4/direction", "w");  	// Open the pin 4 direction file for writing
 				if (IO_Config_File == NULL){
-				//printf("\nProblem opening the export file this program must be run as root.\n");
-				char log_message[0];
-				strcat(log_message, "Problem opening the export file this program must be run as root." );
-				log_Function(log_message);
+				log_Function("Problem opening the export file this program must be run as root.");
 				remove("/run/gpio4bb.pid");
 				exit(1);
 				}
@@ -177,10 +149,7 @@ void RaspberryPi_Hardware_Initialize(void){
 
 			IO_Config_File = fopen("/sys/class/gpio/gpio5/direction", "w");  	// Open the pin 5 direction file for writing
 				if (IO_Config_File == NULL){
-				//printf("\nProblem opening the export file this program must be run as root.\n");
-				char log_message[0];
-				strcat(log_message, "Problem opening the export file this program must be run as root." );
-				log_Function(log_message);
+				log_Function("Problem opening the export file this program must be run as root.");
 				remove("/run/gpio4bb.pid");
 				exit(1);
 				}
@@ -189,10 +158,7 @@ void RaspberryPi_Hardware_Initialize(void){
 
 			IO_Config_File = fopen("/sys/class/gpio/gpio6/direction", "w");  	   // Open the pin 6 direction file for writing
 				if (IO_Config_File == NULL){
-				//printf("\nProblem opening the export file this program must be run as root.\n");
-				char log_message[0];
-				strcat(log_message, "Problem opening the export file this program must be run as root." );
-				log_Function(log_message);
+				log_Function("Problem opening the export file this program must be run as root.");
 				remove("/run/gpio4bb.pid");
 				exit(1);
 				}
@@ -201,10 +167,7 @@ void RaspberryPi_Hardware_Initialize(void){
 
 			IO_Config_File = fopen("/sys/class/gpio/gpio7/direction", "w");  	    // Open the pin 7 direction file for writing
 				if (IO_Config_File == NULL){
-				//printf("\nProblem opening the export file this program must be run as root.\n");
-				char log_message[0];
-				strcat(log_message, "Problem opening the export file this program must be run as root." );
-				log_Function(log_message);
+				log_Function("Problem opening the export file this program must be run as root.");
 				remove("/run/gpio4bb.pid");
 				exit(1);
 				}
@@ -221,8 +184,8 @@ Finished Initializing Digital Input PINs
 //printf("\nRaspberry Pi Hardware Initialized... \n");
 
 	//char log_message [250] = {0};
-	strncpy(log_message,"Raspberry Pi Hardware Initialized...",37);
-	log_Function(log_message);
+	//strncpy(log_message,"Raspberry Pi Hardware Initialized...",37);
+	log_Function("Raspberry Pi Hardware Initialized...");
 
 
 return;

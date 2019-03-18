@@ -42,15 +42,11 @@ void Send_Data_To_BlackBox(char *IP_Out_To_BlackBox, int Port_Out_To_BlackBox, c
 			{
 				if (Verbose == 1){
 				perror("connect failed. Error");
-				//log_message[0] = '\0';
-				//strcat(log_message, "BlackBox connection failed" );
 				log_Function("BlackBox connection failed");
 				close(sock);
 				return;
 				}
 
-				//log_message[0] = '\0';
-				//strcat(log_message, "BlackBox connection failed" );
 				log_Function("BlackBox connection failed");
 				close(sock);
 				return;

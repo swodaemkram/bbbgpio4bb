@@ -23,10 +23,7 @@ Start of Digital INPUT Handler
 	FILE *PIN0_Status = NULL; //declare PIN0 Pointer
 	PIN0_Status = fopen("/sys/class/gpio/gpio0/value", "r");
 	if (PIN0_Status == NULL){
-		//printf("\nProblem Reading PIN 0!.\n");
-		char log_message[0];
-		strcat(log_message, "Problem Reading PIN 0!" );
-		log_Function(log_message);
+		log_Function("Problem Reading PIN 0!");
 		remove("/run/gpio4bb.pid");
 		exit(1);
 		}
@@ -38,10 +35,7 @@ Start of Digital INPUT Handler
 	FILE *PIN1_Status = NULL; //declare PIN1 Pointer
 	PIN1_Status = fopen("/sys/class/gpio/gpio1/value", "r");
 	if (PIN1_Status == NULL){
-		//printf("\nProblem Reading PIN 1!\n");
-		char log_message[0];
-		strcat(log_message, "Problem Reading PIN 1!" );
-		log_Function(log_message);
+		log_Function("Problem Reading PIN 1!");
 		remove("/run/gpio4bb.pid");
 		exit(1);
 		}
@@ -53,10 +47,7 @@ Start of Digital INPUT Handler
 	FILE *PIN2_Status = NULL; //declare PIN2 Pointer
 	PIN2_Status = fopen("/sys/class/gpio/gpio2/value", "r");
 	if (PIN2_Status == NULL){
-		//printf("\nProblem Reading PIN 2!\n");
-		char log_message[0];
-		strcat(log_message, "Problem Reading PIN 2!" );
-		log_Function(log_message);
+		log_Function("Problem Reading PIN 2!");
 		remove("/run/gpio4bb.pid");
 		exit(1);
 		}
@@ -68,10 +59,7 @@ Start of Digital INPUT Handler
 	FILE *PIN3_Status = NULL; //declare PIN3 Pointer
 	PIN3_Status = fopen("/sys/class/gpio/gpio3/value", "r");
 	if (PIN3_Status == NULL){
-		//printf("\nProblem Reading PIN 3!\n");
-		char log_message[0];
-		strcat(log_message, "Problem Reading PIN 3!" );
-		log_Function(log_message);
+		log_Function("Problem Reading PIN 3!");
 		remove("/run/gpio4bb.pid");
 		exit(1);
 		}
@@ -83,10 +71,7 @@ Start of Digital INPUT Handler
 	FILE *PIN4_Status = NULL; //declare PIN4 Pointer
 	PIN4_Status = fopen("/sys/class/gpio/gpio4/value", "r");
 	if (PIN4_Status == NULL){
-		//printf("\nProblem Reading PIN 4!\n");
-		char log_message[0];
-		strcat(log_message, "Problem Reading PIN 4!" );
-		log_Function(log_message);
+		log_Function("Problem Reading PIN 4!");
 		remove("/run/gpio4bb.pid");
 		exit(1);
 		}
@@ -98,10 +83,7 @@ Start of Digital INPUT Handler
 	FILE *PIN5_Status = NULL; //declare PIN5 Pointer
 	PIN5_Status = fopen("/sys/class/gpio/gpio5/value", "r");
 	if (PIN5_Status == NULL){
-		//printf("\nProblem Reading PIN 5!\n");
-		char log_message[0];
-		strcat(log_message, "Problem Reading PIN 5!" );
-		log_Function(log_message);
+		log_Function("Problem Reading PIN 5!");
 		remove("/run/gpio4bb.pid");
 		exit(1);
 		}
@@ -113,10 +95,7 @@ Start of Digital INPUT Handler
 	FILE *PIN6_Status = NULL; //declare PIN6 Pointer
 	PIN6_Status = fopen("/sys/class/gpio/gpio6/value", "r");
 	if (PIN6_Status == NULL){
-		//printf("\nProblem Reading PIN 6!\n");
-		char log_message[0];
-		strcat(log_message, "Problem Reading PIN 6!" );
-		log_Function(log_message);
+		log_Function("Problem Reading PIN 6!");
 		remove("/run/gpio4bb.pid");
 		exit(1);
 		}
@@ -128,10 +107,7 @@ Start of Digital INPUT Handler
 	FILE *PIN7_Status = NULL; //declare PIN7 Pointer
 	PIN7_Status = fopen("/sys/class/gpio/gpio7/value", "r");
 	if (PIN7_Status == NULL){
-		printf("\nProblem Reading PIN 7!\n");
-		char log_message[0];
-		strcat(log_message, "Problem Reading PIN 7!" );
-		log_Function(log_message);
+		log_Function("Problem Reading PIN 7!");
 		remove("/run/gpio4bb.pid");
 		exit(1);
 		}
