@@ -215,7 +215,7 @@ New Json Object Below
 
 		//char *message_fmt = "\r\n\r\n\{\"service\":\"onboard_io\",\"type\":\"digital\",\"inputs\":[{\"id\":1,\"data\":\"%s\"},{\"id\":2,\"data\":\"%s\"},{\"id\":3,\"data\":\"%s\"},{\"id\":4,\"data\":\"%s\"},{\"id\":5,\"data\":\"%s\"},{\"id\":6,\"data\":\"%s\"},{\"id\":7,\"data\":\"%s\"},{\"id\":8,\"data\":\"%s\"}]}";
 
-		char *message_fmt = "\r\n\r\n\{\"service\":\"onboard_io\",\"type\":\"digital\",\"inputs\":[{\"id\":1,\"data\":%s},{\"id\":2,\"data\":%s},{\"id\":3,\"data\":%s},{\"id\":4,\"data\":%s},{\"id\":5,\"data\":%s},{\"id\":6,\"data\":%s},{\"id\":7,\"data\":%s},{\"id\":8,\"data\":%s}]}";
+		char *message_fmt = "\r\n\r\n\{\"service\":\"onboard_io\",\"type\":\"digital\",\"inputs\":[{\"n_id\":1,\"data\":%s},{\"n_id\":2,\"data\":%s},{\"n_id\":3,\"data\":%s},{\"n_id\":4,\"data\":%s},{\"n_id\":5,\"data\":%s},{\"n_id\":6,\"data\":%s},{\"n_id\":7,\"data\":%s},{\"n_id\":8,\"data\":%s}]}";
 
 		//char *message_fmt = "POST / HTTP/1.0\r\nContent-Type: application/json\r\nContent-Length: 212\r\n\r\n{\"service\":\"onboard_io\",\"type\":\"digital\",\"inputs\":[{\"id\":1,\"data\":\"%s\"},{\"id\":2,\"data\":\"%s\"},{\"id\":3,\"data\":\"%s\"},{\"id\":4,\"data\":\"%s\"},{\"id\":5,\"data\":\"%s\"},{\"id\":6,\"data\":\"%s\"},{\"id\":7,\"data\":\"%s\"},{\"id\":8,\"data\":\"%s\"}]}";
 

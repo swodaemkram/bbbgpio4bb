@@ -14,7 +14,7 @@
 
 void Print_Help(void){
 
-printf("\n             gpio4bb By Mark Meadows v 01.00.15\n");
+printf("\n             gpio4bb By Mark Meadows v 01.00.18\n");
 printf(" Copyright (c)2019 Fireking Security Group. All rights reserved.\n");
 printf("         The BlackBox interface to On Board Hardware I/O \n\n");
 printf(" -h, Print this help file\n");

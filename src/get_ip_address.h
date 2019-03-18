@@ -25,7 +25,7 @@ void get_ip_address(void) {
 
 	    if (getifaddrs(&ifaddr) == -1)
 	    {
-	    	log_Function("Could Not Get I.P> Address of this unit!");
+	    	log_Function("Could Not Get I.P. Address of this unit!");
 	    	remove("/run/gpio4bb.pid");
 	    	exit(1);
 	    }
@@ -42,7 +42,7 @@ void get_ip_address(void) {
 	        {
 	            if (s != 0)
 	            {
-	            	log_Function("Could Not Get I.P> Address of this unit!");
+	            	log_Function("Could Not Get I.P. Address of this unit!");
 	            	remove("/run/gpio4bb.pid");
 	            	exit(1);
 	            }
